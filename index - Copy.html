@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background-color: black;
+        margin: 0;
+      }
+      .floor1 {
+        background-image: url("./sprite/floor1.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor2 {
+        background-image: url("./sprite/floor2.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor3 {
+        background-image: url("./sprite/floor3.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor4 {
+        background-image: url("./sprite/floor4.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor5 {
+        background-image: url("./sprite/floor5.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor6 {
+        background-image: url("./sprite/floor6.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor7 {
+        background-image: url("./sprite/floor7.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor8 {
+        background-image: url("./sprite/floor8.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor9 {
+        background-image: url("./sprite/floor9.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor10 {
+        background-image: url("./sprite/floor10.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor11 {
+        background-image: url("./sprite/floor11.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor12 {
+        background-image: url("./sprite/floor12.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor13 {
+        background-image: url("./sprite/floor13.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor14 {
+        background-image: url("./sprite/floor14.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor15 {
+        background-image: url("./sprite/floor15.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor1_dark {
+        background-image: url("./sprite/floor1_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor2_dark {
+        background-image: url("./sprite/floor2_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor3_dark {
+        background-image: url("./sprite/floor3_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor4_dark {
+        background-image: url("./sprite/floor4_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor5_dark {
+        background-image: url("./sprite/floor5_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor6_dark {
+        background-image: url("./sprite/floor6_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor7_dark {
+        background-image: url("./sprite/floor7_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor8_dark {
+        background-image: url("./sprite/floor8_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor9_dark {
+        background-image: url("./sprite/floor9_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor10_dark {
+        background-image: url("./sprite/floor10_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor11_dark {
+        background-image: url("./sprite/floor11_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor12_dark {
+        background-image: url("./sprite/floor12_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor13_dark {
+        background-image: url("./sprite/floor13_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor14_dark {
+        background-image: url("./sprite/floor14_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .floor15_dark {
+        background-image: url("./sprite/floor15_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall1 {
+        background-image: url("./sprite/wall1.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall2 {
+        background-image: url("./sprite/wall2.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall3 {
+        background-image: url("./sprite/wall3.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall4 {
+        background-image: url("./sprite/wall4.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall5 {
+        background-image: url("./sprite/wall5.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall6 {
+        background-image: url("./sprite/wall6.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall7 {
+        background-image: url("./sprite/wall7.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall8 {
+        background-image: url("./sprite/wall8.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall9 {
+        background-image: url("./sprite/wall9.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall10 {
+        background-image: url("./sprite/wall10.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall11 {
+        background-image: url("./sprite/wall11.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall12 {
+        background-image: url("./sprite/wall12.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall13 {
+        background-image: url("./sprite/wall13.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall14 {
+        background-image: url("./sprite/wall14.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall15 {
+        background-image: url("./sprite/wall15.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall1_dark {
+        background-image: url("./sprite/wall1_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall2_dark {
+        background-image: url("./sprite/wall2_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall3_dark {
+        background-image: url("./sprite/wall3_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall4_dark {
+        background-image: url("./sprite/wall4_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall5_dark {
+        background-image: url("./sprite/wall5_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall6_dark {
+        background-image: url("./sprite/wall6_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall7_dark {
+        background-image: url("./sprite/wall7_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall8_dark {
+        background-image: url("./sprite/wall8_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall9_dark {
+        background-image: url("./sprite/wall9_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall10_dark {
+        background-image: url("./sprite/wall10_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall11_dark {
+        background-image: url("./sprite/wall11_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall12_dark {
+        background-image: url("./sprite/wall12_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall13_dark {
+        background-image: url("./sprite/wall13_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall14_dark {
+        background-image: url("./sprite/wall14_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .wall15_dark {
+        background-image: url("./sprite/wall15_dark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .flashlight {
+        background-image: url("./sprite/flashlight.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .black {
+        background-image: url("./sprite/black.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .spike1 {
+        background-image: url("./sprite/spike1.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .spike2 {
+        background-image: url("./sprite/spike2.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .spike3 {
+        background-image: url("./sprite/spike3.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .spike4 {
+        background-image: url("./sprite/spike4.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .died {
+        background-image: url("./sprite/died.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .text {
+        font-family: "Pixelify Sans", sans-serif;
+        text-align: center;
+        opacity: 0;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      #load {
+        opacity: 0;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body id="body" style="overflow-y: hidden;">
+    <div id="load">
+    <div class="" id="pos15">
+      <div class="" id="pos15_dark">
+
+        <div class="" id="pos14">
+          <div class="" id="pos14_dark">
+
+            <div class="" id="pos13">
+              <div class="" id="pos13_dark">
+
+                <div class="" id="pos9">
+                  <div class="" id="pos9_dark">
+
+                    <div class="" id="pos10">
+                      <div class="" id="pos10_dark">
+
+                        <div class="" id="pos11">
+                          <div class="" id="pos11_dark">
+
+                            <div class="" id="pos12">
+                              <div class="" id="pos12_dark">
+
+                                <div class="" id="pos8">
+                                  <div class="" id="pos8_dark">
+
+                                    <div class="" id="pos7">
+                                      <div class="" id="pos7_dark">
+
+                                        <div class="" id="pos4">
+                                          <div class="" id="pos4_dark">
+
+                                            <div class="" id="pos5">
+                                              <div class="" id="pos5_dark">
+
+                                                <div class="" id="pos6">
+                                                  <div class="" id="pos6_dark">
+
+                                                    <div class="" id="pos3">
+                                                      <div class="" id="pos3_dark">
+
+                                                        <div class="" id="pos1">
+                                                          <div class="" id="pos1_dark">
+
+                                                            <div class="" id="pos2">
+                                                              <div class="" id="pos2_dark">
+
+                                                                <div class="flashlight" id="flashlight">
+                                                                  <div class="" id="black">
+                                                                    <div class="" id="spike1">
+                                                                      <div class="" id="spike2">
+                                                                        <div class="" id="spike3">
+                                                                          <div class="" id="spike4">
+                                                                            <div class="" id="died">
+                                                                              <div class="black" id="black2">
+                                                                                <h1 class="text" id="tips" style="font-size: xx-large; font-weight: normal;">
+                                                                                  YOU DIED<br>
+                                                                                  Press R to Reset
+                                                                                  <p style="font-size: large;">
+                                                                                    Tips: Dont fall!<br>
+                                                                                    also fuck you
+                                                                                  </p>
+                                                                                </h1>
+                                                                                <p class="text" id="click" style="color: white; font-size: xx-large;">
+                                                                                  Click to start
+                                                                                </p>
+    </div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+    <script>
+      let default_dir = [4, 4];
+      let default_pos = "north";
+      var position = default_pos;
+      var direction = default_dir;
+      var alive = true;
+      var animation = true;
+      var firsttime = true;
+      var double = false;
+      //CHEATS
+      var darkness = true;
+      var noclip = false;
+
+      var body = document.getElementById("body");
+
+      function Fullscreen() {
+        if (body.requestFullscreen) {
+          body.requestFullscreen();
+        } else if (body.webkitRequestFullscreen) {
+          body.webkitRequestFullscreen();
+        } else if (body.msRequestFullscreen) {
+          body.msRequestFullscreen();
+        }
+      }
+      document.body.addEventListener("click", Fullscreen);
+
+      function play() {
+        Fullscreen();
+
+        animation = false;
+        
+        setTimeout(() => {
+          firsttime = false;
+        }, 50);
+        document.body.removeEventListener("click", play);
+
+        setTimeout(() => {
+          black2.style.opacity = "0.75";
+          setTimeout(() => {
+            black2.style.opacity = "0.5";
+            setTimeout(() => {
+              black2.style.opacity = "0.25";
+              setTimeout(() => {
+                click.style.opacity = "0";
+                black2.style.opacity = "1";
+                black2.classList.remove("black");
+              }, 200);
+            }, 175);
+          }, 150);
+        }, 125);
+      }
+      if(firsttime) {
+        document.body.addEventListener("click", play);
+      }
+
+      function continued() {
+        animation = false;
+        black2.classList.remove("black");
+        click.style.opacity = "0";
+        double = true;
+        setTimeout(() => {
+          double = false;
+        }, 50);
+        document.removeEventListener("click", continued);
+      }
+      
+      // var map = [
+      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      //   [0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+      //   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      //   [0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+      //   [0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+      //   [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0],
+      //   [0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0],
+      //   [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0],
+      //   [0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+      //   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+      //   [0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0],
+      //   [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0],
+      //   [0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+      //   [0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0],
+      //   [0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      // ]
+
+      var map = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2],
+        [0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 0, 0, 0, 0, 0, 0],
+        [0, 2, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1, 0, 2],
+        [0, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+        [0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 0, 2],
+        [0, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 2, 2, 2, 0, 1, 1, 1, 0, 0],
+        [0, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0, 0, 1, 1, 0, 2],
+        [0, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 2, 0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 1, 2, 2, 1, 1, 1, 2, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 2, 2, 1, 1, 1, 2, 0],
+        [0, 1, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 1, 2, 2, 1, 1, 1, 2, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 0],
+        [0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 2, 2, 1, 1, 1, 2, 0],
+        [0, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 0],
+        [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+
+      var pos1 = document.getElementById("pos1");
+      var pos2 = document.getElementById("pos2");
+      var pos3 = document.getElementById("pos3");
+      var pos4 = document.getElementById("pos4");
+      var pos5 = document.getElementById("pos5");
+      var pos6 = document.getElementById("pos6");
+      var pos7 = document.getElementById("pos7");
+      var pos8 = document.getElementById("pos8");
+      var pos9 = document.getElementById("pos9");
+      var pos10 = document.getElementById("pos10");
+      var pos11 = document.getElementById("pos11");
+      var pos12 = document.getElementById("pos12");
+      var pos13 = document.getElementById("pos13");
+      var pos14 = document.getElementById("pos14");
+      var pos15 = document.getElementById("pos15");
+      
+      var pos1_dark = document.getElementById("pos1_dark");
+      var pos2_dark = document.getElementById("pos2_dark");
+      var pos3_dark = document.getElementById("pos3_dark");
+      var pos4_dark = document.getElementById("pos4_dark");
+      var pos5_dark = document.getElementById("pos5_dark");
+      var pos6_dark = document.getElementById("pos6_dark");
+      var pos7_dark = document.getElementById("pos7_dark");
+      var pos8_dark = document.getElementById("pos8_dark");
+      var pos9_dark = document.getElementById("pos9_dark");
+      var pos10_dark = document.getElementById("pos10_dark");
+      var pos11_dark = document.getElementById("pos11_dark");
+      var pos12_dark = document.getElementById("pos12_dark");
+      var pos13_dark = document.getElementById("pos13_dark");
+      var pos14_dark = document.getElementById("pos14_dark");
+      var pos15_dark = document.getElementById("pos15_dark");
+
+      var flashlight = document.getElementById("flashlight");
+      var spike1 = document.getElementById("spike1");
+      var spike2 = document.getElementById("spike2");
+      var spike3 = document.getElementById("spike3");
+      var spike4 = document.getElementById("spike4");
+      var died = document.getElementById("died");
+      var text = document.getElementById("text");
+      var tips = document.getElementById("tips");
+
+      var black = document.getElementById("black");
+      var black2 = document.getElementById("black2");
+
+      var dirpos1;
+      var dirpos2;
+      var dirpos3;
+      var dirpos4;
+      var dirpos5;
+      var dirpos6;
+      var dirpos7;
+      var dirpos8;
+      var dirpos9;
+      var dirpos10;
+      var dirpos11;
+      var dirpos12;
+      var dirpos13;
+      var dirpos14;
+      var dirpos15;
+
+      function clear() {
+        pos1.className = '';
+        pos2.className = '';
+        pos3.className = '';
+        pos4.className = '';
+        pos5.className = '';
+        pos6.className = '';
+        pos7.className = '';
+        pos8.className = '';
+        pos9.className = '';
+        pos10.className = '';
+        pos11.className = '';
+        pos12.className = '';
+        pos13.className = '';
+        pos14.className = '';
+        pos15.className = '';
+        pos1_dark.className = '';
+        pos2_dark.className = '';
+        pos3_dark.className = '';
+        pos4_dark.className = '';
+        pos5_dark.className = '';
+        pos6_dark.className = '';
+        pos7_dark.className = '';
+        pos8_dark.className = '';
+        pos9_dark.className = '';
+        pos10_dark.className = '';
+        pos11_dark.className = '';
+        pos12_dark.className = '';
+        pos13_dark.className = '';
+        pos14_dark.className = '';
+        pos15_dark.className = '';
+      }
+
+      function render() {
+
+        clear();
+
+        if (map[position[0]][position[1]] == 0 && noclip == false) {
+          alive = false;
+          animation = true;
+
+          black.classList.add("black");
+          
+          black.style.opacity = "0.25";
+          setTimeout(() => {
+            black.style.opacity = "0.5";
+            setTimeout(() => {
+              black.style.opacity = "0.75";
+              setTimeout(() => {
+                black.style.opacity = "1";
+                setTimeout(() => {
+                  spike1.classList.add("spike1");
+                  setTimeout(() => {
+                    spike2.classList.add("spike2");
+                    setTimeout(() => {
+                      spike3.classList.add("spike3");
+                      setTimeout(() => {
+                        spike4.classList.add("spike4");
+                        setTimeout(() => {
+                          died.classList.add("died");
+
+                          animation = false;
+
+                          setTimeout(() => {
+                            tips.style.opacity = "0.25";
+                            setTimeout(() => {
+                              tips.style.opacity = "0.5";
+                              setTimeout(() => {
+                                tips.style.opacity = "0.75";
+                                setTimeout(() => {
+                                  tips.style.opacity = "1";
+                                }, 175);
+                              }, 150);
+                            }, 125);
+                          }, 100);
+                        }, 125);
+                      }, 150);
+                    }, 175);
+                  }, 200);
+                }, 1000);
+              }, 150);
+            }, 175);
+          }, 200);
+
+          return;
+        }
+        
+        switch(direction) {
+          case "north":
+            if (position[0]-1 >= 0) {
+              dirpos1 = map[position[0]-1][position[1]-1];
+              dirpos2 = map[position[0]-1][position[1]];
+              dirpos3 = map[position[0]-1][position[1]+1];
+            } else {
+              dirpos1 = 0;
+              dirpos2 = 0;
+              dirpos3 = 0;
+            }
+            if (position[0]-2 >= 0) {
+              dirpos4 = map[position[0]-2][position[1]-2];
+              dirpos5 = map[position[0]-2][position[1]-1];
+              dirpos6 = map[position[0]-2][position[1]];
+              dirpos7 = map[position[0]-2][position[1]+1];
+              dirpos8 = map[position[0]-2][position[1]+2];
+            } else {
+              dirpos4 = 0;
+              dirpos5 = 0;
+              dirpos6 = 0;
+              dirpos7 = 0;
+              dirpos8 = 0;
+            }
+            if (position[0]-3 >= 0) {
+              dirpos9 = map[position[0]-3][position[1]-3];
+              dirpos10 = map[position[0]-3][position[1]-2];
+              dirpos11 = map[position[0]-3][position[1]-1];
+              dirpos12 = map[position[0]-3][position[1]];
+              dirpos13 = map[position[0]-3][position[1]+1];
+              dirpos14 = map[position[0]-3][position[1]+2];
+              dirpos15 = map[position[0]-3][position[1]+3];
+            } else {
+              dirpos9 = 0;
+              dirpos10 = 0;
+              dirpos11 = 0;
+              dirpos12 = 0;
+              dirpos13 = 0;
+              dirpos14 = 0;
+              dirpos15 = 0;
+            }
+            break;
+          case "east":
+            if (position[0]-1 >= 0) {
+              dirpos1 = map[position[0]-1][position[1]+1];
+              dirpos5 = map[position[0]-1][position[1]+2];
+              dirpos11 = map[position[0]-1][position[1]+3];
+            } else {
+              dirpos1 = 0;
+              dirpos5 = 0;
+              dirpos11 = 0;
+            }
+            if (position[0]-2 >= 0) {
+              dirpos4 = map[position[0]-2][position[1]+2];
+              dirpos10 = map[position[0]-2][position[1]+3];
+            } else {
+              dirpos4 = 0;
+              dirpos10 = 0;
+            }
+            if (position[0]-3 >= 0) {
+              dirpos9 = map[position[0]-3][position[1]+3];
+            } else {
+              dirpos9 = 0;
+            }
+            if (position[0]+1 < map.length) {
+              dirpos3 = map[position[0]+1][position[1]+1];
+              dirpos7 = map[position[0]+1][position[1]+2];
+              dirpos13 = map[position[0]+1][position[1]+3];
+            } else {
+              dirpos3 = 0;
+              dirpos7 = 0;
+              dirpos13 = 0;
+            }
+            if (position[0]+2 < map.length) {
+              dirpos8 = map[position[0]+2][position[1]+2];
+              dirpos14 = map[position[0]+2][position[1]+3];
+            } else {
+              dirpos8 = 0;
+              dirpos14 = 0;
+            }
+            if (position[0]+3 < map.length) {
+              dirpos15 = map[position[0]+3][position[1]+3];
+            } else {
+              dirpos15 = 0;
+            }
+            dirpos2 = map[position[0]][position[1]+1];
+            dirpos6 = map[position[0]][position[1]+2];
+            dirpos12 = map[position[0]][position[1]+3];
+            break;
+          case "south":
+            if (position[0]+1 < map.length) {
+              dirpos1 = map[position[0]+1][position[1]+1];
+              dirpos2 = map[position[0]+1][position[1]];
+              dirpos3 = map[position[0]+1][position[1]-1];
+            } else {
+              dirpos1 = 0;
+              dirpos2 = 0;
+              dirpos3 = 0;
+            }
+            if (position[0]+2 < map.length) {
+              dirpos4 = map[position[0]+2][position[1]+2];
+              dirpos5 = map[position[0]+2][position[1]+1];
+              dirpos6 = map[position[0]+2][position[1]];
+              dirpos7 = map[position[0]+2][position[1]-1];
+              dirpos8 = map[position[0]+2][position[1]-2];
+            } else {
+              dirpos4 = 0;
+              dirpos5 = 0;
+              dirpos6 = 0;
+              dirpos7 = 0;
+              dirpos8 = 0;
+            }
+            if (position[0]+3 < map.length) {
+              dirpos9 = map[position[0]+3][position[1]+3];
+              dirpos10 = map[position[0]+3][position[1]+2];
+              dirpos11 = map[position[0]+3][position[1]+1];
+              dirpos12 = map[position[0]+3][position[1]];
+              dirpos13 = map[position[0]+3][position[1]-1];
+              dirpos14 = map[position[0]+3][position[1]-2];
+              dirpos15 = map[position[0]+3][position[1]-3];
+            } else {
+              dirpos9 = 0;
+              dirpos10 = 0;
+              dirpos11 = 0;
+              dirpos12 = 0;
+              dirpos13 = 0;
+              dirpos14 = 0;
+              dirpos15 = 0;
+            }
+            break;
+          case "west":
+            if (position[0]-1 >= 0) {
+              dirpos3 = map[position[0]-1][position[1]-1];
+              dirpos7 = map[position[0]-1][position[1]-2];
+              dirpos13 = map[position[0]-1][position[1]-3];
+            } else {
+              dirpos3 = 0;
+              dirpos7 = 0;
+              dirpos13 = 0;
+            }
+            if (position[0]-2 >= 0) {
+              dirpos8 = map[position[0]-2][position[1]-2];
+              dirpos14 = map[position[0]-2][position[1]-3];
+            } else {
+              dirpos8 = 0;
+              dirpos14 = 0;
+            }
+            if (position[0]-3 >= 0) {
+              dirpos15 = map[position[0]-3][position[1]-3];
+            } else {
+              dirpos15 = 0;
+            }
+            if (position[0]+1 < map.length) {
+              dirpos1 = map[position[0]+1][position[1]-1];
+              dirpos5 = map[position[0]+1][position[1]-2];
+              dirpos11 = map[position[0]+1][position[1]-3];
+            } else {
+              dirpos1 = 0;
+              dirpos5 = 0;
+              dirpos11 = 0;
+            }
+            if (position[0]+2 < map.length) {
+              dirpos4 = map[position[0]+2][position[1]-2];
+              dirpos10 = map[position[0]+2][position[1]-3];
+            } else {
+              dirpos4 = 0;
+              dirpos10 = 0;
+            }
+            if (position[0]+3 < map.length) {
+              dirpos9 = map[position[0]+3][position[1]-3];
+            } else {
+              dirpos9 = 0;
+            }
+            dirpos2 = map[position[0]][position[1]-1];
+            dirpos6 = map[position[0]][position[1]-2];
+            dirpos12 = map[position[0]][position[1]-3];
+            break;
+        }
+
+        if (dirpos1 == 1) {
+          pos1.classList.add("floor1");
+          if (darkness) {pos1_dark.classList.add("floor1_dark")}
+        } else if (dirpos1 == 2) {
+          pos1.classList.add("wall1");
+          if (darkness) {pos1_dark.classList.add("wall1_dark")}
+        }
+
+        if (dirpos2 == 1) {
+          pos2.classList.add("floor2");
+          if (darkness) {pos2_dark.classList.add("floor2_dark")}
+        } else if (dirpos2 == 2) {
+          pos2.classList.add("wall2");
+          if (darkness) {pos2_dark.classList.add("wall2_dark")}
+        }
+
+        if (dirpos3 == 1) {
+          pos3.classList.add("floor3");
+          if (darkness) {pos3_dark.classList.add("floor3_dark")}
+        } else if (dirpos3 == 2) {
+          pos3.classList.add("wall3");
+          if (darkness) {pos3_dark.classList.add("wall3_dark")}
+        }
+
+        if (dirpos4 == 1) {
+          pos4.classList.add("floor4");
+          if (darkness) {pos4_dark.classList.add("floor4_dark")}
+        } else if (dirpos4 == 2) {
+          pos4.classList.add("wall4");
+          if (darkness) {pos4_dark.classList.add("wall4_dark")}
+        }
+
+        if (dirpos5 == 1) {
+          pos5.classList.add("floor5");
+          if (darkness) {pos5_dark.classList.add("floor5_dark")}
+        } else if (dirpos5 == 2) {
+          pos5.classList.add("wall5");
+          if (darkness) {pos5_dark.classList.add("wall5_dark")}
+        }
+
+        if (dirpos6 == 1) {
+          pos6.classList.add("floor6");
+          if (darkness) {pos6_dark.classList.add("floor6_dark")}
+        } else if (dirpos6 == 2) {
+          pos6.classList.add("wall6");
+          if (darkness) {pos6_dark.classList.add("wall6_dark")}
+        }
+
+        if (dirpos7 == 1) {
+          pos7.classList.add("floor7");
+          if (darkness) {pos7_dark.classList.add("floor7_dark")}
+        } else if (dirpos7 == 2) {
+          pos7.classList.add("wall7");
+          if (darkness) {pos7_dark.classList.add("wall7_dark")}
+        }
+
+        if (dirpos8 == 1) {
+          pos8.classList.add("floor8");
+          if (darkness) {pos8_dark.classList.add("floor8_dark")}
+        } else if (dirpos8 == 2) {
+          pos8.classList.add("wall8");
+          if (darkness) {pos8_dark.classList.add("wall8_dark")}
+        }
+
+        if (dirpos9 == 1) {
+          pos9.classList.add("floor9");
+          if (darkness) {pos9_dark.classList.add("floor9_dark")}
+        } else if (dirpos9 == 2) {
+          pos9.classList.add("wall9");
+          if (darkness) {pos9_dark.classList.add("wall9_dark")}
+        }
+
+        if (dirpos10 == 1) {
+          pos10.classList.add("floor10");
+          if (darkness) {pos10_dark.classList.add("floor10_dark")}
+        } else if (dirpos10 == 2) {
+          pos10.classList.add("wall10");
+          if (darkness) {pos10_dark.classList.add("wall10_dark")}
+        }
+
+        if (dirpos11 == 1) {
+          pos11.classList.add("floor11");
+          if (darkness) {pos11_dark.classList.add("floor11_dark")}
+        } else if (dirpos11 == 2) {
+          pos11.classList.add("wall11");
+          if (darkness) {pos11_dark.classList.add("wall11_dark")}
+        }
+
+        if (dirpos12 == 1) {
+          pos12.classList.add("floor12");
+          if (darkness) {pos12_dark.classList.add("floor12_dark")}
+        } else if (dirpos12 == 2) {
+          pos12.classList.add("wall12");
+          if (darkness) {pos12_dark.classList.add("wall12_dark")}
+        }
+
+        if (dirpos13 == 1) {
+          pos13.classList.add("floor13");
+          if (darkness) {pos13_dark.classList.add("floor13_dark")}
+        } else if (dirpos13 == 2) {
+          pos13.classList.add("wall13");
+          if (darkness) {pos13_dark.classList.add("wall13_dark")}
+        }
+
+        if (dirpos14 == 1) {
+          pos14.classList.add("floor14");
+          if (darkness) {pos14_dark.classList.add("floor14_dark")}
+        } else if (dirpos14 == 2) {
+          pos14.classList.add("wall14");
+          if (darkness) {pos14_dark.classList.add("wall14_dark")}
+        }
+
+        if (dirpos15 == 1) {
+          pos15.classList.add("floor15");
+          if (darkness) {pos15_dark.classList.add("floor15_dark")}
+        } else if (dirpos15 == 2) {
+          pos15.classList.add("wall15");
+          if (darkness) {pos15_dark.classList.add("wall15_dark")}
+        }
+      }
+
+      body.addEventListener("keydown", function(e) {
+        if (e.repeat) return;
+
+        if (animation == false) {
+
+          if (e.code == "KeyR") {
+            animation = true;
+
+            black2.classList.add("black");
+            black2.style.opacity = "0.25";
+            setTimeout(() => {
+              black2.style.opacity = "0.5";
+              setTimeout(() => {
+                black2.style.opacity = "0.75";
+                setTimeout(() => {
+                  black2.style.opacity = "1";
+
+                  position = default_pos;
+                  direction = default_dir;
+                  alive = true;
+                  animation = false;
+                  
+                  tips.style.opacity = "0";
+                  black.classList.remove("black");
+                  spike1.classList.remove("spike1");
+                  spike2.classList.remove("spike2");
+                  spike3.classList.remove("spike3");
+                  spike4.classList.remove("spike4");
+                  died.classList.remove("died");
+
+                  render();
+
+                  setTimeout(() => {
+                    black2.style.opacity = "0.75";
+                    setTimeout(() => {
+                      black2.style.opacity = "0.5";
+                      setTimeout(() => {
+                        black2.style.opacity = "0.25";
+                        setTimeout(() => {
+                          black2.style.opacity = "0";
+                          black2.classList.remove("black");
+                          black2.style.opacity = "1";
+                        }, 200);
+                      }, 175);
+                    }, 150);
+                  }, 125);
+                }, 150);
+              }, 175);
+            }, 200);
+          }
+
+          if (alive) {
+            if (e.code == "KeyQ") {
+              switch(direction) {
+                case "north":
+                  direction = "west";
+                  break;
+                case "east":
+                  direction = "north";
+                  break;
+                case "south":
+                  direction = "east";
+                  break;
+                case "west":
+                  direction = "south";
+                  break;
+              }
+            } else if (e.code == "KeyE") {
+              switch(direction) {
+                case "north":
+                  direction = "east";
+                  break;
+                case "east":
+                  direction = "south";
+                  break;
+                case "south":
+                  direction = "west";
+                  break;
+                case "west":
+                  direction = "north";
+                  break;
+              }
+            }
+
+            if (e.code == "KeyW" || e.keyCode == "38") {
+              switch(direction) {
+                case "north":
+                  if(map[position[0]-1][position[1]] != 2) {position[0] -= 1}
+                  break;
+                case "east":
+                  if(map[position[0]][position[1]+1] != 2) {position[1] += 1}
+                  break;
+                case "south":
+                  if(map[position[0]+1][position[1]] != 2) {position[0] += 1}
+                  break;
+                case "west":
+                  if(map[position[0]][position[1]-1] != 2) {position[1] -= 1}
+                  break;
+              }
+            } else if (e.code == "KeyA" || e.keyCode == "37") {
+              switch(direction) {
+                case "north":
+                  if(map[position[0]][position[1]-1] != 2) {position[1] -= 1}
+                  break;
+                case "east":
+                  if(map[position[0]-1][position[1]] != 2) {position[0] -= 1}
+                  break;
+                case "south":
+                  if(map[position[0]][position[1]+1] != 2) {position[1] += 1}
+                  break;
+                case "west":
+                  if(map[position[0]+1][position[1]] != 2) {position[0] += 1}
+                  break;
+              }
+            } else if (e.code == "KeyS" || e.keyCode == "40") {
+              switch(direction) {
+                case "north":
+                  if(map[position[0]+1][position[1]] != 2) {position[0] += 1}
+                  break;
+                case "east":
+                  if(map[position[0]][position[1]-1] != 2) {position[1] -= 1}
+                  break;
+                case "south":
+                  if(map[position[0]-1][position[1]] != 2) {position[0] -= 1}
+                  break;
+                case "west":
+                  if(map[position[0]][position[1]+1] != 2) {position[1] += 1}
+                  break;
+              }
+            } else if (e.code == "KeyD" || e.keyCode == "39") {
+              switch(direction) {
+                case "north":
+                  if(map[position[0]][position[1]+1] != 2) {position[1] += 1}
+                  break;
+                case "east":
+                  if(map[position[0]+1][position[1]] != 2) {position[0] += 1}
+                  break;
+                case "south":
+                  if(map[position[0]][position[1]-1] != 2) {position[1] -= 1}
+                  break;
+                case "west":
+                  if(map[position[0]-1][position[1]] != 2) {position[0] -= 1}
+                  break;
+              }
+            }
+
+            render();
+
+          }
+        }
+      });
+
+      render();
+      click.style.opacity = "1";
+      
+      setTimeout(() => {
+        document.getElementById("load").style.opacity = "1";
+      }, 100);
+
+      body.onresize = function() {
+        if (!firsttime && !double) {
+          black2.classList.add("black");
+          black2.style.opacity = "1";
+          click.innerHTML = "Click to continue";
+          click.style.opacity = "1";
+          animation = true;
+          document.addEventListener("click", continued);
+        }
+      };
+
+      // setInterval(() => {
+      //   default_pos = [4, 4];
+      //   default_dir = "north";
+      // }, 1000);
+      
+      //PLLUUUHHHHH
+      
+    </script>
+  </body>
+</html>
