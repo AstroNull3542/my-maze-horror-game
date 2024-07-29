@@ -1,0 +1,257 @@
+@media (max-device-width: 767px) and (orientation: portrait) {
+  .margintop {
+    height: 1cm;
+  }
+  .text {
+    font-family: "Pixelify Sans", sans-serif;
+    text-align: center;
+    opacity: 0;
+    margin: 0;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .buttonup {
+    z-index: 10;
+    position: absolute;
+    bottom: 4cm;
+    background-image: url("./sprite/arrow/up-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 100%;
+    height: 2cm;
+    display: block;
+  }
+  .buttondown {
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    background-image: url("./sprite/arrow/down-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 100%;
+    height: 2cm;
+    display: block;
+  }
+  .buttonleft {
+    z-index: 10;
+    position: absolute;
+    bottom: 2cm;
+    left: 1cm;
+    background-image: url("./sprite/arrow/left-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 40%;
+    height: 2cm;
+    display: block;
+  }
+  .buttonright {
+    z-index: 10;
+    position: absolute;
+    bottom: 2cm;
+    right: 1cm;
+    background-image: url("./sprite/arrow/right-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 40%;
+    height: 2cm;
+    display: block;
+  }
+  .buttonturnleft {
+    z-index: 10;
+    position: absolute;
+    bottom: 6cm;
+    left: 1cm;
+    background-image: url("./sprite/arrow/left-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 1cm;
+    background-position: left;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 40%;
+    height: 2cm;
+    display: block;
+  }
+  .buttonturnright {
+    z-index: 10;
+    position: absolute;
+    bottom: 6cm;
+    right: 1cm;
+    background-image: url("./sprite/arrow/right-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 1cm;
+    background-position: right;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 40%;
+    height: 2cm;
+    display: block;
+  }
+}
+
+@media (orientation: landscape) and (hover: none) and (pointer: coarse){
+  .margintop {
+    height: 1cm;
+  }
+  .text {
+    font-family: "Pixelify Sans", sans-serif;
+    text-align: center;
+    opacity: 0;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .buttonup {
+    z-index: 10;
+    position: absolute;
+    bottom: 4cm;
+    right: 1cm;
+    background-image: url("./sprite/arrow/up-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 6cm;
+    height: 2cm;
+    display: block;
+  }
+  .buttondown {
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    right: 1cm;
+    background-image: url("./sprite/arrow/down-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 6cm;
+    height: 2cm;
+    display: block;
+  }
+  .buttonleft {
+    z-index: 10;
+    position: absolute;
+    bottom: 2cm;
+    right: 4cm;
+    background-image: url("./sprite/arrow/left-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 3cm;
+    height: 2cm;
+    display: block;
+  }
+  .buttonright {
+    z-index: 10;
+    position: absolute;
+    bottom: 2cm;
+    right: 1cm;
+    background-image: url("./sprite/arrow/right-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 3cm;
+    height: 2cm;
+    display: block;
+  }
+  .buttonturnleft {
+    z-index: 10;
+    position: absolute;
+    bottom: 1cm;
+    left: 1cm;
+    background-image: url("./sprite/arrow/left-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 1cm;
+    background-position: left center;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 2cm;
+    height: 3cm;
+    display: block;
+  }
+  .buttonturnright {
+    z-index: 10;
+    position: absolute;
+    bottom: 1cm;
+    left: 3cm;
+    background-image: url("./sprite/arrow/right-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 1cm;
+    background-position: right center;
+    background-color: transparent;
+    filter: invert(1);
+    border: none;
+    width: 2cm;
+    height: 3cm;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .margintop {
+    display: none;
+  }
+  .text {
+    font-family: "Pixelify Sans", sans-serif;
+    text-align: center;
+    opacity: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .buttonup {
+    display: none;
+  }
+  .buttondown {
+    display: none;
+  }
+  .buttonleft {
+    display: none;
+  }
+  .buttonright {
+    display: none;
+  }
+  .buttonturnleft {
+    display: none;
+  }
+  .buttonturnright {
+    display: none;
+  }
+}
