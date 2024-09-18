@@ -1178,20 +1178,127 @@
         height: 100cm;
       }
 
-      .dirindicator {
+      .map1 {
+        z-index: 10;
+        position: absolute;
+        top: 0cm;
+        left: 0cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .map2 {
+        z-index: 10;
+        position: absolute;
+        top: 0cm;
+        left: 0.6cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .map3 {
+        z-index: 10;
+        position: absolute;
+        top: 0cm;
+        left: 1.2cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .map4 {
+        z-index: 10;
+        position: absolute;
+        top: 0.6cm;
+        left: 0cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .map5 {
+        z-index: 10;
+        position: absolute;
+        top: 0.6cm;
+        left: 0.6cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .map6 {
+        z-index: 10;
+        position: absolute;
+        top: 0.6cm;
+        left: 1.2cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .map7 {
+        z-index: 10;
+        position: absolute;
+        top: 1.2cm;
+        left: 0cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .map8 {
+        z-index: 10;
+        position: absolute;
+        top: 1.2cm;
+        left: 0.6cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .map9 {
+        z-index: 10;
+        position: absolute;
+        top: 1.2cm;
+        left: 1.2cm;
+        background-color: white;
+        border: solid 1px lightgray;
+        width: 0.6cm;
+        height: 0.6cm;
+        display: block;
+      }
+      .minimap {
         z-index: 10;
         position: absolute;
         top: 1cm;
         left: 1cm;
+        width: 1.8cm;
+        height: 1.8cm;
+        display: none;
+      }
+      .dirindicator {
+        z-index: 11;
+        position: absolute;
+        top: 1.65cm;
+        left: 1.65cm;
         background-image: url("./sprite/arrow/up-arrow.png");
         background-repeat: no-repeat;
-        background-size: 1cm;
-        background-position: right center;
-        background-color: white;
+        background-size: 0.5cm;
+        background-position: center;
         border-radius: 10cm;
         border: none;
-        width: 1cm;
-        height: 1cm;
+        width: 0.5cm;
+        height: 0.5cm;
         display: block;
       }
 
@@ -1471,6 +1578,17 @@
       <button class="buttonturnleft" id="buttonturnleft"></button>
       <button class="buttonturnright" id="buttonturnright"></button>
 
+      <div class="minimap" id="minimap">
+        <div class="map1" id="map1"></div>
+        <div class="map2" id="map2"></div>
+        <div class="map3" id="map3"></div>
+        <div class="map4" id="map4"></div>
+        <div class="map5" id="map5"></div>
+        <div class="map6" id="map6"></div>
+        <div class="map7" id="map7"></div>
+        <div class="map8" id="map8"></div>
+        <div class="map9" id="map9"></div>
+      </div>
       <div class="dirindicator" id="dirindicator"></div>
       <div class="" id="pos15_object">
         <div class="" id="pos15_property">
@@ -1738,7 +1856,8 @@
       function play() {
         Fullscreen();
         animation = false;
-        
+        minimap.style.display = "block";
+
         setTimeout(() => {
           firsttime = false;
         }, 50);
@@ -1909,6 +2028,17 @@
       var blackout = document.getElementById("blackout");
       var blackout2 = document.getElementById("blackout2");
 
+      var map1 = document.getElementById("map1");
+      var map2 = document.getElementById("map2");
+      var map3 = document.getElementById("map3");
+      var map4 = document.getElementById("map4");
+      var map5 = document.getElementById("map5");
+      var map6 = document.getElementById("map6");
+      var map7 = document.getElementById("map7");
+      var map8 = document.getElementById("map8");
+      var map9 = document.getElementById("map9");
+      var minimap = document.getElementById("minimap");
+
       var dirpos1;
       var dirpos2;
       var dirpos3;
@@ -1982,7 +2112,9 @@
           animation = true;
 
           blackout.classList.add("blackout");
-          
+          minimap.style.display = "none";
+          dirindicator.style.display = "none";
+
           blackout.style.opacity = "0.25";
           setTimeout(() => {
             blackout.style.opacity = "0.5";
@@ -2676,7 +2808,7 @@
           if (darkness) {pos15_dark.classList.add("gate15_dark")}
         }
       }
-
+      
       document.getElementById("buttonup").addEventListener("click", () => {
         if (animation == false) {
           if (alive) {
@@ -2738,6 +2870,63 @@
         }
       })
 
+      function renderminimap() {
+        map1.style.backgroundColor = "transparent";
+        map2.style.backgroundColor = "transparent";
+        map3.style.backgroundColor = "transparent";
+        map4.style.backgroundColor = "transparent";
+        map5.style.backgroundColor = "transparent";
+        map6.style.backgroundColor = "transparent";
+        map7.style.backgroundColor = "transparent";
+        map8.style.backgroundColor = "transparent";
+        map9.style.backgroundColor = "transparent";
+        map1.style.border = "none";
+        map2.style.border = "none";
+        map3.style.border = "none";
+        map4.style.border = "none";
+        map5.style.border = "none";
+        map6.style.border = "none";
+        map7.style.border = "none";
+        map8.style.border = "none";
+        map9.style.border = "none";
+        if (map[position[0] - 1][position[1] - 1] == 10) {
+          map1.style.backgroundColor = "white"
+          map1.style.border = "solid 1px lightgray"
+        }
+        if (map[position[0] - 1][position[1]] == 10) {
+          map2.style.backgroundColor = "white"
+          map2.style.border = "solid 1px lightgray"
+        }
+        if (map[position[0] - 1][position[1] + 1] == 10) {
+          map3.style.backgroundColor = "white"
+          map3.style.border = "solid 1px lightgray"
+        }
+        if (map[position[0]][position[1] - 1] == 10) {
+          map4.style.backgroundColor = "white"
+          map4.style.border = "solid 1px lightgray"
+        }
+        if (map[position[0]][position[1]] == 10) {
+          map5.style.backgroundColor = "white"
+          map5.style.border = "solid 1px lightgray"
+        }
+        if (map[position[0]][position[1] + 1] == 10) {
+          map6.style.backgroundColor = "white"
+          map6.style.border = "solid 1px lightgray"
+        }
+        if (map[position[0] + 1][position[1] - 1] == 10) {
+          map7.style.backgroundColor = "white"
+          map7.style.border = "solid 1px lightgray"
+        }
+        if (map[position[0] + 1][position[1]] == 10) {
+          map8.style.backgroundColor = "white"
+          map8.style.border = "solid 1px lightgray"
+        }
+        if (map[position[0] + 1][position[1] + 1] == 10) {
+          map9.style.backgroundColor = "white"
+          map9.style.border = "solid 1px lightgray"
+        }
+      }
+
       function up() {
         switch(direction) {
           case "north":
@@ -2753,6 +2942,7 @@
             if(![20, 21, 22, 23, 24, 25, 30].includes(map[position[0]][position[1]-1]) || noclip) {position[1] -= 1}
             break;
         }
+        renderminimap();
       }
 
       function down() {
@@ -2770,6 +2960,7 @@
             if(![20, 21, 22, 23, 24, 25, 30].includes(map[position[0]][position[1]+1]) || noclip) {position[1] += 1}
             break;
         }
+        renderminimap();
       }
 
       function left() {
@@ -2787,6 +2978,7 @@
             if(![20, 21, 22, 23, 24, 25, 30].includes(map[position[0]+1][position[1]]) || noclip) {position[0] += 1}
             break;
         }
+        renderminimap();
       }
 
       function right() {
@@ -2804,6 +2996,7 @@
             if(![20, 21, 22, 23, 24, 25, 30].includes(map[position[0]-1][position[1]]) || noclip) {position[0] -= 1}
             break;
         }
+        renderminimap();
       }
 
       function turnleft() {
@@ -2874,8 +3067,11 @@
               died.classList.remove("died");
               document.getElementById("margintop").classList.add("margintop");
               flashlight_off.className = '';
-              
+              minimap.style.display = "block";
+              dirindicator.style.display = "block";
+
               render();
+              renderminimap();
 
               setTimeout(() => {
                 blackout2.style.opacity = "0.75";
