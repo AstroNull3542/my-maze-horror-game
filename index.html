@@ -1178,6 +1178,23 @@
         height: 100cm;
       }
 
+      .dirindicator {
+        z-index: 10;
+        position: absolute;
+        top: 1cm;
+        left: 1cm;
+        background-image: url("./sprite/arrow/up-arrow.png");
+        background-repeat: no-repeat;
+        background-size: 1cm;
+        background-position: right center;
+        background-color: white;
+        border-radius: 10cm;
+        border: none;
+        width: 1cm;
+        height: 1cm;
+        display: block;
+      }
+
       @media (max-device-width: 767px) and (orientation: portrait) {
         .margintop {
           height: 1cm;
@@ -1454,6 +1471,7 @@
       <button class="buttonturnleft" id="buttonturnleft"></button>
       <button class="buttonturnright" id="buttonturnright"></button>
 
+      <div class="dirindicator" id="dirindicator"></div>
       <div class="" id="pos15_object">
         <div class="" id="pos15_property">
           <div class="" id="pos15_dark">
@@ -1780,29 +1798,30 @@
       //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       // ]
 
-      // var map = [
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2],
-      //   [0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 0, 0, 0, 0, 0, 0],
-      //   [0, 2, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1, 0, 2],
-      //   [0, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-      //   [0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 0, 2],
-      //   [0, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 2, 2, 2, 0, 1, 1, 1, 0, 0],
-      //   [0, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0, 0, 1, 1, 0, 2],
-      //   [0, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 0, 0, 1, 0, 0, 0],
-      //   [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 1, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 2, 0, 1, 1, 1, 0, 0],
-      //   [0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 1, 2, 2, 1, 1, 1, 2, 0],
-      //   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 2, 2, 1, 1, 1, 2, 0],
-      //   [0, 1, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 1, 2, 2, 1, 1, 1, 2, 0],
-      //   [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 0],
-      //   [0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 2, 2, 1, 1, 1, 2, 0],
-      //   [0, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 0],
-      //   [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      // ]
+      var map = [
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 10, 10, 10, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 20],
+        [0 , 20, 20, 20, 20, 20, 20, 20, 20, 10, 10, 10, 20, 20, 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 20, 20, 10, 10, 10, 20, 20, 20, 20, 10, 20, 20, 10, 10, 10, 10, 10, 0 , 20],
+        [0 , 20, 10, 10, 10, 10, 10, 20, 20, 20, 10, 10, 10, 10, 10, 10, 10, 10, 0 , 0],
+        [0 , 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 20, 10, 10, 10, 10, 10, 0 , 20],
+        [0 , 20, 10, 10, 10, 10, 10, 20, 20, 20, 10, 20, 20, 20, 0 , 10, 10, 10, 0 , 0],
+        [0 , 20, 20, 10, 10, 10, 20, 20, 10, 10, 10, 10, 10, 21, 0 , 0 , 10, 10, 0 , 20],
+        [0 , 20, 20, 20, 20, 20, 20, 20, 10, 20, 20, 20, 20, 20, 0 , 0 , 10, 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 0 , 0 , 10, 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 10, 0 , 0 , 0 , 0 , 0 , 0 , 20, 0 , 10, 10, 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 10, 0 , 0 , 0 , 0 , 0 , 10, 23, 0 , 10, 10, 10, 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 20, 10, 20, 0 , 0 , 0 , 0 , 10, 20, 20, 10, 10, 10, 20, 0],
+        [0 , 10, 10, 10, 10, 10, 10, 10, 10, 10, 0 , 10, 10, 20, 20, 10, 10, 10, 30, 0],
+        [0 , 10, 0 , 0 , 0 , 20, 10, 20, 0 , 0 , 0 , 0 , 10, 20, 20, 10, 10, 10, 20, 0],
+        [0 , 10, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 10, 10, 10, 10, 10, 10, 30, 0],
+        [0 , 10, 0 , 0 , 0 , 10, 10, 10, 0 , 0 , 0 , 0 , 10, 20, 20, 10, 10, 10, 20, 0],
+        [0 , 10, 10, 10, 10, 10, 20, 10, 10, 10, 10, 10, 10, 20, 20, 10, 10, 10, 30, 0],
+        [0 , 0 , 0 , 0 , 0 , 10, 10, 10, 0 , 0 , 0 , 0 , 10, 20, 20, 20, 20, 20, 20, 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0]
+      ]
 
+      /*
       var map = [
         [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
         [0 , 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0],
@@ -1826,7 +1845,7 @@
         [0 , 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0],
         [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0]
       ]
-      
+      */
 
       var pos1_object = document.getElementById("pos1_object");
       var pos2_object = document.getElementById("pos2_object");
@@ -1885,7 +1904,8 @@
       var died = document.getElementById("died");
       var click = document.getElementById("click");
       var tips = document.getElementById("tips");
-
+      var dirindicator = document.getElementById("dirindicator");
+      
       var blackout = document.getElementById("blackout");
       var blackout2 = document.getElementById("blackout2");
 
@@ -2789,15 +2809,19 @@
       function turnleft() {
         switch(direction) {
           case "north":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')"
             direction = "west";
             break;
           case "east":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')"
             direction = "north";
             break;
           case "south":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')"
             direction = "east";
             break;
           case "west":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')"
             direction = "south";
             break;
         }
@@ -2806,15 +2830,19 @@
       function turnright() {
         switch(direction) {
           case "north":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')"
             direction = "east";
             break;
           case "east":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')"
             direction = "south";
             break;
           case "south":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')"
             direction = "west";
             break;
           case "west":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')"
             direction = "north";
             break;
         }
