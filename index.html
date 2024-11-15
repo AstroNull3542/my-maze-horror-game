@@ -1959,30 +1959,41 @@
         setTimeout(() => {
           blackout2.style.opacity = "0.75";
           click.style.opacity = "0.75";
-          keybind.style.opacity = "0.25";
           setTimeout(() => {
             blackout2.style.opacity = "0.5";
             click.style.opacity = "0.5";
-            keybind.style.opacity = "0.5";
             setTimeout(() => {
               blackout2.style.opacity = "0.25";
               click.style.opacity = "0.25";
-              keybind.style.opacity = "0.75";
               setTimeout(() => {
                 click.style.opacity = "0";
-                keybind.style.opacity = "1";
-                setTimeout(() => {
-                  keybind.style.opacity = "0.5";
-                  setTimeout(() => {
-                    keybind.style.opacity = "0";
-                  }, 200);
-                }, 10000);
                 blackout2.style.opacity = "1";
                 blackout2.classList.remove("blackout");
               }, 200);
             }, 175);
           }, 150);
         }, 125);
+
+        if(window.screen.width >= 768) {
+          setTimeout(() => {
+            keybind.style.opacity = "0.25";
+            setTimeout(() => {
+              keybind.style.opacity = "0.5";
+              setTimeout(() => {
+                keybind.style.opacity = "0.75";
+                setTimeout(() => {
+                  keybind.style.opacity = "1";
+                  setTimeout(() => {
+                    keybind.style.opacity = "0.5";
+                    setTimeout(() => {
+                      keybind.style.opacity = "0";
+                    }, 200);
+                  }, 10000);
+                }, 200);
+              }, 175);
+            }, 150);
+          }, 125);
+        }
       }
 
       if(firsttime) {
@@ -2904,6 +2915,74 @@
           }
         }
       })
+      if(window.screen.width < 768) {
+        pos15_object.addEventListener("click", () => {
+          if (animation == false) {
+            if (alive) {
+              let turnflashlight = false;
+              let switchtrigger = false;
+              let activate;
+              let dirpos;
+              switch(direction) {
+                case "north":
+                  if (map[position[0] - 1][position[1]] == 21) { map[position[0] - 1][position[1]] = 22 }
+                  else if (map[position[0] - 1][position[1]] == 23) { map[position[0] - 1][position[1]] = 24; switchtrigger = true; activate = true }
+                  else if (map[position[0] - 1][position[1]] == 24) { map[position[0] - 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else { turnflashlight = true }
+                  dirpos = map[position[0] - 1][position[1]];
+                  break;
+                case "east":
+                  if (map[position[0]][position[1] + 1] == 21) { map[position[0]][position[1] + 1] = 22 }
+                  else if (map[position[0]][position[1] + 1] == 23) { map[position[0]][position[1] + 1] = 24; switchtrigger = true; activate = true }
+                  else if (map[position[0]][position[1] + 1] == 24) { map[position[0]][position[1] + 1] = 23; switchtrigger = true; activate = false }
+                  else { turnflashlight = true }
+                  dirpos = map[position[0]][position[1] + 1];
+                  break;
+                case "south":
+                  if (map[position[0] + 1][position[1]] == 21) { map[position[0] + 1][position[1]] = 22 }
+                  else if (map[position[0] + 1][position[1]] == 23) { map[position[0] + 1][position[1]] = 24; switchtrigger = true; activate = true }
+                  else if (map[position[0] + 1][position[1]] == 24) { map[position[0] + 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else { turnflashlight = true }
+                  dirpos = map[position[0] + 1][position[1]];
+                  break;
+                case "west":
+                  if (map[position[0]][position[1] - 1] == 21) { map[position[0]][position[1] - 1] = 22 }
+                  else if (map[position[0]][position[1] - 1] == 23) { map[position[0]][position[1] - 1] = 24; switchtrigger = true; activate = true }
+                  else if (map[position[0]][position[1] - 1] == 24) { map[position[0]][position[1] - 1] = 23; switchtrigger = true; activate = false }
+                  else { turnflashlight = true }
+                  dirpos = map[position[0]][position[1] - 1];
+                  break;
+              }
+              if(switchtrigger) {
+                switchchange(dirpos, activate);
+              }
+              if(turnflashlight) {
+                if(darkness) {
+                  if(flashlight_off.className == 'flashlight_off') {
+                    flashlight_off.className = '';
+                  } else {
+                    flashlight_off.className = 'flashlight_off';
+                  }
+                }
+              }
+              render();
+            } else {
+              restart();
+            }
+          }
+        })
+      }
+
+      function switchchange(dirpos, activate) {
+        if(dirpos == map[11][13]) {//switch location
+          if(activate) {//switch on
+            map[15][13] = 10;
+          } else {//switch off
+            map[15][13] = 30;
+          }
+        }
+        //add if (another switch)
+      }
 
       function renderminimap() {
         map1.style.backgroundColor = "transparent";
@@ -3212,39 +3291,31 @@
               switch(direction) {
                 case "north":
                   if (map[position[0] - 1][position[1]] == 21) { map[position[0] - 1][position[1]] = 22 }
-                  if (map[position[0] - 1][position[1]] == 23) { map[position[0] - 1][position[1]] = 24; switchtrigger = true; activate = true }
+                  else if (map[position[0] - 1][position[1]] == 23) { map[position[0] - 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] - 1][position[1]] == 24) { map[position[0] - 1][position[1]] = 23; switchtrigger = true; activate = false }
                   dirpos = map[position[0] - 1][position[1]];
                   break;
                 case "east":
                   if (map[position[0]][position[1] + 1] == 21) { map[position[0]][position[1] + 1] = 22 }
-                  if (map[position[0]][position[1] + 1] == 23) { map[position[0]][position[1] + 1] = 24; switchtrigger = true; activate = true }
+                  else if (map[position[0]][position[1] + 1] == 23) { map[position[0]][position[1] + 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] + 1] == 24) { map[position[0]][position[1] + 1] = 23; switchtrigger = true; activate = false }
                   dirpos = map[position[0]][position[1] + 1];
                   break;
                 case "south":
                   if (map[position[0] + 1][position[1]] == 21) { map[position[0] + 1][position[1]] = 22 }
-                  if (map[position[0] + 1][position[1]] == 23) { map[position[0] + 1][position[1]] = 24; switchtrigger = true; activate = true }
+                  else if (map[position[0] + 1][position[1]] == 23) { map[position[0] + 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] + 1][position[1]] == 24) { map[position[0] + 1][position[1]] = 23; switchtrigger = true; activate = false }
                   dirpos = map[position[0] + 1][position[1]];
                   break;
                 case "west":
                   if (map[position[0]][position[1] - 1] == 21) { map[position[0]][position[1] - 1] = 22 }
-                  if (map[position[0]][position[1] - 1] == 23) { map[position[0]][position[1] - 1] = 24; switchtrigger = true; activate = true }
+                  else if (map[position[0]][position[1] - 1] == 23) { map[position[0]][position[1] - 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] - 1] == 24) { map[position[0]][position[1] - 1] = 23; switchtrigger = true; activate = false }
                   dirpos = map[position[0]][position[1] - 1];
                   break;
               }
               if(switchtrigger) {
-                if(dirpos == map[11][13]) {//switch location
-                  console.log(activate);
-                  if(activate) {//switch on
-                    map[15][13] = 10;
-                  } else {//switch off
-                    map[15][13] = 30;
-                  }
-                }
-                //add if (another switch)
+                switchchange(dirpos, activate);
               }
             }
 
