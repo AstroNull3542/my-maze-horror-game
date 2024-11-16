@@ -2960,8 +2960,10 @@
                 if(darkness) {
                   if(flashlight_off.className == 'flashlight_off') {
                     flashlight_off.className = '';
+                    minimap.style.opacity = "1";
                   } else {
                     flashlight_off.className = 'flashlight_off';
+                    minimap.style.opacity = "0.05";
                   }
                 }
               }
@@ -3210,6 +3212,7 @@
               document.getElementById("margintop").classList.add("margintop");
               flashlight_off.className = '';
               minimap.style.display = "block";
+              minimap.style.opacity = "1";
               dirindicator.style.display = "block";
 
               render();
@@ -3278,8 +3281,10 @@
               if(darkness) {
                 if(flashlight_off.className == 'flashlight_off') {
                   flashlight_off.className = '';
+                  minimap.style.opacity = "1";
                 } else {
                   flashlight_off.className = 'flashlight_off';
+                  minimap.style.opacity = "0.05";
                 }
               }
             }
