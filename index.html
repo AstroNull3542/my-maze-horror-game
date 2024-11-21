@@ -2915,6 +2915,7 @@
           }
         }
       })
+      let minimaptimeout;
       if(window.screen.width < 768) {
         pos15_object.addEventListener("click", () => {
           if (animation == false) {
@@ -2961,9 +2962,16 @@
                   if(flashlight_off.className == 'flashlight_off') {
                     flashlight_off.className = '';
                     minimap.style.opacity = "1";
+                    clearTimeout(minimaptimeout);
                   } else {
                     flashlight_off.className = 'flashlight_off';
                     minimap.style.opacity = "0.05";
+                    minimaptimeout = setTimeout(() => {
+                      minimap.style.opacity = "0.025";
+                      minimaptimeout = setTimeout(() => {
+                        minimap.style.opacity = "0";
+                      }, 500);
+                    }, 5000);
                   }
                 }
               }
@@ -3214,6 +3222,7 @@
               minimap.style.display = "block";
               minimap.style.opacity = "1";
               dirindicator.style.display = "block";
+              clearTimeout(minimaptimeout);
 
               render();
               renderminimap();
@@ -3282,9 +3291,16 @@
                 if(flashlight_off.className == 'flashlight_off') {
                   flashlight_off.className = '';
                   minimap.style.opacity = "1";
+                  clearTimeout(minimaptimeout)
                 } else {
                   flashlight_off.className = 'flashlight_off';
                   minimap.style.opacity = "0.05";
+                  minimaptimeout = setTimeout(() => {
+                    minimap.style.opacity = "0.025";
+                    minimaptimeout = setTimeout(() => {
+                      minimap.style.opacity = "0";
+                    }, 500);
+                  }, 5000);
                 }
               }
             }
