@@ -1302,7 +1302,42 @@
         display: block;
       }
 
-      @media screen and (orientation: portrait) {
+      @media screen and (min-width: 768px) {
+        .margintop {
+          display: none;
+        }
+        .text {
+          font-family: "Pixelify Sans", sans-serif;
+          text-align: center;
+          opacity: 0;
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+        .buttonup {
+          display: none;
+        }
+        .buttondown {
+          display: none;
+        }
+        .buttonleft {
+          display: none;
+        }
+        .buttonright {
+          display: none;
+        }
+        .buttonturnleft {
+          display: none;
+        }
+        .buttonturnright {
+          display: none;
+        }
+      }
+      
+      @media screen and (orientation: portrait) and (max-width: 767px) {
         .margintop {
           height: 1cm;
         }
@@ -1412,7 +1447,7 @@
         }
       }
 
-      @media screen and (orientation: landscape) {
+      @media screen and (orientation: landscape) and (max-width: 1024px) {
         .margintop {
           height: 1cm;
         }
@@ -1522,41 +1557,6 @@
           width: 2cm;
           height: 3cm;
           display: block;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .margintop {
-          display: none;
-        }
-        .text {
-          font-family: "Pixelify Sans", sans-serif;
-          text-align: center;
-          opacity: 0;
-          margin: 0;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-        }
-        .buttonup {
-          display: none;
-        }
-        .buttondown {
-          display: none;
-        }
-        .buttonleft {
-          display: none;
-        }
-        .buttonright {
-          display: none;
-        }
-        .buttonturnleft {
-          display: none;
-        }
-        .buttonturnright {
-          display: none;
         }
       }
       
