@@ -11,6 +11,7 @@
       body {
         background-color: black;
         margin: 0;
+        overflow-x: hidden;
       }
 
       /* OBJECT */
@@ -1089,54 +1090,72 @@
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
       .flashlight2_dark {
         background-image: url("./sprite/flashlight_dark/flashlight2_dark.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
       .flashlight3_dark {
         background-image: url("./sprite/flashlight_dark/flashlight3_dark.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
       .flashlight4_dark {
         background-image: url("./sprite/flashlight_dark/flashlight4_dark.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
       .flashlight5_dark {
         background-image: url("./sprite/flashlight_dark/flashlight5_dark.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
       .flashlight6_dark {
         background-image: url("./sprite/flashlight_dark/flashlight6_dark.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
       .flashlight7_dark {
         background-image: url("./sprite/flashlight_dark/flashlight7_dark.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
       .flashlight8_dark {
         background-image: url("./sprite/flashlight_dark/flashlight8_dark.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
       .flashlight9_dark {
         background-image: url("./sprite/flashlight_dark/flashlight9_dark.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100cm;
+        scale: 1.001;
+        transform: translateY(1.7px);
       }
 
       .blackout {
@@ -1312,7 +1331,7 @@
           opacity: 0;
           margin: 0;
           position: absolute;
-          top: 50%;
+          top: 50vh;
           left: 50%;
           -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -1347,7 +1366,7 @@
           opacity: 0;
           margin: 0;
           position: absolute;
-          top: 25%;
+          top: 25vh;
           left: 50%;
           -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -1457,7 +1476,7 @@
           opacity: 0;
           margin: 0;
           position: absolute;
-          top: 40%;
+          top: 40vh;
           left: 50%;
           -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -1809,7 +1828,6 @@
       setInterval(() => {
         default_position = [...defaultValues.position];
         default_direction = defaultValues.direction;
-        default_flashlight = defaultValues.flashlight;
         default_map = JSON.parse(JSON.stringify(defaultValues.map));
         
         if(darkness) {
