@@ -3040,6 +3040,7 @@
                   if (map[position[0] - 1][position[1]] == 21) { map[position[0] - 1][position[1]] = 22 }
                   else if (map[position[0] - 1][position[1]] == 23) { map[position[0] - 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] - 1][position[1]] == 24) { map[position[0] - 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0] - 1][position[1]] == 25) { nextmap() }
                   else { turnflashlight = true }
                   dirpos = map[position[0] - 1][position[1]];
                   break;
@@ -3047,6 +3048,7 @@
                   if (map[position[0]][position[1] + 1] == 21) { map[position[0]][position[1] + 1] = 22 }
                   else if (map[position[0]][position[1] + 1] == 23) { map[position[0]][position[1] + 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] + 1] == 24) { map[position[0]][position[1] + 1] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0]][position[1] + 1] == 25) { nextmap() }
                   else { turnflashlight = true }
                   dirpos = map[position[0]][position[1] + 1];
                   break;
@@ -3054,6 +3056,7 @@
                   if (map[position[0] + 1][position[1]] == 21) { map[position[0] + 1][position[1]] = 22 }
                   else if (map[position[0] + 1][position[1]] == 23) { map[position[0] + 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] + 1][position[1]] == 24) { map[position[0] + 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0] + 1][position[1]] == 25) { nextmap() }
                   else { turnflashlight = true }
                   dirpos = map[position[0] + 1][position[1]];
                   break;
@@ -3061,6 +3064,7 @@
                   if (map[position[0]][position[1] - 1] == 21) { map[position[0]][position[1] - 1] = 22 }
                   else if (map[position[0]][position[1] - 1] == 23) { map[position[0]][position[1] - 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] - 1] == 24) { map[position[0]][position[1] - 1] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0]][position[1] - 1] == 25) { nextmap() }
                   else { turnflashlight = true }
                   dirpos = map[position[0]][position[1] - 1];
                   break;
