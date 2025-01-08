@@ -1799,7 +1799,7 @@
           [0, 10, 10, 20,  0,  0, 10, 20, 20, 20, 20, 10, 10, 20, 10, 10, 20, 20, 10,  0],
           [0, 10, 10, 10, 10, 10, 10,  0, 23,  0,  0, 20, 10, 10, 20, 10, 10, 10, 10,  0],
           [0,  0, 10, 10,  0, 10,  0,  0, 10,  0, 10, 30, 10, 10, 10, 10, 10, 20, 10,  0],
-          [0, 25, 20,  0,  0, 10, 20, 20, 10, 10, 10, 10, 10, 20, 20, 10, 20,  0, 10,  0],
+          [0, 25, 20,  0, 10, 10, 20, 20, 10, 10, 10, 10, 10, 20, 20, 10, 20,  0, 10,  0],
           [0, 10, 10, 10, 10, 30,  0,  0,  0, 10, 10, 20, 10, 20,  0, 20,  0,  0,  0,  0],
           [0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]
         ],
@@ -1810,6 +1810,20 @@
       let default_direction = current_map.direction;
       let default_flashlight = 1;
       let default_map = JSON.parse(JSON.stringify(current_map.map));
+      function changemap(map) {
+        current_map = map;
+        lvl_map = current_map.lvl_map;
+        default_position = [...current_map.position];
+        default_direction = current_map.direction;
+        default_map = JSON.parse(JSON.stringify(current_map.map));
+      }
+      function nextmap() {//MAP CHANGER BETWEEN LEVELS
+        if(lvl_map == 1) {
+          restart(defaultmap2);
+        } else if(lvl_map == 2) {
+          restart(defaultmap1);
+        }
+      }
       /*
       var default_map = [
         [0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
@@ -3299,7 +3313,7 @@
         }
       }
 
-      function restart() {
+      function restart(mapchange) {
         animation = true;
 
         blackout2.classList.add("blackout");
@@ -3310,6 +3324,10 @@
             blackout2.style.opacity = "0.75";
             setTimeout(() => {
               blackout2.style.opacity = "1";
+
+              if(mapchange) {
+                changemap(mapchange);
+              }
 
               position = default_position;
               direction = default_direction;
@@ -3421,24 +3439,28 @@
                   if (map[position[0] - 1][position[1]] == 21) { map[position[0] - 1][position[1]] = 22 }
                   else if (map[position[0] - 1][position[1]] == 23) { map[position[0] - 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] - 1][position[1]] == 24) { map[position[0] - 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0] - 1][position[1]] == 25) { nextmap() }
                   dirpos = map[position[0] - 1][position[1]];
                   break;
                 case "east":
                   if (map[position[0]][position[1] + 1] == 21) { map[position[0]][position[1] + 1] = 22 }
                   else if (map[position[0]][position[1] + 1] == 23) { map[position[0]][position[1] + 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] + 1] == 24) { map[position[0]][position[1] + 1] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0]][position[1] + 1] == 25) { nextmap() }
                   dirpos = map[position[0]][position[1] + 1];
                   break;
                 case "south":
                   if (map[position[0] + 1][position[1]] == 21) { map[position[0] + 1][position[1]] = 22 }
                   else if (map[position[0] + 1][position[1]] == 23) { map[position[0] + 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] + 1][position[1]] == 24) { map[position[0] + 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0] + 1][position[1]] == 25) { nextmap() }
                   dirpos = map[position[0] + 1][position[1]];
                   break;
                 case "west":
                   if (map[position[0]][position[1] - 1] == 21) { map[position[0]][position[1] - 1] = 22 }
                   else if (map[position[0]][position[1] - 1] == 23) { map[position[0]][position[1] - 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] - 1] == 24) { map[position[0]][position[1] - 1] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0]][position[1] - 1] == 25) { nextmap() }
                   dirpos = map[position[0]][position[1] - 1];
                   break;
               }
