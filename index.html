@@ -1760,7 +1760,7 @@
           [0, 0,  0,  0,  0,  0,  0,  0,  0,  10, 10, 10, 0,  0,  0,  0,  0,  0,  0,  20],
           [0, 20, 20, 20, 20, 20, 20, 20, 20, 10, 10, 10, 20, 20, 0,  0,  0,  0,  0,  0],
           [0, 20, 20, 10, 10, 10, 20, 20, 20, 20, 10, 20, 20, 10, 10, 10, 10, 10, 0,  20],
-          [0, 20, 10, 10, 10, 10, 10, 20, 20, 20, 10, 10, 10, 10, 10, 10, 10, 10, 0,  0],
+          [0, 20, 10, 10, 10, 10, 10, 20, 20, 20, 10, 30, 10, 10, 10, 10, 10, 10, 0,  0],
           [0, 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 20, 10, 10, 10, 10, 10, 0,  20],
           [0, 20, 10, 10, 10, 10, 10, 20, 20, 20, 10, 20, 20, 20, 0,  10, 10, 10, 0,  0],
           [0, 20, 20, 10, 10, 10, 20, 20, 10, 10, 10, 10, 10, 21, 0,  0,  10, 10, 0,  20],
@@ -1837,7 +1837,7 @@
       [0, 0,  0,  0,  0,  0,  0,  0,  0,  10, 10, 10, 0,  0,  0,  0,  0,  0,  0,  20],
       [0, 20, 20, 20, 20, 20, 20, 20, 20, 10, 10, 10, 20, 20, 0,  0,  0,  0,  0,  0],
       [0, 20, 20, 10, 10, 10, 20, 20, 20, 20, 10, 20, 20, 10, 10, 10, 10, 10, 0,  20],
-      [0, 20, 10, 10, 10, 10, 10, 20, 20, 20, 10, 10, 10, 10, 10, 10, 10, 10, 0,  0],
+      [0, 20, 10, 10, 10, 10, 10, 20, 20, 20, 10, 30, 10, 10, 10, 10, 10, 10, 0,  0],
       [0, 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 20, 10, 10, 10, 10, 10, 0,  20],
       [0, 20, 10, 10, 10, 10, 10, 20, 20, 20, 10, 20, 20, 20, 0,  10, 10, 10, 0,  0],
       [0, 20, 20, 10, 10, 10, 20, 20, 10, 10, 10, 10, 10, 21, 0,  0,  10, 10, 0,  20],
@@ -3035,6 +3035,7 @@
             if (alive) {
               let turnflashlight = false;
               let switchtrigger = false;
+              let keytrigger = false;
               let activate;
               let dirpos;
               switch(direction) {
@@ -3042,6 +3043,7 @@
                   if (map[position[0] - 1][position[1]] == 21) { map[position[0] - 1][position[1]] = 22; key++ }
                   else if (map[position[0] - 1][position[1]] == 23) { map[position[0] - 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] - 1][position[1]] == 24) { map[position[0] - 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0] - 1][position[1]] == 30) { keytrigger = true }
                   else if (map[position[0] - 1][position[1]] == 25) { nextmap() }
                   else { turnflashlight = true }
                   dirpos = map[position[0] - 1][position[1]];
@@ -3050,6 +3052,7 @@
                   if (map[position[0]][position[1] + 1] == 21) { map[position[0]][position[1] + 1] = 22; key++ }
                   else if (map[position[0]][position[1] + 1] == 23) { map[position[0]][position[1] + 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] + 1] == 24) { map[position[0]][position[1] + 1] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0]][position[1] + 1] == 30) { keytrigger = true }
                   else if (map[position[0]][position[1] + 1] == 25) { nextmap() }
                   else { turnflashlight = true }
                   dirpos = map[position[0]][position[1] + 1];
@@ -3058,6 +3061,7 @@
                   if (map[position[0] + 1][position[1]] == 21) { map[position[0] + 1][position[1]] = 22; key++ }
                   else if (map[position[0] + 1][position[1]] == 23) { map[position[0] + 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] + 1][position[1]] == 24) { map[position[0] + 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0] + 1][position[1]] == 30) { keytrigger = true }
                   else if (map[position[0] + 1][position[1]] == 25) { nextmap() }
                   else { turnflashlight = true }
                   dirpos = map[position[0] + 1][position[1]];
@@ -3066,6 +3070,7 @@
                   if (map[position[0]][position[1] - 1] == 21) { map[position[0]][position[1] - 1] = 22; key++ }
                   else if (map[position[0]][position[1] - 1] == 23) { map[position[0]][position[1] - 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] - 1] == 24) { map[position[0]][position[1] - 1] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0]][position[1] - 1] == 30) { keytrigger = true }
                   else if (map[position[0]][position[1] - 1] == 25) { nextmap() }
                   else { turnflashlight = true }
                   dirpos = map[position[0]][position[1] - 1];
@@ -3073,6 +3078,9 @@
               }
               if(switchtrigger) {
                 switchchange(dirpos, activate);
+              }
+              if(keytrigger) {
+                keychange(dirpos);
               }
               if(turnflashlight) {
                 if(darkness) {
@@ -3100,7 +3108,7 @@
         })
       }
 
-      function switchchange(dirpos, activate) {
+      function switchchange(dirpos, activate) {//doesnt work if there is 2 switches (change dirpos to coordinates instead)
         if(lvl_map == 1) {//map 1
           if(dirpos == map[11][13]) {//switch location
             if(activate) {//switch on
@@ -3118,6 +3126,24 @@
               map[18][5] = 30;
             }
           }
+        }
+      }
+
+      function keychange(dirpos) {//doesnt work if there is 2 gates (change dirpos to coordinates instead)
+        if(key > 0) {
+          if(lvl_map == 1) {//map 1
+            if(dirpos == map[4][11]) {//gate location
+              map[4][11] = 10;
+              key--;
+            }
+            //add if (another switch)
+          } else if(lvl_map == 2) {//map 2
+            
+          }
+        } else {
+          locked.style.opacity = "1";
+          clearTimeout(lockedtimeout);
+          lockedtimeout = setTimeout(() => { locked.style.opacity = "0" }, 1000);
         }
       }
 
@@ -3439,6 +3465,7 @@
 
             if (e.code == "KeyE") {
               let switchtrigger = false;
+              let keytrigger = false;
               let activate;
               let dirpos;
               switch(direction) {
@@ -3446,6 +3473,7 @@
                   if (map[position[0] - 1][position[1]] == 21) { map[position[0] - 1][position[1]] = 22; key++ }
                   else if (map[position[0] - 1][position[1]] == 23) { map[position[0] - 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] - 1][position[1]] == 24) { map[position[0] - 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0] - 1][position[1]] == 30) { keytrigger = true }
                   else if (map[position[0] - 1][position[1]] == 25) { nextmap() }
                   dirpos = map[position[0] - 1][position[1]];
                   break;
@@ -3453,6 +3481,7 @@
                   if (map[position[0]][position[1] + 1] == 21) { map[position[0]][position[1] + 1] = 22; key++ }
                   else if (map[position[0]][position[1] + 1] == 23) { map[position[0]][position[1] + 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] + 1] == 24) { map[position[0]][position[1] + 1] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0]][position[1] + 1] == 30) { keytrigger = true }
                   else if (map[position[0]][position[1] + 1] == 25) { nextmap() }
                   dirpos = map[position[0]][position[1] + 1];
                   break;
@@ -3460,6 +3489,7 @@
                   if (map[position[0] + 1][position[1]] == 21) { map[position[0] + 1][position[1]] = 22; key++ }
                   else if (map[position[0] + 1][position[1]] == 23) { map[position[0] + 1][position[1]] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0] + 1][position[1]] == 24) { map[position[0] + 1][position[1]] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0] + 1][position[1]] == 30) { keytrigger = true }
                   else if (map[position[0] + 1][position[1]] == 25) { nextmap() }
                   dirpos = map[position[0] + 1][position[1]];
                   break;
@@ -3467,12 +3497,16 @@
                   if (map[position[0]][position[1] - 1] == 21) { map[position[0]][position[1] - 1] = 22; key++ }
                   else if (map[position[0]][position[1] - 1] == 23) { map[position[0]][position[1] - 1] = 24; switchtrigger = true; activate = true }
                   else if (map[position[0]][position[1] - 1] == 24) { map[position[0]][position[1] - 1] = 23; switchtrigger = true; activate = false }
+                  else if (map[position[0]][position[1] - 1] == 30) { keytrigger = true }
                   else if (map[position[0]][position[1] - 1] == 25) { nextmap() }
                   dirpos = map[position[0]][position[1] - 1];
                   break;
               }
               if(switchtrigger) {
                 switchchange(dirpos, activate);
+              }
+              if(keytrigger) {
+                keychange(dirpos);
               }
             }
 
