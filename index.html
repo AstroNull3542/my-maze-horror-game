@@ -3046,7 +3046,7 @@
                   else if (map[position[0] - 1][position[1]] == 30) { keytrigger = true }
                   else if (map[position[0] - 1][position[1]] == 25) { nextmap() }
                   else { turnflashlight = true }
-                  dirpos = map[position[0] - 1][position[1]];
+                  dirpos = [position[0] - 1, position[1]];
                   break;
                 case "east":
                   if (map[position[0]][position[1] + 1] == 21) { map[position[0]][position[1] + 1] = 22; key++ }
@@ -3055,7 +3055,7 @@
                   else if (map[position[0]][position[1] + 1] == 30) { keytrigger = true }
                   else if (map[position[0]][position[1] + 1] == 25) { nextmap() }
                   else { turnflashlight = true }
-                  dirpos = map[position[0]][position[1] + 1];
+                  dirpos = [position[0], position[1] + 1];
                   break;
                 case "south":
                   if (map[position[0] + 1][position[1]] == 21) { map[position[0] + 1][position[1]] = 22; key++ }
@@ -3064,7 +3064,7 @@
                   else if (map[position[0] + 1][position[1]] == 30) { keytrigger = true }
                   else if (map[position[0] + 1][position[1]] == 25) { nextmap() }
                   else { turnflashlight = true }
-                  dirpos = map[position[0] + 1][position[1]];
+                  dirpos = [position[0] + 1, position[1]];
                   break;
                 case "west":
                   if (map[position[0]][position[1] - 1] == 21) { map[position[0]][position[1] - 1] = 22; key++ }
@@ -3073,14 +3073,14 @@
                   else if (map[position[0]][position[1] - 1] == 30) { keytrigger = true }
                   else if (map[position[0]][position[1] - 1] == 25) { nextmap() }
                   else { turnflashlight = true }
-                  dirpos = map[position[0]][position[1] - 1];
+                  dirpos = [position[0], position[1] - 1];
                   break;
               }
               if(switchtrigger) {
-                switchchange(dirpos, activate);
+                switchchange(dirpos[0], dirpos[1], activate);
               }
               if(keytrigger) {
-                keychange(dirpos);
+                keychange(dirpos[0], dirpos[1]);
               }
               if(turnflashlight) {
                 if(darkness) {
@@ -3108,9 +3108,9 @@
         })
       }
 
-      function switchchange(dirpos, activate) {//doesnt work if there is 2 switches (change dirpos to coordinates instead)
+      function switchchange(row, col, activate) {
         if(lvl_map == 1) {//map 1
-          if(dirpos == map[11][13]) {//switch location
+          if(row == 11 && col == 13) {//switch location
             if(activate) {//switch on
               map[15][13] = 10;
             } else {//switch off
@@ -3119,7 +3119,7 @@
           }
           //add if (another switch)
         } else if(lvl_map == 2) {//map 2
-          if(dirpos == map[15][8]) {
+          if(row == 15 && col == 8) {
             if(activate) {
               map[18][5] = 10;
             } else {
@@ -3129,21 +3129,31 @@
         }
       }
 
-      function keychange(dirpos) {//doesnt work if there is 2 gates (change dirpos to coordinates instead)
+      function keychange(row, col) {
         if(key > 0) {
           if(lvl_map == 1) {//map 1
-            if(dirpos == map[4][11]) {//gate location
+            if(row == 4 && col == 11) {//gate location
               map[4][11] = 10;
               key--;
             }
-            //add if (another switch)
+            //add if (another gate)
           } else if(lvl_map == 2) {//map 2
             
           }
         } else {
-          locked.style.opacity = "1";
-          clearTimeout(lockedtimeout);
-          lockedtimeout = setTimeout(() => { locked.style.opacity = "0" }, 1000);
+          const locations = [
+            { map: 1, row: 4, col: 11 },
+            { map: 1, row: 15, col: 13 },
+            { map: 2, row: 18, col: 15 }
+            //add gate locations (show locked message)
+          ];
+          for (const location of locations) {
+            if (row == location.row && col == location.col && lvl_map == location.map) {
+              locked.style.opacity = "1";
+              clearTimeout(lockedtimeout);
+              lockedtimeout = setTimeout(() => { locked.style.opacity = "0" }, 1000);
+            }
+          }
         }
       }
 
@@ -3475,7 +3485,7 @@
                   else if (map[position[0] - 1][position[1]] == 24) { map[position[0] - 1][position[1]] = 23; switchtrigger = true; activate = false }
                   else if (map[position[0] - 1][position[1]] == 30) { keytrigger = true }
                   else if (map[position[0] - 1][position[1]] == 25) { nextmap() }
-                  dirpos = map[position[0] - 1][position[1]];
+                  dirpos = [position[0] - 1, position[1]];
                   break;
                 case "east":
                   if (map[position[0]][position[1] + 1] == 21) { map[position[0]][position[1] + 1] = 22; key++ }
@@ -3483,7 +3493,7 @@
                   else if (map[position[0]][position[1] + 1] == 24) { map[position[0]][position[1] + 1] = 23; switchtrigger = true; activate = false }
                   else if (map[position[0]][position[1] + 1] == 30) { keytrigger = true }
                   else if (map[position[0]][position[1] + 1] == 25) { nextmap() }
-                  dirpos = map[position[0]][position[1] + 1];
+                  dirpos = [position[0], position[1] + 1];
                   break;
                 case "south":
                   if (map[position[0] + 1][position[1]] == 21) { map[position[0] + 1][position[1]] = 22; key++ }
@@ -3491,7 +3501,7 @@
                   else if (map[position[0] + 1][position[1]] == 24) { map[position[0] + 1][position[1]] = 23; switchtrigger = true; activate = false }
                   else if (map[position[0] + 1][position[1]] == 30) { keytrigger = true }
                   else if (map[position[0] + 1][position[1]] == 25) { nextmap() }
-                  dirpos = map[position[0] + 1][position[1]];
+                  dirpos = [position[0] + 1, position[1]];
                   break;
                 case "west":
                   if (map[position[0]][position[1] - 1] == 21) { map[position[0]][position[1] - 1] = 22; key++ }
@@ -3499,14 +3509,14 @@
                   else if (map[position[0]][position[1] - 1] == 24) { map[position[0]][position[1] - 1] = 23; switchtrigger = true; activate = false }
                   else if (map[position[0]][position[1] - 1] == 30) { keytrigger = true }
                   else if (map[position[0]][position[1] - 1] == 25) { nextmap() }
-                  dirpos = map[position[0]][position[1] - 1];
+                  dirpos = [position[0], position[1] - 1];
                   break;
               }
               if(switchtrigger) {
-                switchchange(dirpos, activate);
+                switchchange(dirpos[0], dirpos[1], activate);
               }
               if(keytrigger) {
-                keychange(dirpos);
+                keychange(dirpos[0], dirpos[1]);
               }
             }
 
