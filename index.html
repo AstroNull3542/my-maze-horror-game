@@ -3108,50 +3108,50 @@
         })
       }
 
+      const switchLocations = [
+        { map: 1, row: 11, col: 13, targetRow: 15, targetCol: 13 },
+        { map: 2, row: 15, col: 8, targetRow: 18, targetCol: 5 }
+        // Add more switch locations here
+      ];
+
+      const keyLocations = [
+        { map: 1, row: 4, col: 11 },
+        // Add more gate locations here
+      ];
+
+      const lockedMessageLocations = [
+        ...switchLocations.map(loc => ({ map: loc.map, row: loc.targetRow, col: loc.targetCol })),
+        ...keyLocations
+      ];
       function switchchange(row, col, activate) {
-        if(lvl_map == 1) {//map 1
-          if(row == 11 && col == 13) {//switch location
-            if(activate) {//switch on
-              map[15][13] = 10;
-            } else {//switch off
-              map[15][13] = 30;
-            }
-          }
-          //add if (another switch)
-        } else if(lvl_map == 2) {//map 2
-          if(row == 15 && col == 8) {
-            if(activate) {
-              map[18][5] = 10;
-            } else {
-              map[18][5] = 30;
-            }
+        for (const switchLoc of switchLocations) {
+          if (lvl_map === switchLoc.map && row === switchLoc.row && col === switchLoc.col) {
+            map[switchLoc.targetRow][switchLoc.targetCol] = activate ? 10 : 30;
+            break;
           }
         }
       }
-
       function keychange(row, col) {
-        if(key > 0) {
-          if(lvl_map == 1) {//map 1
-            if(row == 4 && col == 11) {//gate location
-              map[4][11] = 10;
+        let isGateUnlocked = false;
+        if (key > 0) {
+          for (const keyLoc of keyLocations) {
+            if (lvl_map === keyLoc.map && row === keyLoc.row && col === keyLoc.col) {
+              map[keyLoc.row][keyLoc.col] = 10;
               key--;
+              isGateUnlocked = true;
+              break;
             }
-            //add if (another gate)
-          } else if(lvl_map == 2) {//map 2
-            
           }
-        } else {
-          const locations = [
-            { map: 1, row: 4, col: 11 },
-            { map: 1, row: 15, col: 13 },
-            { map: 2, row: 18, col: 15 }
-            //add gate locations (show locked message)
-          ];
-          for (const location of locations) {
-            if (row == location.row && col == location.col && lvl_map == location.map) {
+        }
+        if (!isGateUnlocked) {
+          for (const loc of lockedMessageLocations) {
+            if (lvl_map === loc.map && row === loc.row && col === loc.col) {
               locked.style.opacity = "1";
               clearTimeout(lockedtimeout);
-              lockedtimeout = setTimeout(() => { locked.style.opacity = "0" }, 1000);
+              lockedtimeout = setTimeout(() => {
+                locked.style.opacity = "0";
+              }, 1000);
+              break;
             }
           }
         }
