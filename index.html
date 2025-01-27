@@ -3110,6 +3110,7 @@
 
       const switchLocations = [
         { map: 1, row: 11, col: 13, targetRow: 15, targetCol: 13 },
+        { map: 1, row: 11, col: 13, targetRow: "5", targetCol: "7" },//reverse switch
         { map: 2, row: 15, col: 8, targetRow: 18, targetCol: 5 }
         // Add more switch locations here
       ];
@@ -3120,14 +3121,22 @@
       ];
 
       const lockedMessageLocations = [
-        ...switchLocations.map(loc => ({ map: loc.map, row: loc.targetRow, col: loc.targetCol })),
+        ...switchLocations.map(loc => ({ 
+          map: loc.map, 
+          row: typeof loc.targetRow === 'string' ? parseInt(loc.targetRow) : loc.targetRow, 
+          col: typeof loc.targetCol === 'string' ? parseInt(loc.targetCol) : loc.targetCol
+        })),
         ...keyLocations
       ];
       function switchchange(row, col, activate) {
         for (const switchLoc of switchLocations) {
           if (lvl_map === switchLoc.map && row === switchLoc.row && col === switchLoc.col) {
-            map[switchLoc.targetRow][switchLoc.targetCol] = activate ? 10 : 30;
-            break;
+            const isReverse = typeof switchLoc.targetRow === 'string';
+            const targetRow = isReverse ? parseInt(switchLoc.targetRow) : switchLoc.targetRow;
+            const targetCol = isReverse ? parseInt(switchLoc.targetCol) : switchLoc.targetCol;
+            map[targetRow][targetCol] = activate 
+            ? (isReverse ? 30 : 10) 
+            : (isReverse ? 10 : 30);
           }
         }
       }
