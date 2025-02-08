@@ -3158,7 +3158,10 @@
               locked.style.opacity = "1";
               clearTimeout(lockedtimeout);
               lockedtimeout = setTimeout(() => {
-                locked.style.opacity = "0";
+                locked.style.opacity = "0.5";
+                setTimeout(() => {
+                  locked.style.opacity = "0";
+                }, 200);
               }, 1000);
               break;
             }
