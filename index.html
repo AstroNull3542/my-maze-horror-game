@@ -1829,7 +1829,12 @@
         } else {
           locked.style.opacity = "1";
           clearTimeout(lockedtimeout);
-          lockedtimeout = setTimeout(() => { locked.style.opacity = "0" }, 1000);
+          lockedtimeout = setTimeout(() => {
+            locked.style.opacity = "0.5";
+            lockedtimeout = setTimeout(() => {
+              locked.style.opacity = "0";
+            }, 200);
+          }, 1000);
         }
       }
       /*
@@ -3159,7 +3164,7 @@
               clearTimeout(lockedtimeout);
               lockedtimeout = setTimeout(() => {
                 locked.style.opacity = "0.5";
-                setTimeout(() => {
+                lockedtimeout = setTimeout(() => {
                   locked.style.opacity = "0";
                 }, 200);
               }, 1000);
