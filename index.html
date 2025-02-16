@@ -3096,9 +3096,9 @@
                     clearTimeout(minimaptimeout);
                   } else {
                     flashlight_off.className = 'flashlight_off';
-                    minimap.style.opacity = "0.05";
+                    minimap.style.opacity = "0.1";
                     minimaptimeout = setTimeout(() => {
-                      minimap.style.opacity = "0.025";
+                      minimap.style.opacity = "0.05";
                       minimaptimeout = setTimeout(() => {
                         minimap.style.opacity = "0";
                       }, 500);
