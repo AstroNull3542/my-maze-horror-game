@@ -3274,10 +3274,12 @@
             if(![20, 21, 22, 23, 24, 25, 30].includes(map[position[0]][position[1]-1]) || noclip) {position[1] -= 1}
             break;
         }
-        document.getElementById("buttonup").style.scale = "1.05";
+        document.getElementById("buttonup").style.transition = "none";
+        document.getElementById("buttonup").style.transform = "scale(1.05)";
         setTimeout(() => {
-          document.getElementById("buttonup").style.scale = "1";
-        }, 100);
+          document.getElementById("buttonup").style.transition = "transform 0.2s ease-out";
+          document.getElementById("buttonup").style.transform = "scale(1)";
+        }, 50);
         renderminimap();
       }
 
@@ -3296,10 +3298,12 @@
             if(![20, 21, 22, 23, 24, 25, 30].includes(map[position[0]][position[1]+1]) || noclip) {position[1] += 1}
             break;
         }
-        document.getElementById("buttondown").style.scale = "1.05";
+        document.getElementById("buttondown").style.transition = "none";
+        document.getElementById("buttondown").style.transform = "scale(1.05)";
         setTimeout(() => {
-          document.getElementById("buttondown").style.scale = "1";
-        }, 100);
+          document.getElementById("buttondown").style.transition = "transform 0.2s ease-out";
+          document.getElementById("buttondown").style.transform = "scale(1)";
+        }, 50);
         renderminimap();
       }
 
@@ -3318,10 +3322,12 @@
             if(![20, 21, 22, 23, 24, 25, 30].includes(map[position[0]+1][position[1]]) || noclip) {position[0] += 1}
             break;
         }
-        document.getElementById("buttonleft").style.scale = "1.05";
+        document.getElementById("buttonleft").style.transition = "none";
+        document.getElementById("buttonleft").style.transform = "scale(1.05)";
         setTimeout(() => {
-          document.getElementById("buttonleft").style.scale = "1";
-        }, 100);
+          document.getElementById("buttonleft").style.transition = "transform 0.2s ease-out";
+          document.getElementById("buttonleft").style.transform = "scale(1)";
+        }, 50);
         renderminimap();
       }
 
@@ -3340,10 +3346,12 @@
             if(![20, 21, 22, 23, 24, 25, 30].includes(map[position[0]-1][position[1]]) || noclip) {position[0] -= 1}
             break;
         }
-        document.getElementById("buttonright").style.scale = "1.05";
+        document.getElementById("buttonright").style.transition = "none";
+        document.getElementById("buttonright").style.transform = "scale(1.05)";
         setTimeout(() => {
-          document.getElementById("buttonright").style.scale = "1";
-        }, 100);
+          document.getElementById("buttonright").style.transition = "transform 0.2s ease-out";
+          document.getElementById("buttonright").style.transform = "scale(1)";
+        }, 50);
         renderminimap();
       }
 
@@ -3366,10 +3374,12 @@
             direction = "south";
             break;
         }
-        document.getElementById("buttonturnleft").style.scale = "1.05";
+        document.getElementById("buttonturnleft").style.transition = "none";
+        document.getElementById("buttonturnleft").style.transform = "scale(1.05)";
         setTimeout(() => {
-          document.getElementById("buttonturnleft").style.scale = "1";
-        }, 100);
+          document.getElementById("buttonturnleft").style.transition = "transform 0.2s ease-out";
+          document.getElementById("buttonturnleft").style.transform = "scale(1)";
+        }, 50);
       }
 
       function turnright() {
@@ -3391,10 +3401,12 @@
             direction = "north";
             break;
         }
-        document.getElementById("buttonturnright").style.scale = "1.05";
+        document.getElementById("buttonturnright").style.transition = "none";
+        document.getElementById("buttonturnright").style.transform = "scale(1.05)";
         setTimeout(() => {
-          document.getElementById("buttonturnright").style.scale = "1";
-        }, 100);
+          document.getElementById("buttonturnright").style.transition = "transform 0.2s ease-out";
+          document.getElementById("buttonturnright").style.transform = "scale(1)";
+        }, 50);
       }
 
       function restart(mapchange) {
