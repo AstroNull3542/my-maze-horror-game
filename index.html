@@ -3374,6 +3374,10 @@
             direction = "south";
             break;
         }
+        dirindicator.style.transform = "rotate(45deg)";
+        setTimeout(() => {
+          dirindicator.style.transform = "rotate(0)";
+        }, 200);
         document.getElementById("buttonturnleft").style.transition = "none";
         document.getElementById("buttonturnleft").style.transform = "scale(1.05)";
         setTimeout(() => {
@@ -3401,6 +3405,10 @@
             direction = "north";
             break;
         }
+        dirindicator.style.transform = "rotate(-45deg)";
+        setTimeout(() => {
+          dirindicator.style.transform = "rotate(0)";
+        }, 200);
         document.getElementById("buttonturnright").style.transition = "none";
         document.getElementById("buttonturnright").style.transform = "scale(1.05)";
         setTimeout(() => {
