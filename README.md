@@ -47,4 +47,4 @@ This is a browser-based maze game built using HTML, CSS, and JavaScript. The gam
 
 ## License
 
-This project is open-source. Modify and distribute as needed.
+This project is open-source. Modify and distribute as needed (If you can, that is).
