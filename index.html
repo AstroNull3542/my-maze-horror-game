@@ -1806,7 +1806,7 @@
           [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]
         ],
       });
-      let current_map = defaultmap1;//only change this to change the map
+      let current_map = defaultmap1;//change the first map
       let lvl_map = current_map.lvl_map;
       let default_position = [...current_map.position];
       let default_direction = current_map.direction;
@@ -2020,7 +2020,7 @@
       var double = false;
       var darkness = true;
       var noclip = false;
-
+      
       var keyarr = {};
       onkeydown = onkeyup = function(e){
         e = e || event;
@@ -2219,6 +2219,21 @@
       var dirpos13;
       var dirpos14;
       var dirpos15;
+
+      switch (direction) {
+        case "north":
+          dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')";
+          break;
+        case "east":
+          dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')";
+          break;
+        case "south":
+          dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')";
+          break;
+        case "west":
+          dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')";
+          break;
+      }
 
       function clear() {
         pos1_object.className = '';
@@ -3594,6 +3609,20 @@
 
               position = default_position;
               direction = default_direction;
+              switch (direction) {
+                case "north":
+                  dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')";
+                  break;
+                case "east":
+                  dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')";
+                  break;
+                case "south":
+                  dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')";
+                  break;
+                case "west":
+                  dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')";
+                  break;
+              }
               key = 0;
               map = default_map;
               alive = true;
