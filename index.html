@@ -2220,21 +2220,6 @@
       var dirpos14;
       var dirpos15;
 
-      switch (direction) {
-        case "north":
-          dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')";
-          break;
-        case "east":
-          dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')";
-          break;
-        case "south":
-          dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')";
-          break;
-        case "west":
-          dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')";
-          break;
-      }
-
       function clear() {
         pos1_object.className = '';
         pos2_object.className = '';
@@ -3609,20 +3594,6 @@
 
               position = default_position;
               direction = default_direction;
-              switch (direction) {
-                case "north":
-                  dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')";
-                  break;
-                case "east":
-                  dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')";
-                  break;
-                case "south":
-                  dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')";
-                  break;
-                case "west":
-                  dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')";
-                  break;
-              }
               key = 0;
               map = default_map;
               alive = true;
@@ -3781,7 +3752,21 @@
       setTimeout(() => {
         loading.style.opacity = "0";
         document.getElementById("load").style.opacity = "1";
-      }, 1140);
+        switch (direction) {
+          case "north":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')";
+            break;
+          case "east":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')";
+            break;
+          case "south":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')";
+            break;
+          case "west":
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')";
+            break;
+        }
+      }, 1575);
 
       var loading = document.getElementById('loading');
 
@@ -3844,7 +3829,10 @@
         died.classList.add("died");
 
         flashlight.className = 'flashlight1_dark';
-        loading.innerHTML = "Loading... (52/205)";
+        dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')"
+        flashlight_off.className = 'flashlight_off';
+
+        loading.innerHTML = "Loading... (54/205)";
 
         setTimeout(() => {
           pos1_object.classList.add("wall1");
@@ -3896,7 +3884,9 @@
           pos15_dark.classList.add("wall15_dark");
 
           flashlight.className = 'flashlight2_dark';
-          loading.innerHTML = "Loading... (98/205)";
+          dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')"
+
+          loading.innerHTML = "Loading... (101/205)";
 
           setTimeout(() => {
             pos1_object.classList.add("gate1");
@@ -3948,7 +3938,9 @@
             pos15_dark.classList.add("gate15_dark");
             
             flashlight.className = 'flashlight3_dark';
-            loading.innerHTML = "Loading... (144/205)";
+            dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')"
+
+            loading.innerHTML = "Loading... (148/205)";
 
             setTimeout(() => {
               pos1_property.classList.add("switch1_on");
@@ -3968,7 +3960,9 @@
               pos15_property.classList.add("switch15_on");
 
               flashlight.className = 'flashlight4_dark';
-              loading.innerHTML = "Loading... (160/205)";
+              dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')"
+
+              loading.innerHTML = "Loading... (165/205)";
 
               setTimeout(() => {
                 pos1_property.classList.add("door1");
@@ -3988,63 +3982,64 @@
                 pos15_property.classList.add("door15");
                 
                 flashlight.className = 'flashlight5_dark';
-                loading.innerHTML = "Loading... (176/205)";
+                loading.innerHTML = "Loading... (181/205)";
 
                 setTimeout(() => {
                   flashlight.className = 'flashlight6_dark';
-                  loading.innerHTML = "Loading... (177/205)";
+                  loading.innerHTML = "Loading... (182/205)";
 
                   setTimeout(() => {
                     flashlight.className = 'flashlight7_dark';
-                    loading.innerHTML = "Loading... (178/205)";
+                    loading.innerHTML = "Loading... (183/205)";
 
                     setTimeout(() => {
                       flashlight.className = 'flashlight8_dark';
-                      loading.innerHTML = "Loading... (179/205)";
+                      loading.innerHTML = "Loading... (184/205)";
 
                       setTimeout(() => {
                         flashlight.className = 'flashlight9_dark';
-                        loading.innerHTML = "Loading... (180/205)";
+                        loading.innerHTML = "Loading... (185/205)";
 
                         setTimeout(() => {
                           flashlight.className = 'flashlight1';
-                          loading.innerHTML = "Loading... (181/205)";
+                          loading.innerHTML = "Loading... (186/205)";
 
                           setTimeout(() => {
                             flashlight.className = 'flashlight2';
-                            loading.innerHTML = "Loading... (182/205)";
+                            loading.innerHTML = "Loading... (187/205)";
 
                             setTimeout(() => {
                               flashlight.className = 'flashlight3';
-                              loading.innerHTML = "Loading... (183/205)";
+                              loading.innerHTML = "Loading... (188/205)";
 
                               setTimeout(() => {
                                 flashlight.className = 'flashlight4';
-                                loading.innerHTML = "Loading... (184/205)";
+                                loading.innerHTML = "Loading... (189/205)";
                                 
                                 setTimeout(() => {
                                   flashlight.className = 'flashlight5';
-                                  loading.innerHTML = "Loading... (185/205)";
+                                  loading.innerHTML = "Loading... (190/205)";
 
                                   setTimeout(() => {
                                     flashlight.className = 'flashlight6';
-                                    loading.innerHTML = "Loading... (186/205)";
+                                    loading.innerHTML = "Loading... (191/205)";
 
                                     setTimeout(() => {
                                       flashlight.className = 'flashlight7';
-                                      loading.innerHTML = "Loading... (187/205)";
+                                      loading.innerHTML = "Loading... (192/205)";
 
                                       setTimeout(() => {
                                         flashlight.className = 'flashlight8';
-                                        loading.innerHTML = "Loading... (188/205)";
+                                        loading.innerHTML = "Loading... (193/205)";
 
                                         setTimeout(() => {
                                           flashlight.className = 'flashlight9';
-                                          loading.innerHTML = "Loading... (189/205)";
+                                          loading.innerHTML = "Loading... (194/205)";
 
                                           setTimeout(() => {
                                             loading.innerHTML = "Loading... (204/205)";
                                             flashlight.className = '';
+                                            flashlight_off.className = '';
                                             spike1.className = '';
                                             spike2.className = '';
                                             spike3.className = '';
