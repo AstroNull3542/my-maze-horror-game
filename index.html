@@ -1765,6 +1765,9 @@
       function changemap(map) {
         current_map = map;
         lvl_map = current_map.lvl_map;
+        if (lvl_map === null) {
+          lvl_map = 1;
+        }
         default_position = [...current_map.position];
         default_direction = current_map.direction;
         default_map = JSON.parse(JSON.stringify(current_map.map));
@@ -1772,7 +1775,9 @@
       let lockedtimeout;
       function nextmap() {//MAP CHANGER BETWEEN LEVELS
         if(key > 0) {
-          if(lvl_map == 1) {
+          if(lvl_map == null) {
+            restart(defaultmap["map1"])
+          } else if(lvl_map == 1) {
             restart(defaultmap["map2"]);
           } else if(lvl_map == 2) {
             restart(defaultmap["map1"]);
@@ -1887,9 +1892,10 @@
       var noclip = false;
       
       var keyarr = {};
-      onkeydown = onkeyup = function(e){
+      let promptUsed = false;
+      document.onkeydown = function(e){
         e = e || event;
-        keyarr[e.keyCode] = e.type == 'keydown';
+        keyarr[e.keyCode] = true;
         if(keyarr[18] && keyarr[16] && keyarr[66]){
           if(darkness == true) {
             darkness = false;
@@ -1904,7 +1910,7 @@
             render();
           }
         }
-        if(keyarr[18] && keyarr[16] && keyarr[78]){
+        if (keyarr[18] && keyarr[16] && keyarr[78]) {
           if(noclip == true) {
             noclip = false;
             render();
@@ -1913,8 +1919,20 @@
             render();
           }
         }
-        //shift+alt+m (instant map switcher) -> input mapname
+        if (keyarr[18] && keyarr[16] && keyarr[77] && !promptUsed) {
+          promptUsed = true;
+          const value = prompt();
+          restart(defaultmap[value]);
+        }
       }
+      document.onkeyup = function (e) {
+        e = e || event;
+        keyarr[e.keyCode] = false;
+
+        if (e.keyCode === 77) {
+          promptUsed = false;
+        }
+      };
 
       var body = document.getElementById("body");
 
