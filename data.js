@@ -53,7 +53,7 @@ const maps = {
       [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]
     ]
   },
-  firstmapp: {
+  firstmap: {
     lvl_map: null,
     position: [3, 3],
     direction: "south",
