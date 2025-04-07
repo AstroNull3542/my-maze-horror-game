@@ -1932,6 +1932,9 @@
             }
             setTimeout(() => {
               Fullscreen();
+              setTimeout(() => {
+                promptUsed = false;
+              }, 100);
             }, 0);
           }
         }
