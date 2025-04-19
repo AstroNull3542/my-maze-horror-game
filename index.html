@@ -1804,85 +1804,27 @@
           default_direction = current_map.direction;
           default_map = JSON.parse(JSON.stringify(current_map.map));
           
-          if(darkness) {
-            switch(flashlight.className) {
-              default:
-                flashlight.className = 'flashlight5_dark';
-                break;
-              case "flashlight1_dark":
-                default_flashlight = 1;
-                flashlight.className = 'flashlight2_dark';
-                break;
-              case "flashlight2_dark":
-                flashlight.className = 'flashlight5_dark';
-                break;
-              case "flashlight3_dark":
+          const suffix = darkness ? '_dark' : '';
+          const baseClass = flashlight.className.replace('_dark', '');
+          const transitions = {
+            flashlight1: () => {
+              default_flashlight = 1;
+              return 'flashlight2';
+            },
+            flashlight2: () => 'flashlight5',
+            flashlight3: () => {
               default_flashlight = 2;
-                flashlight.className = 'flashlight2_dark';
-                break;
-              case "flashlight4_dark":
-                flashlight.className = 'flashlight1_dark';
-                break;
-              case "flashlight5_dark":
-                flashlight.className = 'flashlight8_dark';
-                break;
-              case "flashlight6_dark":
-                flashlight.className = 'flashlight3_dark';
-                break;
-              case "flashlight7_dark":
-                flashlight.className = 'flashlight4_dark';
-                break;
-              case "flashlight8_dark":
-                if(default_flashlight == 1) {
-                  flashlight.className = 'flashlight9_dark';
-                } else {
-                  flashlight.className = 'flashlight7_dark';
-                }
-                break;
-              case "flashlight9_dark":
-                flashlight.className = 'flashlight6_dark';
-                break;
-            }
-          } else {
-            switch(flashlight.className) {
-              default:
-                flashlight.className = 'flashlight5';
-                break;
-              case "flashlight1":
-                default_flashlight = 1;
-                flashlight.className = 'flashlight2';
-                break;
-              case "flashlight2":
-                flashlight.className = 'flashlight5';
-                break;
-              case "flashlight3":
-                default_flashlight = 2;
-                flashlight.className = 'flashlight2';
-                break;
-              case "flashlight4":
-                flashlight.className = 'flashlight1';
-                break;
-              case "flashlight5":
-                flashlight.className = 'flashlight8';
-                break;
-              case "flashlight6":
-                flashlight.className = 'flashlight3';
-                break;
-              case "flashlight7":
-                flashlight.className = 'flashlight4';
-                break;
-              case "flashlight8":
-                if(default_flashlight == 1) {
-                  flashlight.className = 'flashlight9';
-                } else {
-                  flashlight.className = 'flashlight7';
-                }
-                break;
-              case "flashlight9":
-                flashlight.className = 'flashlight6';
-                break;
-            }
-          }
+              return 'flashlight2';
+            },
+            flashlight4: () => 'flashlight1',
+            flashlight5: () => 'flashlight8',
+            flashlight6: () => 'flashlight3',
+            flashlight7: () => 'flashlight4',
+            flashlight8: () => default_flashlight == 1 ? 'flashlight9' : 'flashlight7',
+            flashlight9: () => 'flashlight6',
+          };
+          const nextClass = transitions[baseClass]?.() ?? 'flashlight5';
+          flashlight.className = nextClass + suffix;
         }, 1000);
 
         var position = default_position;
