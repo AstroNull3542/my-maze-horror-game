@@ -2043,68 +2043,32 @@
         var map9 = document.getElementById("map9");
         var minimap = document.getElementById("minimap");
 
-        var dirpos1;
-        var dirpos2;
-        var dirpos3;
-        var dirpos4;
-        var dirpos5;
-        var dirpos6;
-        var dirpos7;
-        var dirpos8;
-        var dirpos9;
-        var dirpos10;
-        var dirpos11;
-        var dirpos12;
-        var dirpos13;
-        var dirpos14;
-        var dirpos15;
+        var dirpos1, dirpos2, dirpos3, dirpos4, dirpos5,
+          dirpos6, dirpos7, dirpos8, dirpos9, dirpos10,
+          dirpos11, dirpos12, dirpos13, dirpos14, dirpos15;
+
+        const pos_objects = [
+          pos1_object, pos2_object, pos3_object, pos4_object, pos5_object,
+          pos6_object, pos7_object, pos8_object, pos9_object, pos10_object,
+          pos11_object, pos12_object, pos13_object, pos14_object, pos15_object
+        ];
+        const pos_properties = [
+          pos1_property, pos2_property, pos3_property, pos4_property, pos5_property,
+          pos6_property, pos7_property, pos8_property, pos9_property, pos10_property,
+          pos11_property, pos12_property, pos13_property, pos14_property, pos15_property
+        ];
+        const pos_darks = [
+          pos1_dark, pos2_dark, pos3_dark, pos4_dark, pos5_dark,
+          pos6_dark, pos7_dark, pos8_dark, pos9_dark, pos10_dark,
+          pos11_dark, pos12_dark, pos13_dark, pos14_dark, pos15_dark
+        ];
 
         function clear() {
-          pos1_object.className = '';
-          pos2_object.className = '';
-          pos3_object.className = '';
-          pos4_object.className = '';
-          pos5_object.className = '';
-          pos6_object.className = '';
-          pos7_object.className = '';
-          pos8_object.className = '';
-          pos9_object.className = '';
-          pos10_object.className = '';
-          pos11_object.className = '';
-          pos12_object.className = '';
-          pos13_object.className = '';
-          pos14_object.className = '';
-          pos15_object.className = '';
-          pos1_property.className = '';
-          pos2_property.className = '';
-          pos3_property.className = '';
-          pos4_property.className = '';
-          pos5_property.className = '';
-          pos6_property.className = '';
-          pos7_property.className = '';
-          pos8_property.className = '';
-          pos9_property.className = '';
-          pos10_property.className = '';
-          pos11_property.className = '';
-          pos12_property.className = '';
-          pos13_property.className = '';
-          pos14_property.className = '';
-          pos15_property.className = '';
-          pos1_dark.className = '';
-          pos2_dark.className = '';
-          pos3_dark.className = '';
-          pos4_dark.className = '';
-          pos5_dark.className = '';
-          pos6_dark.className = '';
-          pos7_dark.className = '';
-          pos8_dark.className = '';
-          pos9_dark.className = '';
-          pos10_dark.className = '';
-          pos11_dark.className = '';
-          pos12_dark.className = '';
-          pos13_dark.className = '';
-          pos14_dark.className = '';
-          pos15_dark.className = '';
+          for (let i = 0; i < 15; i++) {
+            pos_objects[i].className = '';
+            pos_properties[i].className = '';
+            pos_darks[i].className = '';
+          }
         }
 
         function render() {
