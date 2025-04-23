@@ -2128,188 +2128,48 @@
             return;
           }
           
-          switch(direction) {
+          const dirOffsets = {
+            north: [
+              [-1, -1], [-1, 0], [-1, +1],
+              [-2, -2], [-2, -1], [-2, 0], [-2, +1], [-2, +2],
+              [-3, -3], [-3, -2], [-3, -1], [-3, 0], [-3, +1], [-3, +2], [-3, +3]
+            ],
+            east: [
+              [-1, +1], [0, +1], [+1, +1],
+              [-2, +2], [-1, +2], [0, +2], [+1, +2], [+2, +2],
+              [-3, +3], [-2, +3], [-1, +3], [0, +3], [+1, +3], [+2, +3], [+3, +3]
+            ],
+            south: [
+              [+1, +1], [+1, 0], [+1, -1],
+              [+2, +2], [+2, +1], [+2, 0], [+2, -1], [+2, -2],
+              [+3, +3], [+3, +2], [+3, +1], [+3, 0], [+3, -1], [+3, -2], [+3, -3]
+            ],
+            west: [
+              [+1, -1], [0, -1], [-1, -1],
+              [+2, -2], [+1, -2], [0, -2], [-1, -2], [-2, -2],
+              [+3, -3], [+2, -3], [+1, -3], [0, -3], [-1, -3], [-2, -3], [-3, -3]
+            ]
+          };
 
-            case "north":
-              if (position[0]-1 >= 0) {
-                dirpos1 = map[position[0]-1][position[1]-1];
-                dirpos2 = map[position[0]-1][position[1]];
-                dirpos3 = map[position[0]-1][position[1]+1];
-              } else {
-                dirpos1 = 0;
-                dirpos2 = 0;
-                dirpos3 = 0;
-              }
-              if (position[0]-2 >= 0) {
-                dirpos4 = map[position[0]-2][position[1]-2];
-                dirpos5 = map[position[0]-2][position[1]-1];
-                dirpos6 = map[position[0]-2][position[1]];
-                dirpos7 = map[position[0]-2][position[1]+1];
-                dirpos8 = map[position[0]-2][position[1]+2];
-              } else {
-                dirpos4 = 0;
-                dirpos5 = 0;
-                dirpos6 = 0;
-                dirpos7 = 0;
-                dirpos8 = 0;
-              }
-              if (position[0]-3 >= 0) {
-                dirpos9 = map[position[0]-3][position[1]-3];
-                dirpos10 = map[position[0]-3][position[1]-2];
-                dirpos11 = map[position[0]-3][position[1]-1];
-                dirpos12 = map[position[0]-3][position[1]];
-                dirpos13 = map[position[0]-3][position[1]+1];
-                dirpos14 = map[position[0]-3][position[1]+2];
-                dirpos15 = map[position[0]-3][position[1]+3];
-              } else {
-                dirpos9 = 0;
-                dirpos10 = 0;
-                dirpos11 = 0;
-                dirpos12 = 0;
-                dirpos13 = 0;
-                dirpos14 = 0;
-                dirpos15 = 0;
-              }
-              break;
-
-            case "east":
-              if (position[0]-1 >= 0) {
-                dirpos1 = map[position[0]-1][position[1]+1];
-                dirpos5 = map[position[0]-1][position[1]+2];
-                dirpos11 = map[position[0]-1][position[1]+3];
-              } else {
-                dirpos1 = 0;
-                dirpos5 = 0;
-                dirpos11 = 0;
-              }
-              if (position[0]-2 >= 0) {
-                dirpos4 = map[position[0]-2][position[1]+2];
-                dirpos10 = map[position[0]-2][position[1]+3];
-              } else {
-                dirpos4 = 0;
-                dirpos10 = 0;
-              }
-              if (position[0]-3 >= 0) {
-                dirpos9 = map[position[0]-3][position[1]+3];
-              } else {
-                dirpos9 = 0;
-              }
-              if (position[0]+1 < map.length) {
-                dirpos3 = map[position[0]+1][position[1]+1];
-                dirpos7 = map[position[0]+1][position[1]+2];
-                dirpos13 = map[position[0]+1][position[1]+3];
-              } else {
-                dirpos3 = 0;
-                dirpos7 = 0;
-                dirpos13 = 0;
-              }
-              if (position[0]+2 < map.length) {
-                dirpos8 = map[position[0]+2][position[1]+2];
-                dirpos14 = map[position[0]+2][position[1]+3];
-              } else {
-                dirpos8 = 0;
-                dirpos14 = 0;
-              }
-              if (position[0]+3 < map.length) {
-                dirpos15 = map[position[0]+3][position[1]+3];
-              } else {
-                dirpos15 = 0;
-              }
-              dirpos2 = map[position[0]][position[1]+1];
-              dirpos6 = map[position[0]][position[1]+2];
-              dirpos12 = map[position[0]][position[1]+3];
-              break;
-
-            case "south":
-              if (position[0]+1 < map.length) {
-                dirpos1 = map[position[0]+1][position[1]+1];
-                dirpos2 = map[position[0]+1][position[1]];
-                dirpos3 = map[position[0]+1][position[1]-1];
-              } else {
-                dirpos1 = 0;
-                dirpos2 = 0;
-                dirpos3 = 0;
-              }
-              if (position[0]+2 < map.length) {
-                dirpos4 = map[position[0]+2][position[1]+2];
-                dirpos5 = map[position[0]+2][position[1]+1];
-                dirpos6 = map[position[0]+2][position[1]];
-                dirpos7 = map[position[0]+2][position[1]-1];
-                dirpos8 = map[position[0]+2][position[1]-2];
-              } else {
-                dirpos4 = 0;
-                dirpos5 = 0;
-                dirpos6 = 0;
-                dirpos7 = 0;
-                dirpos8 = 0;
-              }
-              if (position[0]+3 < map.length) {
-                dirpos9 = map[position[0]+3][position[1]+3];
-                dirpos10 = map[position[0]+3][position[1]+2];
-                dirpos11 = map[position[0]+3][position[1]+1];
-                dirpos12 = map[position[0]+3][position[1]];
-                dirpos13 = map[position[0]+3][position[1]-1];
-                dirpos14 = map[position[0]+3][position[1]-2];
-                dirpos15 = map[position[0]+3][position[1]-3];
-              } else {
-                dirpos9 = 0;
-                dirpos10 = 0;
-                dirpos11 = 0;
-                dirpos12 = 0;
-                dirpos13 = 0;
-                dirpos14 = 0;
-                dirpos15 = 0;
-              }
-              break;
-
-            case "west":
-              if (position[0]-1 >= 0) {
-                dirpos3 = map[position[0]-1][position[1]-1];
-                dirpos7 = map[position[0]-1][position[1]-2];
-                dirpos13 = map[position[0]-1][position[1]-3];
-              } else {
-                dirpos3 = 0;
-                dirpos7 = 0;
-                dirpos13 = 0;
-              }
-              if (position[0]-2 >= 0) {
-                dirpos8 = map[position[0]-2][position[1]-2];
-                dirpos14 = map[position[0]-2][position[1]-3];
-              } else {
-                dirpos8 = 0;
-                dirpos14 = 0;
-              }
-              if (position[0]-3 >= 0) {
-                dirpos15 = map[position[0]-3][position[1]-3];
-              } else {
-                dirpos15 = 0;
-              }
-              if (position[0]+1 < map.length) {
-                dirpos1 = map[position[0]+1][position[1]-1];
-                dirpos5 = map[position[0]+1][position[1]-2];
-                dirpos11 = map[position[0]+1][position[1]-3];
-              } else {
-                dirpos1 = 0;
-                dirpos5 = 0;
-                dirpos11 = 0;
-              }
-              if (position[0]+2 < map.length) {
-                dirpos4 = map[position[0]+2][position[1]-2];
-                dirpos10 = map[position[0]+2][position[1]-3];
-              } else {
-                dirpos4 = 0;
-                dirpos10 = 0;
-              }
-              if (position[0]+3 < map.length) {
-                dirpos9 = map[position[0]+3][position[1]-3];
-              } else {
-                dirpos9 = 0;
-              }
-              dirpos2 = map[position[0]][position[1]-1];
-              dirpos6 = map[position[0]][position[1]-2];
-              dirpos12 = map[position[0]][position[1]-3];
-              break;
+          const dirposArr = Array(15).fill(0);
+          const offsets = dirOffsets[direction];
+          for (let i = 0; i < 15; i++) {
+            const [dr, dc] = offsets[i];
+            const r = position[0] + dr;
+            const c = position[1] + dc;
+            if (
+              r >= 0 && r < map.length &&
+              c >= 0 && c < map[0].length
+            ) {
+              dirposArr[i] = map[r][c];
+            }
           }
+
+          [
+            dirpos1, dirpos2, dirpos3, dirpos4, dirpos5,
+            dirpos6, dirpos7, dirpos8, dirpos9, dirpos10,
+            dirpos11, dirpos12, dirpos13, dirpos14, dirpos15
+          ] = dirposArr;
 
           if (dirpos1 == 10) {
             pos1_object.classList.add("floor1");
