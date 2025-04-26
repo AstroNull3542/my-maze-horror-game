@@ -2150,7 +2150,6 @@
               [+3, -3], [+2, -3], [+1, -3], [0, -3], [-1, -3], [-2, -3], [-3, -3]
             ]
           };
-
           const dirposArr = Array(15).fill(0);
           const offsets = dirOffsets[direction];
           for (let i = 0; i < 15; i++) {
@@ -2164,476 +2163,44 @@
               dirposArr[i] = map[r][c];
             }
           }
-
           [
             dirpos1, dirpos2, dirpos3, dirpos4, dirpos5,
             dirpos6, dirpos7, dirpos8, dirpos9, dirpos10,
             dirpos11, dirpos12, dirpos13, dirpos14, dirpos15
           ] = dirposArr;
 
-          if (dirpos1 == 10) {
-            pos1_object.classList.add("floor1");
-            if (darkness) {pos1_dark.classList.add("floor1_dark")}
-          } else if (dirpos1 == 20) {
-            pos1_object.classList.add("wall1");
-            if (darkness) {pos1_dark.classList.add("wall1_dark")}
-          } else if (dirpos1 == 21) {
-            pos1_object.classList.add("wall1");
-            pos1_property.classList.add("key1");
-            if (darkness) {pos1_dark.classList.add("wall1_dark")}
-          } else if (dirpos1 == 22) {
-            pos1_object.classList.add("wall1");
-            pos1_property.classList.add("key1_empty");
-            if (darkness) {pos1_dark.classList.add("wall1_dark")}
-          } else if (dirpos1 == 23) {
-            pos1_object.classList.add("wall1");
-            pos1_property.classList.add("switch1");
-            if (darkness) {pos1_dark.classList.add("wall1_dark")}
-          } else if (dirpos1 == 24) {
-            pos1_object.classList.add("wall1");
-            pos1_property.classList.add("switch1_on");
-            if (darkness) {pos1_dark.classList.add("wall1_dark")}
-          } else if (dirpos1 == 25) {
-            pos1_object.classList.add("wall1");
-            pos1_property.classList.add("door1");
-            if (darkness) {pos1_dark.classList.add("wall1_dark")}
-          } else if (dirpos1 == 30) {
-            pos1_object.classList.add("gate1");
-            if (darkness) {pos1_dark.classList.add("gate1_dark")}
-          }
-
-          if (dirpos2 == 10) {
-            pos2_object.classList.add("floor2");
-            if (darkness) {pos2_dark.classList.add("floor2_dark")}
-          } else if (dirpos2 == 20) {
-            pos2_object.classList.add("wall2");
-            if (darkness) {pos2_dark.classList.add("wall2_dark")}
-          } else if (dirpos2 == 21) {
-            pos2_object.classList.add("wall2");
-            pos2_property.classList.add("key2");
-            if (darkness) {pos2_dark.classList.add("wall2_dark")}
-          } else if (dirpos2 == 22) {
-            pos2_object.classList.add("wall2");
-            pos2_property.classList.add("key2_empty");
-            if (darkness) {pos2_dark.classList.add("wall2_dark")}
-          } else if (dirpos2 == 23) {
-            pos2_object.classList.add("wall2");
-            pos2_property.classList.add("switch2");
-            if (darkness) {pos2_dark.classList.add("wall2_dark")}
-          } else if (dirpos2 == 24) {
-            pos2_object.classList.add("wall2");
-            pos2_property.classList.add("switch2_on");
-            if (darkness) {pos2_dark.classList.add("wall2_dark")}
-          } else if (dirpos2 == 25) {
-            pos2_object.classList.add("wall2");
-            pos2_property.classList.add("door2");
-            if (darkness) {pos2_dark.classList.add("wall2_dark")}
-          } else if (dirpos2 == 30) {
-            pos2_object.classList.add("gate2");
-            if (darkness) {pos2_dark.classList.add("gate2_dark")}
-          }
-
-          if (dirpos3 == 10) {
-            pos3_object.classList.add("floor3");
-            if (darkness) {pos3_dark.classList.add("floor3_dark")}
-          } else if (dirpos3 == 20) {
-            pos3_object.classList.add("wall3");
-            if (darkness) {pos3_dark.classList.add("wall3_dark")}
-          } else if (dirpos3 == 21) {
-            pos3_object.classList.add("wall3");
-            pos3_property.classList.add("key3");
-            if (darkness) {pos3_dark.classList.add("wall3_dark")}
-          } else if (dirpos3 == 22) {
-            pos3_object.classList.add("wall3");
-            pos3_property.classList.add("key3_empty");
-            if (darkness) {pos3_dark.classList.add("wall3_dark")}
-          } else if (dirpos3 == 23) {
-            pos3_object.classList.add("wall3");
-            pos3_property.classList.add("switch3");
-            if (darkness) {pos3_dark.classList.add("wall3_dark")}
-          } else if (dirpos3 == 24) {
-            pos3_object.classList.add("wall3");
-            pos3_property.classList.add("switch3_on");
-            if (darkness) {pos3_dark.classList.add("wall3_dark")}
-          } else if (dirpos3 == 25) {
-            pos3_object.classList.add("wall3");
-            pos3_property.classList.add("door3");
-            if (darkness) {pos3_dark.classList.add("wall3_dark")}
-          } else if (dirpos3 == 30) {
-            pos3_object.classList.add("gate3");
-            if (darkness) {pos3_dark.classList.add("gate3_dark")}
-          }
-
-          if (dirpos4 == 10) {
-            pos4_object.classList.add("floor4");
-            if (darkness) {pos4_dark.classList.add("floor4_dark")}
-          } else if (dirpos4 == 20) {
-            pos4_object.classList.add("wall4");
-            if (darkness) {pos4_dark.classList.add("wall4_dark")}
-          } else if (dirpos4 == 21) {
-            pos4_object.classList.add("wall4");
-            pos4_property.classList.add("key4");
-            if (darkness) {pos4_dark.classList.add("wall4_dark")}
-          } else if (dirpos4 == 22) {
-            pos4_object.classList.add("wall4");
-            pos4_property.classList.add("key4_empty");
-            if (darkness) {pos4_dark.classList.add("wall4_dark")}
-          } else if (dirpos4 == 23) {
-            pos4_object.classList.add("wall4");
-            pos4_property.classList.add("switch4");
-            if (darkness) {pos4_dark.classList.add("wall4_dark")}
-          } else if (dirpos4 == 24) {
-            pos4_object.classList.add("wall4");
-            pos4_property.classList.add("switch4_on");
-            if (darkness) {pos4_dark.classList.add("wall4_dark")}
-          } else if (dirpos4 == 25) {
-            pos4_object.classList.add("wall4");
-            pos4_property.classList.add("door4");
-            if (darkness) {pos4_dark.classList.add("wall4_dark")}
-          } else if (dirpos4 == 30) {
-            pos4_object.classList.add("gate4");
-            if (darkness) {pos4_dark.classList.add("gate4_dark")}
-          }
-
-          if (dirpos5 == 10) {
-            pos5_object.classList.add("floor5");
-            if (darkness) {pos5_dark.classList.add("floor5_dark")}
-          } else if (dirpos5 == 20) {
-            pos5_object.classList.add("wall5");
-            if (darkness) {pos5_dark.classList.add("wall5_dark")}
-          } else if (dirpos5 == 21) {
-            pos5_object.classList.add("wall5");
-            pos5_property.classList.add("key5");
-            if (darkness) {pos5_dark.classList.add("wall5_dark")}
-          } else if (dirpos5 == 22) {
-            pos5_object.classList.add("wall5");
-            pos5_property.classList.add("key5_empty");
-            if (darkness) {pos5_dark.classList.add("wall5_dark")}
-          } else if (dirpos5 == 23) {
-            pos5_object.classList.add("wall5");
-            pos5_property.classList.add("switch5");
-            if (darkness) {pos5_dark.classList.add("wall5_dark")}
-          } else if (dirpos5 == 24) {
-            pos5_object.classList.add("wall5");
-            pos5_property.classList.add("switch5_on");
-            if (darkness) {pos5_dark.classList.add("wall5_dark")}
-          } else if (dirpos5 == 25) {
-            pos5_object.classList.add("wall5");
-            pos5_property.classList.add("door5");
-            if (darkness) {pos5_dark.classList.add("wall5_dark")}
-          } else if (dirpos5 == 30) {
-            pos5_object.classList.add("gate5");
-            if (darkness) {pos5_dark.classList.add("gate5_dark")}
-          }
-
-          if (dirpos6 == 10) {
-            pos6_object.classList.add("floor6");
-            if (darkness) {pos6_dark.classList.add("floor6_dark")}
-          } else if (dirpos6 == 20) {
-            pos6_object.classList.add("wall6");
-            if (darkness) {pos6_dark.classList.add("wall6_dark")}
-          } else if (dirpos6 == 21) {
-            pos6_object.classList.add("wall6");
-            pos6_property.classList.add("key6");
-            if (darkness) {pos6_dark.classList.add("wall6_dark")}
-          } else if (dirpos6 == 22) {
-            pos6_object.classList.add("wall6");
-            pos6_property.classList.add("key6_empty");
-            if (darkness) {pos6_dark.classList.add("wall6_dark")}
-          } else if (dirpos6 == 23) {
-            pos6_object.classList.add("wall6");
-            pos6_property.classList.add("switch6");
-            if (darkness) {pos6_dark.classList.add("wall6_dark")}
-          } else if (dirpos6 == 24) {
-            pos6_object.classList.add("wall6");
-            pos6_property.classList.add("switch6_on");
-            if (darkness) {pos6_dark.classList.add("wall6_dark")}
-          } else if (dirpos6 == 25) {
-            pos6_object.classList.add("wall6");
-            pos6_property.classList.add("door6");
-            if (darkness) {pos6_dark.classList.add("wall6_dark")}
-          } else if (dirpos6 == 30) {
-            pos6_object.classList.add("gate6");
-            if (darkness) {pos6_dark.classList.add("gate6_dark")}
-          }
-
-          if (dirpos7 == 10) {
-            pos7_object.classList.add("floor7");
-            if (darkness) {pos7_dark.classList.add("floor7_dark")}
-          } else if (dirpos7 == 20) {
-            pos7_object.classList.add("wall7");
-            if (darkness) {pos7_dark.classList.add("wall7_dark")}
-          } else if (dirpos7 == 21) {
-            pos7_object.classList.add("wall7");
-            pos7_property.classList.add("key7");
-            if (darkness) {pos7_dark.classList.add("wall7_dark")}
-          } else if (dirpos7 == 22) {
-            pos7_object.classList.add("wall7");
-            pos7_property.classList.add("key7_empty");
-            if (darkness) {pos7_dark.classList.add("wall7_dark")}
-          } else if (dirpos7 == 23) {
-            pos7_object.classList.add("wall7");
-            pos7_property.classList.add("switch7");
-            if (darkness) {pos7_dark.classList.add("wall7_dark")}
-          } else if (dirpos7 == 24) {
-            pos7_object.classList.add("wall7");
-            pos7_property.classList.add("switch7_on");
-            if (darkness) {pos7_dark.classList.add("wall7_dark")}
-          } else if (dirpos7 == 25) {
-            pos7_object.classList.add("wall7");
-            pos7_property.classList.add("door7");
-            if (darkness) {pos7_dark.classList.add("wall7_dark")}
-          } else if (dirpos7 == 30) {
-            pos7_object.classList.add("gate7");
-            if (darkness) {pos7_dark.classList.add("gate7_dark")}
-          }
-
-          if (dirpos8 == 10) {
-            pos8_object.classList.add("floor8");
-            if (darkness) {pos8_dark.classList.add("floor8_dark")}
-          } else if (dirpos8 == 20) {
-            pos8_object.classList.add("wall8");
-            if (darkness) {pos8_dark.classList.add("wall8_dark")}
-          } else if (dirpos8 == 21) {
-            pos8_object.classList.add("wall8");
-            pos8_property.classList.add("key8");
-            if (darkness) {pos8_dark.classList.add("wall8_dark")}
-          } else if (dirpos8 == 22) {
-            pos8_object.classList.add("wall8");
-            pos8_property.classList.add("key8_empty");
-            if (darkness) {pos8_dark.classList.add("wall8_dark")}
-          } else if (dirpos8 == 23) {
-            pos8_object.classList.add("wall8");
-            pos8_property.classList.add("switch8");
-            if (darkness) {pos8_dark.classList.add("wall8_dark")}
-          } else if (dirpos8 == 24) {
-            pos8_object.classList.add("wall8");
-            pos8_property.classList.add("switch8_on");
-            if (darkness) {pos8_dark.classList.add("wall8_dark")}
-          } else if (dirpos8 == 25) {
-            pos8_object.classList.add("wall8");
-            pos8_property.classList.add("door8");
-            if (darkness) {pos8_dark.classList.add("wall8_dark")}
-          } else if (dirpos8 == 30) {
-            pos8_object.classList.add("gate8");
-            if (darkness) {pos8_dark.classList.add("gate8_dark")}
-          }
-
-          if (dirpos9 == 10) {
-            pos9_object.classList.add("floor9");
-            if (darkness) {pos9_dark.classList.add("floor9_dark")}
-          } else if (dirpos9 == 20) {
-            pos9_object.classList.add("wall9");
-            if (darkness) {pos9_dark.classList.add("wall9_dark")}
-          } else if (dirpos9 == 21) {
-            pos9_object.classList.add("wall9");
-            pos9_property.classList.add("key9");
-            if (darkness) {pos9_dark.classList.add("wall9_dark")}
-          } else if (dirpos9 == 22) {
-            pos9_object.classList.add("wall9");
-            pos9_property.classList.add("key9_empty");
-            if (darkness) {pos9_dark.classList.add("wall9_dark")}
-          } else if (dirpos9 == 23) {
-            pos9_object.classList.add("wall9");
-            pos9_property.classList.add("switch9");
-            if (darkness) {pos9_dark.classList.add("wall9_dark")}
-          } else if (dirpos9 == 24) {
-            pos9_object.classList.add("wall9");
-            pos9_property.classList.add("switch9_on");
-            if (darkness) {pos9_dark.classList.add("wall9_dark")}
-          } else if (dirpos9 == 25) {
-            pos9_object.classList.add("wall9");
-            pos9_property.classList.add("door9");
-            if (darkness) {pos9_dark.classList.add("wall9_dark")}
-          } else if (dirpos9 == 30) {
-            pos9_object.classList.add("gate9");
-            if (darkness) {pos9_dark.classList.add("gate9_dark")}
-          }
-
-          if (dirpos10 == 10) {
-            pos10_object.classList.add("floor10");
-            if (darkness) {pos10_dark.classList.add("floor10_dark")}
-          } else if (dirpos10 == 20) {
-            pos10_object.classList.add("wall10");
-            if (darkness) {pos10_dark.classList.add("wall10_dark")}
-          } else if (dirpos10 == 21) {
-            pos10_object.classList.add("wall10");
-            pos10_property.classList.add("key10");
-            if (darkness) {pos10_dark.classList.add("wall10_dark")}
-          } else if (dirpos10 == 22) {
-            pos10_object.classList.add("wall10");
-            pos10_property.classList.add("key10_empty");
-            if (darkness) {pos10_dark.classList.add("wall10_dark")}
-          } else if (dirpos10 == 23) {
-            pos10_object.classList.add("wall10");
-            pos10_property.classList.add("switch10");
-            if (darkness) {pos10_dark.classList.add("wall10_dark")}
-          } else if (dirpos10 == 24) {
-            pos10_object.classList.add("wall10");
-            pos10_property.classList.add("switch10_on");
-            if (darkness) {pos10_dark.classList.add("wall10_dark")}
-          } else if (dirpos10 == 25) {
-            pos10_object.classList.add("wall10");
-            pos10_property.classList.add("door10");
-            if (darkness) {pos10_dark.classList.add("wall10_dark")}
-          } else if (dirpos10 == 30) {
-            pos10_object.classList.add("gate10");
-            if (darkness) {pos10_dark.classList.add("gate10_dark")}
-          }
-
-          if (dirpos11 == 10) {
-            pos11_object.classList.add("floor11");
-            if (darkness) {pos11_dark.classList.add("floor11_dark")}
-          } else if (dirpos11 == 20) {
-            pos11_object.classList.add("wall11");
-            if (darkness) {pos11_dark.classList.add("wall11_dark")}
-          } else if (dirpos11 == 21) {
-            pos11_object.classList.add("wall11");
-            pos11_property.classList.add("key11");
-            if (darkness) {pos11_dark.classList.add("wall11_dark")}
-          } else if (dirpos11 == 22) {
-            pos11_object.classList.add("wall11");
-            pos11_property.classList.add("key11_empty");
-            if (darkness) {pos11_dark.classList.add("wall11_dark")}
-          } else if (dirpos11 == 23) {
-            pos11_object.classList.add("wall11");
-            pos11_property.classList.add("switch11");
-            if (darkness) {pos11_dark.classList.add("wall11_dark")}
-          } else if (dirpos11 == 24) {
-            pos11_object.classList.add("wall11");
-            pos11_property.classList.add("switch11_on");
-            if (darkness) {pos11_dark.classList.add("wall11_dark")}
-          } else if (dirpos11 == 25) {
-            pos11_object.classList.add("wall11");
-            pos11_property.classList.add("door11");
-            if (darkness) {pos11_dark.classList.add("wall11_dark")}
-          } else if (dirpos11 == 30) {
-            pos11_object.classList.add("gate11");
-            if (darkness) {pos11_dark.classList.add("gate11_dark")}
-          }
-
-          if (dirpos12 == 10) {
-            pos12_object.classList.add("floor12");
-            if (darkness) {pos12_dark.classList.add("floor12_dark")}
-          } else if (dirpos12 == 20) {
-            pos12_object.classList.add("wall12");
-            if (darkness) {pos12_dark.classList.add("wall12_dark")}
-          } else if (dirpos12 == 21) {
-            pos12_object.classList.add("wall12");
-            pos12_property.classList.add("key12");
-            if (darkness) {pos12_dark.classList.add("wall12_dark")}
-          } else if (dirpos12 == 22) {
-            pos12_object.classList.add("wall12");
-            pos12_property.classList.add("key12_empty");
-            if (darkness) {pos12_dark.classList.add("wall12_dark")}
-          } else if (dirpos12 == 23) {
-            pos12_object.classList.add("wall12");
-            pos12_property.classList.add("switch12");
-            if (darkness) {pos12_dark.classList.add("wall12_dark")}
-          } else if (dirpos12 == 24) {
-            pos12_object.classList.add("wall12");
-            pos12_property.classList.add("switch12_on");
-            if (darkness) {pos12_dark.classList.add("wall12_dark")}
-          } else if (dirpos12 == 25) {
-            pos12_object.classList.add("wall12");
-            pos12_property.classList.add("door12");
-            if (darkness) {pos12_dark.classList.add("wall12_dark")}
-          } else if (dirpos12 == 30) {
-            pos12_object.classList.add("gate12");
-            if (darkness) {pos12_dark.classList.add("gate12_dark")}
-          }
-
-          if (dirpos13 == 10) {
-            pos13_object.classList.add("floor13");
-            if (darkness) {pos13_dark.classList.add("floor13_dark")}
-          } else if (dirpos13 == 20) {
-            pos13_object.classList.add("wall13");
-            if (darkness) {pos13_dark.classList.add("wall13_dark")}
-          } else if (dirpos13 == 21) {
-            pos13_object.classList.add("wall13");
-            pos13_property.classList.add("key13");
-            if (darkness) {pos13_dark.classList.add("wall13_dark")}
-          } else if (dirpos13 == 22) {
-            pos13_object.classList.add("wall13");
-            pos13_property.classList.add("key13_empty");
-            if (darkness) {pos13_dark.classList.add("wall13_dark")}
-          } else if (dirpos13 == 23) {
-            pos13_object.classList.add("wall13");
-            pos13_property.classList.add("switch13");
-            if (darkness) {pos13_dark.classList.add("wall13_dark")}
-          } else if (dirpos13 == 24) {
-            pos13_object.classList.add("wall13");
-            pos13_property.classList.add("switch13_on");
-            if (darkness) {pos13_dark.classList.add("wall13_dark")}
-          } else if (dirpos13 == 25) {
-            pos13_object.classList.add("wall13");
-            pos13_property.classList.add("door13");
-            if (darkness) {pos13_dark.classList.add("wall13_dark")}
-          } else if (dirpos13 == 30) {
-            pos13_object.classList.add("gate13");
-            if (darkness) {pos13_dark.classList.add("gate13_dark")}
-          }
-
-          if (dirpos14 == 10) {
-            pos14_object.classList.add("floor14");
-            if (darkness) {pos14_dark.classList.add("floor14_dark")}
-          } else if (dirpos14 == 20) {
-            pos14_object.classList.add("wall14");
-            if (darkness) {pos14_dark.classList.add("wall14_dark")}
-          } else if (dirpos14 == 21) {
-            pos14_object.classList.add("wall14");
-            pos14_property.classList.add("key14");
-            if (darkness) {pos14_dark.classList.add("wall14_dark")}
-          } else if (dirpos14 == 22) {
-            pos14_object.classList.add("wall14");
-            pos14_property.classList.add("key14_empty");
-            if (darkness) {pos14_dark.classList.add("wall14_dark")}
-          } else if (dirpos14 == 23) {
-            pos14_object.classList.add("wall14");
-            pos14_property.classList.add("switch14");
-            if (darkness) {pos14_dark.classList.add("wall14_dark")}
-          } else if (dirpos14 == 24) {
-            pos14_object.classList.add("wall14");
-            pos14_property.classList.add("switch14_on");
-            if (darkness) {pos14_dark.classList.add("wall14_dark")}
-          } else if (dirpos14 == 25) {
-            pos14_object.classList.add("wall14");
-            pos14_property.classList.add("door14");
-            if (darkness) {pos14_dark.classList.add("wall14_dark")}
-          } else if (dirpos14 == 30) {
-            pos14_object.classList.add("gate14");
-            if (darkness) {pos14_dark.classList.add("gate14_dark")}
-          }
-
-          if (dirpos15 == 10) {
-            pos15_object.classList.add("floor15");
-            if (darkness) {pos15_dark.classList.add("floor15_dark")}
-          } else if (dirpos15 == 20) {
-            pos15_object.classList.add("wall15");
-            if (darkness) {pos15_dark.classList.add("wall15_dark")}
-          } else if (dirpos15 == 21) {
-            pos15_object.classList.add("wall15");
-            pos15_property.classList.add("key15");
-            if (darkness) {pos15_dark.classList.add("wall15_dark")}
-          } else if (dirpos15 == 22) {
-            pos15_object.classList.add("wall15");
-            pos15_property.classList.add("key15_empty");
-            if (darkness) {pos15_dark.classList.add("wall15_dark")}
-          } else if (dirpos15 == 23) {
-            pos15_object.classList.add("wall15");
-            pos15_property.classList.add("switch15");
-            if (darkness) {pos15_dark.classList.add("wall15_dark")}
-          } else if (dirpos15 == 24) {
-            pos15_object.classList.add("wall15");
-            pos15_property.classList.add("switch15_on");
-            if (darkness) {pos15_dark.classList.add("wall15_dark")}
-          } else if (dirpos15 == 25) {
-            pos15_object.classList.add("wall15");
-            pos15_property.classList.add("door15");
-            if (darkness) {pos15_dark.classList.add("wall15_dark")}
-          } else if (dirpos15 == 30) {
-            pos15_object.classList.add("gate15");
-            if (darkness) {pos15_dark.classList.add("gate15_dark")}
+          const posObjects = [pos1_object, pos2_object, pos3_object, pos4_object, pos5_object,
+            pos6_object, pos7_object, pos8_object, pos9_object, pos10_object,
+            pos11_object, pos12_object, pos13_object, pos14_object, pos15_object];
+          const posProperties = [pos1_property, pos2_property, pos3_property, pos4_property, pos5_property,
+            pos6_property, pos7_property, pos8_property, pos9_property, pos10_property,
+            pos11_property, pos12_property, pos13_property, pos14_property, pos15_property];
+          const posDarks = [pos1_dark, pos2_dark, pos3_dark, pos4_dark, pos5_dark,
+            pos6_dark, pos7_dark, pos8_dark, pos9_dark, pos10_dark,
+            pos11_dark, pos12_dark, pos13_dark, pos14_dark, pos15_dark];
+          const typeMap = {
+            10: { obj: 'floor', propBase: null, propSuffix: '' },
+            20: { obj: 'wall', propBase: null, propSuffix: '' },
+            21: { obj: 'wall', propBase: 'key', propSuffix: '' },
+            22: { obj: 'wall', propBase: 'key', propSuffix: '_empty' },
+            23: { obj: 'wall', propBase: 'switch', propSuffix: '' },
+            24: { obj: 'wall', propBase: 'switch', propSuffix: '_on' },
+            25: { obj: 'wall', propBase: 'door', propSuffix: '' },
+            30: { obj: 'gate', propBase: null, propSuffix: '' }
+          };
+          for (let i = 0; i < 15; i++) {
+            const code = dirposArr ? dirposArr[i] : [dirpos1, dirpos2, dirpos3, dirpos4, dirpos5, dirpos6, dirpos7, dirpos8, dirpos9, dirpos10, dirpos11, dirpos12, dirpos13, dirpos14, dirpos15][i];
+            const cfg = typeMap[code];
+            if (!cfg) continue;
+            posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
+            if (cfg.propBase) {
+              posProperties[i].classList.add(
+                `${cfg.propBase}${i + 1}${cfg.propSuffix}`
+              );
+            }
+            if (darkness) {
+              posDarks[i].classList.add(`${cfg.obj}${i + 1}_dark`);
+            }
           }
         }
         
