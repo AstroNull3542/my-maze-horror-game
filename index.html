@@ -2204,66 +2204,26 @@
           }
         }
         
-        document.getElementById("buttonup").addEventListener("click", () => {
-          if (animation == false) {
-            if (alive) {
-              up();
-              render();
-            } else {
-              restart();
+        const controls = [
+          { id: 'buttonup', action: up },
+          { id: 'buttondown', action: down },
+          { id: 'buttonleft', action: left },
+          { id: 'buttonright', action: right },
+          { id: 'buttonturnleft', action: turnleft },
+          { id: 'buttonturnright', action: turnright }
+        ];
+        controls.forEach(({ id, action }) => {
+          document.getElementById(id).addEventListener('click', () => {
+            if (!animation) {
+              if (alive) {
+                action();
+                render();
+              } else {
+                restart();
+              }
             }
-          }
-        })
-        document.getElementById("buttondown").addEventListener("click", () => {
-          if (animation == false) {
-            if (alive) {
-              down();
-              render();
-            } else {
-              restart();
-            }
-          }
-        })
-        document.getElementById("buttonleft").addEventListener("click", () => {
-          if (animation == false) {
-            if (alive) {
-              left();
-              render();
-            } else {
-              restart();
-            }
-          }
-        })
-        document.getElementById("buttonright").addEventListener("click", () => {
-          if (animation == false) {
-            if (alive) {
-              right();
-              render();
-            } else {
-              restart();
-            }
-          }
-        })
-        document.getElementById("buttonturnleft").addEventListener("click", () => {
-          if (animation == false) {
-            if (alive) {
-              turnleft();
-              render();
-            } else {
-              restart();
-            }
-          }
-        })
-        document.getElementById("buttonturnright").addEventListener("click", () => {
-          if (animation == false) {
-            if (alive) {
-              turnright();
-              render();
-            } else {
-              restart();
-            }
-          }
-        })
+          });
+        });
         let minimaptimeout;
         if(window.screen.width < 768) {
           pos15_object.addEventListener("click", () => {
