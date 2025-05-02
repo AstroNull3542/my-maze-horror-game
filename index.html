@@ -2240,47 +2240,37 @@
                   south: [+1, 0],
                   west: [0, -1]
                 };
-                function interact(direction) {
-                  const [dr, dc] = moveOffsets[direction];
-                  const r = position[0] + dr;
-                  const c = position[1] + dc;
-                  dirpos = [r, c];
-                  if (r < 0 || r >= map.length || c < 0 || c >= map[0].length) {
-                    turnflashlight = true;
-                    return;
-                  }
-                  let cell = map[r][c];
-                  if (cell === 21) {
-                    map[r][c] = 22;
-                    key++;
-                  }
-                  else if (cell === 23) {
-                    map[r][c] = 24;
-                    switchtrigger = true;
-                    activate = true;
-                  }
-                  else if (cell === 24) {
-                    map[r][c] = 23;
-                    switchtrigger = true;
-                    activate = false;
-                  }
-                  else if (cell === 30) {
-                    keytrigger = true;
-                  }
-                  else if (cell === 25) {
-                    nextmap();
-                  }
-                  else {
-                    turnflashlight = true;
-                  }
+                const [dr, dc] = moveOffsets[direction];
+                const r = position[0] + dr;
+                const c = position[1] + dc;
+                dirpos = [r, c];
+                if (r < 0 || r >= map.length || c < 0 || c >= map[0].length) {
+                  turnflashlight = true;
+                  return;
                 }
-                switch (direction) {
-                  case "north":
-                  case "east":
-                  case "south":
-                  case "west":
-                    interact(direction);
-                    break;
+                let cell = map[r][c];
+                if (cell === 21) {
+                  map[r][c] = 22;
+                  key++;
+                }
+                else if (cell === 23) {
+                  map[r][c] = 24;
+                  switchtrigger = true;
+                  activate = true;
+                }
+                else if (cell === 24) {
+                  map[r][c] = 23;
+                  switchtrigger = true;
+                  activate = false;
+                }
+                else if (cell === 30) {
+                  keytrigger = true;
+                }
+                else if (cell === 25) {
+                  nextmap();
+                }
+                else {
+                  turnflashlight = true;
                 }
                 if(switchtrigger) {
                   switchchange(dirpos[0], dirpos[1], activate);
@@ -2375,98 +2365,58 @@
           }
         }
         function minimapmove(dir) {
-          switch (dir) {
-            case "up":
-              map1.style.top = "0.2cm";
-              map2.style.top = "0.2cm";
-              map3.style.top = "0.2cm";
-              map4.style.top = "0.8cm";
-              map5.style.top = "0.8cm";
-              map6.style.top = "0.8cm";
-              map7.style.backgroundColor = "transparent";
-              map8.style.backgroundColor = "transparent";
-              map9.style.backgroundColor = "transparent";
-              map7.style.border = "none";
-              map8.style.border = "none";
-              map9.style.border = "none";
-              setTimeout(() => {
-                map1.style.top = "0cm";
-                map2.style.top = "0cm";
-                map3.style.top = "0cm";
-                map4.style.top = "0.6cm";
-                map5.style.top = "0.6cm";
-                map6.style.top = "0.6cm";
-              }, 200);
-              break;
-            case "down":
-              map4.style.top = "0.4cm";
-              map5.style.top = "0.4cm";
-              map6.style.top = "0.4cm";
-              map7.style.top = "1.0cm";
-              map8.style.top = "1.0cm";
-              map9.style.top = "1.0cm";
-              map1.style.backgroundColor = "transparent";
-              map2.style.backgroundColor = "transparent";
-              map3.style.backgroundColor = "transparent";
-              map1.style.border = "none";
-              map2.style.border = "none";
-              map3.style.border = "none";
-              setTimeout(() => {
-                map4.style.top = "0.6cm";
-                map5.style.top = "0.6cm";
-                map6.style.top = "0.6cm";
-                map7.style.top = "1.2cm";
-                map8.style.top = "1.2cm";
-                map9.style.top = "1.2cm";
-              }, 200);
-              break;
-            case "left":
-              map1.style.left = "0.2cm";
-              map4.style.left = "0.2cm";
-              map7.style.left = "0.2cm";
-              map2.style.left = "0.8cm";
-              map5.style.left = "0.8cm";
-              map8.style.left = "0.8cm";
-              map3.style.backgroundColor = "transparent";
-              map6.style.backgroundColor = "transparent";
-              map9.style.backgroundColor = "transparent";
-              map3.style.border = "none";
-              map6.style.border = "none";
-              map9.style.border = "none";
-              setTimeout(() => {
-                map1.style.left = "0cm";
-                map4.style.left = "0cm";
-                map7.style.left = "0cm";
-                map2.style.left = "0.6cm";
-                map5.style.left = "0.6cm";
-                map8.style.left = "0.6cm";
-              }, 200);
-              break;
-            case "right":
-              map2.style.left = "0.4cm";
-              map5.style.left = "0.4cm";
-              map8.style.left = "0.4cm";
-              map3.style.left = "1.0cm";
-              map6.style.left = "1.0cm";
-              map9.style.left = "1.0cm";
-              map1.style.backgroundColor = "transparent";
-              map4.style.backgroundColor = "transparent";
-              map7.style.backgroundColor = "transparent";
-              map1.style.border = "none";
-              map4.style.border = "none";
-              map7.style.border = "none";
-              setTimeout(() => {
-                map2.style.left = "0.6cm";
-                map5.style.left = "0.6cm";
-                map8.style.left = "0.6cm";
-                map3.style.left = "1.2cm";
-                map6.style.left = "1.2cm";
-                map9.style.left = "1.2cm";
-              }, 200);
-              break;
+          const maps = [
+            [map1, map2, map3],
+            [map4, map5, map6],
+            [map7, map8, map9]
+          ];
+          const slideConfig = {
+            up: {
+              init: [{ row: 0, prop: 'top', value: '0.2cm' }, { row: 1, prop: 'top', value: '0.8cm' }],
+              fadeRow: 2,
+              delayed: [{ row: 0, prop: 'top', value: '0cm' }, { row: 1, prop: 'top', value: '0.6cm' }]
+            },
+            down: {
+              init: [{ row: 1, prop: 'top', value: '0.4cm' }, { row: 2, prop: 'top', value: '1.0cm' }],
+              fadeRow: 0,
+              delayed: [{ row: 1, prop: 'top', value: '0.6cm' }, { row: 2, prop: 'top', value: '1.2cm' }]
+            },
+            left: {
+              init: [{ col: 0, prop: 'left', value: '0.2cm' }, { col: 1, prop: 'left', value: '0.8cm' }],
+              fadeCol: 2,
+              delayed: [{ col: 0, prop: 'left', value: '0cm' }, { col: 1, prop: 'left', value: '0.6cm' }]
+            },
+            right: {
+              init: [{ col: 1, prop: 'left', value: '0.4cm' }, { col: 2, prop: 'left', value: '1.0cm' }],
+              fadeCol: 0,
+              delayed: [{ col: 1, prop: 'left', value: '0.6cm' }, { col: 2, prop: 'left', value: '1.2cm' }]
+            }
+          };
+          const cfg = slideConfig[dir];
+          if (!cfg) return;
+          cfg.init.forEach(({ row, col, prop, value }) => {
+            if (row != null) maps[row].forEach(cell => cell.style[prop] = value);
+            else maps.forEach(rowArr => rowArr[col].style[prop] = value);
+          });
+          if (cfg.fadeRow != null) {
+            maps[cfg.fadeRow].forEach(cell => {
+              cell.style.backgroundColor = 'transparent';
+              cell.style.border = 'none';
+            });
+          } else {
+            maps.forEach(rowArr => {
+              rowArr[cfg.fadeCol].style.backgroundColor = 'transparent';
+              rowArr[cfg.fadeCol].style.border = 'none';
+            });
           }
+          setTimeout(() => {
+            cfg.delayed.forEach(({ row, col, prop, value }) => {
+              if (row != null) maps[row].forEach(cell => cell.style[prop] = value);
+              else maps.forEach(rowArr => rowArr[col].style[prop] = value);
+            });
+          }, 200);
         }
-        function renderminimap(dir) {
+        function renderminimap(dir) {//optimize
           switch(dir) {
             case "up":
               switch (direction) {
