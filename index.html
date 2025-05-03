@@ -2416,73 +2416,15 @@
             });
           }, 200);
         }
-        function renderminimap(dir) {//optimize
-          switch(dir) {
-            case "up":
-              switch (direction) {
-                case "north":
-                  minimapmove("up");
-                  break;
-                case "east":
-                  minimapmove("right");
-                  break;
-                case "south":
-                  minimapmove("down");
-                  break;
-                case "west":
-                  minimapmove("left");
-                  break;
-              }
-              break;
-            case "down":
-              switch (direction) {
-                case "north":
-                  minimapmove("down");
-                  break;
-                case "east":
-                  minimapmove("left");
-                  break;
-                case "south":
-                  minimapmove("up");
-                  break;
-                case "west":
-                  minimapmove("right");
-                  break;
-              }
-              break;
-            case "left":
-              switch(direction) {
-                case "north":
-                  minimapmove("left");
-                  break;
-                case "east":
-                  minimapmove("up");
-                  break;
-                case "south":
-                  minimapmove("right");
-                  break;
-                case "west":
-                  minimapmove("down");
-                  break;
-              }
-              break;
-            case "right":
-              switch(direction) {
-                case "north":
-                  minimapmove("right");
-                  break;
-                case "east":
-                  minimapmove("down");
-                  break;
-                case "south":
-                  minimapmove("left");
-                  break;
-                case "west":
-                  minimapmove("up");
-                  break;
-              }
-              break;
-          }
+        function renderminimap(dir) {
+          const minimapDirections = {
+            up: { north: 'up', east: 'right', south: 'down', west: 'left' },
+            down: { north: 'down', east: 'left', south: 'up', west: 'right' },
+            left: { north: 'left', east: 'up', south: 'right', west: 'down' },
+            right: { north: 'right', east: 'down', south: 'left', west: 'up' }
+          };
+          const move = minimapDirections[dir]?.[direction];
+          if (move) minimapmove(move);
           setTimeout(() => {
             map1.style.backgroundColor = "transparent";
             map2.style.backgroundColor = "transparent";
