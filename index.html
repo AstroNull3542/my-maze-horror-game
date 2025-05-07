@@ -2525,68 +2525,39 @@
           handleMove("buttonright", "right");
         }
 
-        //optimize
-        function turnleft() {
-          switch(direction) {
-            case "north":
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')"
-              direction = "west";
-              break;
-            case "east":
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')"
-              direction = "north";
-              break;
-            case "south":
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')"
-              direction = "east";
-              break;
-            case "west":
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')"
-              direction = "south";
-              break;
+        const turnConfig = {
+          turnleft: {
+            nextDir: { north: 'west', west: 'south', south: 'east', east: 'north' },
+            arrow: { north: 'left', west: 'down', south: 'right', east: 'up' },
+            rotation: 45,
+            buttonId: 'buttonturnleft'
+          },
+          turnright: {
+            nextDir: { north: 'east', east: 'south', south: 'west', west: 'north' },
+            arrow: { north: 'right', east: 'down', south: 'left', west: 'up' },
+            rotation: -45,
+            buttonId: 'buttonturnright'
           }
-          dirindicator.style.transform = "rotate(45deg)";
+        };
+        function handleTurn(cmd) {
+          const cfg = turnConfig[cmd];
+          const imgName = cfg.arrow[direction];
+          dirindicator.style.backgroundImage = `url('./sprite/arrow/${imgName}-arrow.png')`;
+          direction = cfg.nextDir[direction];
+          dirindicator.style.transform = `rotate(${cfg.rotation}deg)`;
           setTimeout(() => {
-            dirindicator.style.transform = "rotate(0)";
+            dirindicator.style.transform = 'rotate(0)';
           }, 300);
-          document.getElementById("buttonturnleft").style.transition = "none";
-          document.getElementById("buttonturnleft").style.transform = "scale(1.05)";
+          const btn = document.getElementById(cfg.buttonId);
+          btn.style.transition = 'none';
+          btn.style.transform = 'scale(1.05)';
           setTimeout(() => {
-            document.getElementById("buttonturnleft").style.transition = "transform 0.2s ease-out";
-            document.getElementById("buttonturnleft").style.transform = "scale(1)";
+            btn.style.transition = 'transform 0.2s ease-out';
+            btn.style.transform = 'scale(1)';
           }, 1);
         }
-
-        function turnright() {
-          switch(direction) {
-            case "north":
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')"
-              direction = "east";
-              break;
-            case "east":
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')"
-              direction = "south";
-              break;
-            case "south":
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')"
-              direction = "west";
-              break;
-            case "west":
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')"
-              direction = "north";
-              break;
-          }
-          dirindicator.style.transform = "rotate(-45deg)";
-          setTimeout(() => {
-            dirindicator.style.transform = "rotate(0)";
-          }, 300);
-          document.getElementById("buttonturnright").style.transition = "none";
-          document.getElementById("buttonturnright").style.transform = "scale(1.05)";
-          setTimeout(() => {
-            document.getElementById("buttonturnright").style.transition = "transform 0.2s ease-out";
-            document.getElementById("buttonturnright").style.transform = "scale(1)";
-          }, 1);
-        }
+        function turnleft() { handleTurn('turnleft'); }
+        function turnright() { handleTurn('turnright'); }
 
         function restart(mapchange) {
           animation = true;
@@ -2711,7 +2682,7 @@
                 let keytrigger = false;
                 let activate;
                 let dirpos;
-                switch(direction) {
+                switch(direction) {//optimize
                   case "north":
                     if (map[position[0] - 1][position[1]] == 21) { map[position[0] - 1][position[1]] = 22; key++ }
                     else if (map[position[0] - 1][position[1]] == 23) { map[position[0] - 1][position[1]] = 24; switchtrigger = true; activate = true }
