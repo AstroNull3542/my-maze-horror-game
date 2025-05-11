@@ -2695,18 +2695,16 @@
                   30: (r, c) => { keytrigger = true; },
                   25: (r, c) => { nextmap(); }
                 };
-                function interact() {
-                  const [dr, dc] = moveOffsets[direction];
-                  const r = position[0] + dr;
-                  const c = position[1] + dc;
-                  if (r < 0 || r >= map.length || c < 0 || c >= map[0].length) {
-                    turnflashlight = true;
-                  } else {
-                    const val = map[r][c];
-                    (cellHandlers[val] || (() => { turnflashlight = true; }))(r, c);
-                  }
-                  dirpos = [r, c];
+                const [dr, dc] = moveOffsets[direction];
+                const r = position[0] + dr;
+                const c = position[1] + dc;
+                if (r < 0 || r >= map.length || c < 0 || c >= map[0].length) {
+                  turnflashlight = true;
+                } else {
+                  const val = map[r][c];
+                  (cellHandlers[val] || (() => { turnflashlight = true; }))(r, c);
                 }
+                dirpos = [r, c];
                 if(switchtrigger) {
                   switchchange(dirpos[0], dirpos[1], activate);
                 }
@@ -2738,303 +2736,197 @@
 
         var loading = document.getElementById('loading');
 
-        setTimeout(() => {
-          pos1_object.classList.add("floor1");
-          pos2_object.classList.add("floor2");
-          pos3_object.classList.add("floor3");
-          pos4_object.classList.add("floor4");
-          pos5_object.classList.add("floor5");
-          pos6_object.classList.add("floor6");
-          pos7_object.classList.add("floor7");
-          pos8_object.classList.add("floor8");
-          pos9_object.classList.add("floor9");
-          pos10_object.classList.add("floor10");
-          pos11_object.classList.add("floor11");
-          pos12_object.classList.add("floor12");
-          pos13_object.classList.add("floor13");
-          pos14_object.classList.add("floor14");
-          pos15_object.classList.add("floor15");
-
-          pos1_property.classList.add("key1");
-          pos2_property.classList.add("key2");
-          pos3_property.classList.add("key3");
-          pos4_property.classList.add("key4");
-          pos5_property.classList.add("key5");
-          pos6_property.classList.add("key6");
-          pos7_property.classList.add("key7");
-          pos8_property.classList.add("key8");
-          pos9_property.classList.add("key9");
-          pos10_property.classList.add("key10");
-          pos11_property.classList.add("key11");
-          pos12_property.classList.add("key12");
-          pos13_property.classList.add("key13");
-          pos14_property.classList.add("key14");
-          pos15_property.classList.add("key15");
-
-          pos1_dark.classList.add("floor1_dark");
-          pos2_dark.classList.add("floor2_dark");
-          pos3_dark.classList.add("floor3_dark");
-          pos4_dark.classList.add("floor4_dark");
-          pos5_dark.classList.add("floor5_dark");
-          pos6_dark.classList.add("floor6_dark");
-          pos7_dark.classList.add("floor7_dark");
-          pos8_dark.classList.add("floor8_dark");
-          pos9_dark.classList.add("floor9_dark");
-          pos10_dark.classList.add("floor10_dark");
-          pos11_dark.classList.add("floor11_dark");
-          pos12_dark.classList.add("floor12_dark");
-          pos13_dark.classList.add("floor13_dark");
-          pos14_dark.classList.add("floor14_dark");
-          pos15_dark.classList.add("floor15_dark");
-
-          spike1.classList.add("spike1");
-          spike2.classList.add("spike2");
-          spike3.classList.add("spike3");
-          spike4.classList.add("spike4");    
-
-          blackout.classList.add("blackout");
-
-          died.classList.add("died");
-
-          flashlight.className = 'flashlight1_dark';
-          dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')"
-          flashlight_off.className = 'flashlight_off';
-
-          loading.innerHTML = "Loading... (54/205)";
-
-          setTimeout(() => {
-            pos1_object.classList.add("wall1");
-            pos2_object.classList.add("wall2");
-            pos3_object.classList.add("wall3");
-            pos4_object.classList.add("wall4");
-            pos5_object.classList.add("wall5");
-            pos6_object.classList.add("wall6");
-            pos7_object.classList.add("wall7");
-            pos8_object.classList.add("wall8");
-            pos9_object.classList.add("wall9");
-            pos10_object.classList.add("wall10");
-            pos11_object.classList.add("wall11");
-            pos12_object.classList.add("wall12");
-            pos13_object.classList.add("wall13");
-            pos14_object.classList.add("wall14");
-            pos15_object.classList.add("wall15");
-
-            pos1_property.classList.add("key1_empty");
-            pos2_property.classList.add("key2_empty");
-            pos3_property.classList.add("key3_empty");
-            pos4_property.classList.add("key4_empty");
-            pos5_property.classList.add("key5_empty");
-            pos6_property.classList.add("key6_empty");
-            pos7_property.classList.add("key7_empty");
-            pos8_property.classList.add("key8_empty");
-            pos9_property.classList.add("key9_empty");
-            pos10_property.classList.add("key10_empty");
-            pos11_property.classList.add("key11_empty");
-            pos12_property.classList.add("key12_empty");
-            pos13_property.classList.add("key13_empty");
-            pos14_property.classList.add("key14_empty");
-            pos15_property.classList.add("key15_empty");
-
-            pos1_dark.classList.add("wall1_dark");
-            pos2_dark.classList.add("wall2_dark");
-            pos3_dark.classList.add("wall3_dark");
-            pos4_dark.classList.add("wall4_dark");
-            pos5_dark.classList.add("wall5_dark");
-            pos6_dark.classList.add("wall6_dark");
-            pos7_dark.classList.add("wall7_dark");
-            pos8_dark.classList.add("wall8_dark");
-            pos9_dark.classList.add("wall9_dark");
-            pos10_dark.classList.add("wall10_dark");
-            pos11_dark.classList.add("wall11_dark");
-            pos12_dark.classList.add("wall12_dark");
-            pos13_dark.classList.add("wall13_dark");
-            pos14_dark.classList.add("wall14_dark");
-            pos15_dark.classList.add("wall15_dark");
-
-            flashlight.className = 'flashlight2_dark';
-            dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')"
-
-            loading.innerHTML = "Loading... (101/205)";
-
-            setTimeout(() => {
-              pos1_object.classList.add("gate1");
-              pos2_object.classList.add("gate2");
-              pos3_object.classList.add("gate3");
-              pos4_object.classList.add("gate4");
-              pos5_object.classList.add("gate5");
-              pos6_object.classList.add("gate6");
-              pos7_object.classList.add("gate7");
-              pos8_object.classList.add("gate8");
-              pos9_object.classList.add("gate9");
-              pos10_object.classList.add("gate10");
-              pos11_object.classList.add("gate11");
-              pos12_object.classList.add("gate12");
-              pos13_object.classList.add("gate13");
-              pos14_object.classList.add("gate14");
-              pos15_object.classList.add("gate15");
-
-              pos1_property.classList.add("switch1");
-              pos2_property.classList.add("switch2");
-              pos3_property.classList.add("switch3");
-              pos4_property.classList.add("switch4");
-              pos5_property.classList.add("switch5");
-              pos6_property.classList.add("switch6");
-              pos7_property.classList.add("switch7");
-              pos8_property.classList.add("switch8");
-              pos9_property.classList.add("switch9");
-              pos10_property.classList.add("switch10");
-              pos11_property.classList.add("switch11");
-              pos12_property.classList.add("switch12");
-              pos13_property.classList.add("switch13");
-              pos14_property.classList.add("switch14");
-              pos15_property.classList.add("switch15");
-
-              pos1_dark.classList.add("gate1_dark");
-              pos2_dark.classList.add("gate2_dark");
-              pos3_dark.classList.add("gate3_dark");
-              pos4_dark.classList.add("gate4_dark");
-              pos5_dark.classList.add("gate5_dark");
-              pos6_dark.classList.add("gate6_dark");
-              pos7_dark.classList.add("gate7_dark");
-              pos8_dark.classList.add("gate8_dark");
-              pos9_dark.classList.add("gate9_dark");
-              pos10_dark.classList.add("gate10_dark");
-              pos11_dark.classList.add("gate11_dark");
-              pos12_dark.classList.add("gate12_dark");
-              pos13_dark.classList.add("gate13_dark");
-              pos14_dark.classList.add("gate14_dark");
-              pos15_dark.classList.add("gate15_dark");
-              
+        function wait(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        const loadSteps = [
+          {
+            delay: 100,
+            action() {
+              for (let i = 1; i <= 15; i++) {
+                window[`pos${i}_object`].classList.add(`floor${i}`);
+                window[`pos${i}_property`].classList.add(`key${i}`);
+                window[`pos${i}_dark`].classList.add(`floor${i}_dark`);
+              }
+              spike1.classList.add("spike1");
+              spike2.classList.add("spike2");
+              spike3.classList.add("spike3");
+              spike4.classList.add("spike4");
+              blackout.classList.add("blackout");
+              died.classList.add("died");
+              flashlight.className = 'flashlight1_dark';
+              dirindicator.style.backgroundImage = "url('./sprite/arrow/up-arrow.png')";
+              flashlight_off.className = 'flashlight_off';
+              loading.innerHTML = "Loading... (54/205)";
+            }
+          },
+          {
+            delay: 100,
+            action() {
+              for (let i = 1; i <= 15; i++) {
+                window[`pos${i}_object`].classList.add(`wall${i}`);
+                window[`pos${i}_property`].classList.add(`key${i}_empty`);
+                window[`pos${i}_dark`].classList.add(`wall${i}_dark`);
+              }
+              flashlight.className = 'flashlight2_dark';
+              dirindicator.style.backgroundImage = "url('./sprite/arrow/down-arrow.png')";
+              loading.innerHTML = "Loading... (101/205)";
+            }
+          },
+          {
+            delay: 100,
+            action() {
+              for (let i = 1; i <= 15; i++) {
+                window[`pos${i}_object`].classList.add(`gate${i}`);
+                window[`pos${i}_property`].classList.add(`switch${i}`);
+                window[`pos${i}_dark`].classList.add(`gate${i}_dark`);
+              }
               flashlight.className = 'flashlight3_dark';
-              dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')"
-
+              dirindicator.style.backgroundImage = "url('./sprite/arrow/left-arrow.png')";
               loading.innerHTML = "Loading... (148/205)";
-
-              setTimeout(() => {
-                pos1_property.classList.add("switch1_on");
-                pos2_property.classList.add("switch2_on");
-                pos3_property.classList.add("switch3_on");
-                pos4_property.classList.add("switch4_on");
-                pos5_property.classList.add("switch5_on");
-                pos6_property.classList.add("switch6_on");
-                pos7_property.classList.add("switch7_on");
-                pos8_property.classList.add("switch8_on");
-                pos9_property.classList.add("switch9_on");
-                pos10_property.classList.add("switch10_on");
-                pos11_property.classList.add("switch11_on");
-                pos12_property.classList.add("switch12_on");
-                pos13_property.classList.add("switch13_on");
-                pos14_property.classList.add("switch14_on");
-                pos15_property.classList.add("switch15_on");
-
-                flashlight.className = 'flashlight4_dark';
-                dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')"
-
-                loading.innerHTML = "Loading... (165/205)";
-
-                setTimeout(() => {
-                  pos1_property.classList.add("door1");
-                  pos2_property.classList.add("door2");
-                  pos3_property.classList.add("door3");
-                  pos4_property.classList.add("door4");
-                  pos5_property.classList.add("door5");
-                  pos6_property.classList.add("door6");
-                  pos7_property.classList.add("door7");
-                  pos8_property.classList.add("door8");
-                  pos9_property.classList.add("door9");
-                  pos10_property.classList.add("door10");
-                  pos11_property.classList.add("door11");
-                  pos12_property.classList.add("door12");
-                  pos13_property.classList.add("door13");
-                  pos14_property.classList.add("door14");
-                  pos15_property.classList.add("door15");
-                  
-                  flashlight.className = 'flashlight5_dark';
-                  loading.innerHTML = "Loading... (181/205)";
-
-                  setTimeout(() => {
-                    flashlight.className = 'flashlight6_dark';
-                    loading.innerHTML = "Loading... (182/205)";
-
-                    setTimeout(() => {
-                      flashlight.className = 'flashlight7_dark';
-                      loading.innerHTML = "Loading... (183/205)";
-
-                      setTimeout(() => {
-                        flashlight.className = 'flashlight8_dark';
-                        loading.innerHTML = "Loading... (184/205)";
-
-                        setTimeout(() => {
-                          flashlight.className = 'flashlight9_dark';
-                          loading.innerHTML = "Loading... (185/205)";
-
-                          setTimeout(() => {
-                            flashlight.className = 'flashlight1';
-                            loading.innerHTML = "Loading... (186/205)";
-
-                            setTimeout(() => {
-                              flashlight.className = 'flashlight2';
-                              loading.innerHTML = "Loading... (187/205)";
-
-                              setTimeout(() => {
-                                flashlight.className = 'flashlight3';
-                                loading.innerHTML = "Loading... (188/205)";
-
-                                setTimeout(() => {
-                                  flashlight.className = 'flashlight4';
-                                  loading.innerHTML = "Loading... (189/205)";
-                                  
-                                  setTimeout(() => {
-                                    flashlight.className = 'flashlight5';
-                                    loading.innerHTML = "Loading... (190/205)";
-
-                                    setTimeout(() => {
-                                      flashlight.className = 'flashlight6';
-                                      loading.innerHTML = "Loading... (191/205)";
-
-                                      setTimeout(() => {
-                                        flashlight.className = 'flashlight7';
-                                        loading.innerHTML = "Loading... (192/205)";
-
-                                        setTimeout(() => {
-                                          flashlight.className = 'flashlight8';
-                                          loading.innerHTML = "Loading... (193/205)";
-
-                                          setTimeout(() => {
-                                            flashlight.className = 'flashlight9';
-                                            loading.innerHTML = "Loading... (194/205)";
-
-                                            setTimeout(() => {
-                                              loading.innerHTML = "Loading... (204/205)";
-                                              flashlight.className = '';
-                                              flashlight_off.className = '';
-                                              spike1.className = '';
-                                              spike2.className = '';
-                                              spike3.className = '';
-                                              spike4.className = '';
-                                              blackout.className = '';
-                                              died.className = '';
-                                              clear();
-                                              render();
-                                            }, 75)
-                                          }, 75)
-                                        }, 75)
-                                      }, 75)
-                                    }, 75)
-                                  }, 75)
-                                }, 75)
-                              }, 75)
-                            }, 75)
-                          }, 75)
-                        }, 75)
-                      }, 75)
-                    }, 75)
-                  }, 100)
-                }, 100)
-              }, 100)
-            }, 100)
-          }, 100)
-        }, 100)
+            }
+          },
+          {
+            delay: 100,
+            action() {
+              for (let i = 1; i <= 15; i++) {
+                window[`pos${i}_property`].classList.add(`switch${i}_on`);
+              }
+              flashlight.className = 'flashlight4_dark';
+              dirindicator.style.backgroundImage = "url('./sprite/arrow/right-arrow.png')";
+              loading.innerHTML = "Loading... (165/205)";
+            }
+          },
+          {
+            delay: 100,
+            action() {
+              for (let i = 1; i <= 15; i++) {
+                window[`pos${i}_property`].classList.add(`door${i}`);
+              }
+              flashlight.className = 'flashlight5_dark';
+              loading.innerHTML = "Loading... (181/205)";
+            }
+          },
+          {
+            delay: 100,
+            action() {
+              flashlight.className = 'flashlight6_dark';
+              loading.innerHTML = "Loading... (182/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight7_dark';
+              loading.innerHTML = "Loading... (183/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight8_dark';
+              loading.innerHTML = "Loading... (184/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight9_dark';
+              loading.innerHTML = "Loading... (185/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight1';
+              loading.innerHTML = "Loading... (186/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight2';
+              loading.innerHTML = "Loading... (187/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight3';
+              loading.innerHTML = "Loading... (188/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight4';
+              loading.innerHTML = "Loading... (189/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight5';
+              loading.innerHTML = "Loading... (190/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight6';
+              loading.innerHTML = "Loading... (191/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight7';
+              loading.innerHTML = "Loading... (192/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight8';
+              loading.innerHTML = "Loading... (193/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = 'flashlight9';
+              loading.innerHTML = "Loading... (194/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              loading.innerHTML = "Loading... (204/205)";
+            }
+          },
+          {
+            delay: 75,
+            action() {
+              flashlight.className = '';
+              flashlight_off.className = '';
+              spike1.className = '';
+              spike2.className = '';
+              spike3.className = '';
+              spike4.className = '';
+              blackout.className = '';
+              died.className = '';
+              clear();
+              render();
+            }
+          }
+        ];
+        async function runLoader() {
+          for (const step of loadSteps) {
+            await wait(step.delay);
+            step.action();
+          }
+        }
+        runLoader();
 
         body.onresize = function() {
           if (!firsttime && !double) {
