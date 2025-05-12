@@ -1691,7 +1691,7 @@
 
                                                                                                                 <h1 class="text" id="tips" style="font-size: xx-large; font-weight: normal;">
                                                                                                                   YOU DIED<br>Press R to Reset
-                                                                                                                  <p style="font-size: large;">
+                                                                                                                  <p style="font-size: large;" id="deathmsg">
                                                                                                                     Tips: Dont fall!<br>also fuck you
                                                                                                                   </p>
                                                                                                                 </h1>
@@ -2071,60 +2071,64 @@
           }
         }
 
+        function death(deathmsg) {
+          document.getElementById("deathmsg").innerHTML = deathmsg;
+          alive = false;
+          animation = true;
+
+          blackout.classList.add("blackout");
+          minimap.style.display = "none";
+          dirindicator.style.display = "none";
+
+          blackout.style.opacity = "0.25";
+          setTimeout(() => {
+            blackout.style.opacity = "0.5";
+            setTimeout(() => {
+              blackout.style.opacity = "0.75";
+              setTimeout(() => {
+                blackout.style.opacity = "1";
+                setTimeout(() => {
+                  spike1.classList.add("spike1");
+                  setTimeout(() => {
+                    spike2.classList.add("spike2");
+                    setTimeout(() => {
+                      spike3.classList.add("spike3");
+                      setTimeout(() => {
+                        spike4.classList.add("spike4");
+                        setTimeout(() => {
+                          died.classList.add("died");
+                          document.getElementById("margintop").classList.remove("margintop");
+
+                          animation = false;
+
+                          setTimeout(() => {
+                            tips.style.opacity = "0.25";
+                            setTimeout(() => {
+                              tips.style.opacity = "0.5";
+                              setTimeout(() => {
+                                tips.style.opacity = "0.75";
+                                setTimeout(() => {
+                                  tips.style.opacity = "1";
+                                }, 175);
+                              }, 150);
+                            }, 125);
+                          }, 100);
+                        }, 125);
+                      }, 150);
+                    }, 175);
+                  }, 200);
+                }, 1000);
+              }, 150);
+            }, 175);
+          }, 200);
+        }
+
         function render() {
 
           clear();
 
           if (map[position[0]][position[1]] == 0 && noclip == false) {
-            alive = false;
-            animation = true;
-
-            blackout.classList.add("blackout");
-            minimap.style.display = "none";
-            dirindicator.style.display = "none";
-
-            blackout.style.opacity = "0.25";
-            setTimeout(() => {
-              blackout.style.opacity = "0.5";
-              setTimeout(() => {
-                blackout.style.opacity = "0.75";
-                setTimeout(() => {
-                  blackout.style.opacity = "1";
-                  setTimeout(() => {
-                    spike1.classList.add("spike1");
-                    setTimeout(() => {
-                      spike2.classList.add("spike2");
-                      setTimeout(() => {
-                        spike3.classList.add("spike3");
-                        setTimeout(() => {
-                          spike4.classList.add("spike4");
-                          setTimeout(() => {
-                            died.classList.add("died");
-                            document.getElementById("margintop").classList.remove("margintop");
-
-                            animation = false;
-
-                            setTimeout(() => {
-                              tips.style.opacity = "0.25";
-                              setTimeout(() => {
-                                tips.style.opacity = "0.5";
-                                setTimeout(() => {
-                                  tips.style.opacity = "0.75";
-                                  setTimeout(() => {
-                                    tips.style.opacity = "1";
-                                  }, 175);
-                                }, 150);
-                              }, 125);
-                            }, 100);
-                          }, 125);
-                        }, 150);
-                      }, 175);
-                    }, 200);
-                  }, 1000);
-                }, 150);
-              }, 175);
-            }, 200);
-
+            death("Tips: Dont fall!")
             return;
           }
           
