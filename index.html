@@ -1692,7 +1692,7 @@
                                                                                                                 <h1 class="text" id="tips" style="font-size: xx-large; font-weight: normal;">
                                                                                                                   YOU DIED<br>Press R to Reset
                                                                                                                   <p style="font-size: large;" id="deathmsg">
-                                                                                                                    Tips: Dont fall!<br>also fuck you
+                                                                                                                    Tips: [No Tips]
                                                                                                                   </p>
                                                                                                                 </h1>
                                                                                                                 <p class="text" id="click" style="color: white; font-size: xx-large;">
@@ -1964,7 +1964,7 @@
           double = true;
           setTimeout(() => {
             double = false;
-          }, 100);
+          }, 500);
           document.removeEventListener("click", continued);
         }
 
@@ -2072,7 +2072,18 @@
         }
 
         function death(deathmsg) {
-          document.getElementById("deathmsg").innerHTML = deathmsg;
+          if(Math.random() > 0.2) {
+            document.getElementById("deathmsg").innerHTML = deathmsg;
+          } else {
+            let funtips = [
+              "Tips: Keep moving",
+              "Tips: Watch your surroundings",
+              "Tips: Dont rush in",
+              "Tips: Learn patterns",
+              "Tips: Stay alert",
+            ];
+            document.getElementById("deathmsg").innerHTML = funtips[Math.floor(Math.random() * 5)];
+          }
           alive = false;
           animation = true;
 
@@ -2094,7 +2105,7 @@
                     setTimeout(() => {
                       spike3.classList.add("spike3");
                       setTimeout(() => {
-                        spike4.classList.add("spike4");
+                        spike4.classList.add("spike4");``
                         setTimeout(() => {
                           died.classList.add("died");
                           document.getElementById("margintop").classList.remove("margintop");
@@ -2128,7 +2139,7 @@
           clear();
 
           if (map[position[0]][position[1]] == 0 && noclip == false) {
-            death("Tips: Dont fall!")
+            death("Tips: Dont fall!");
             return;
           }
           
