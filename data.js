@@ -104,4 +104,10 @@ const maps = {
       [0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0]
     ]
   },
+  random: {
+    lvl_map: null,
+    position: [],
+    direction: "",
+    map: []
+  }
 };

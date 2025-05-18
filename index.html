@@ -1645,6 +1645,8 @@
         </div>
       </div>
 
+      <input type="text" id="inputmap" style="z-index: 10; color:black; display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+
       <div class="dirindicator" id="dirindicator"></div>
       <div class="" id="pos15_object">
         <div class="" id="pos15_property">
@@ -1770,6 +1772,7 @@
       </div>
     </div>
 
+    <script src="./mapGenerator.js"></script>
     <script>
       const script = document.createElement('script');
       script.src = 'data.js?v=' + Date.now();
@@ -1783,15 +1786,42 @@
         let default_direction = current_map.direction;
         let default_flashlight = 1;
         let default_map = JSON.parse(JSON.stringify(current_map.map));
+        class randoms {
+          get(str) {
+            switch (str) {
+              case "pos":
+                return [...this.randomposition];
+              case "dir":
+                return this.randomdirection;
+              case "map":
+                return this.randommap.map(row => [...row]);
+            }
+          }
+          set() {
+            let size = Math.floor(Math.random() * 11) + 10;
+            this.randomposition = [Math.floor(Math.random() * size), Math.floor(Math.random() * size)];
+            let dirrandom = ["north", "east", "south", "west"];
+            this.randomdirection = dirrandom[Math.floor(Math.random() * dirrandom.length)];
+            this.randommap = generateMap(size, size, this.randomposition);
+          }
+        }
+        const r = new randoms();
         function changemap(map) {
           current_map = map;
           lvl_map = current_map.lvl_map;
           if (lvl_map === null) {
             lvl_map = 1;
           }
-          default_position = [...current_map.position];
-          default_direction = current_map.direction;
-          default_map = JSON.parse(JSON.stringify(current_map.map));
+          if(map == defaultmap["random"]) {
+            r.set();
+            default_position = r.get("pos");
+            default_direction = r.get("dir");
+            default_map = r.get("map");
+          } else {
+            default_map = JSON.parse(JSON.stringify(current_map.map));
+            default_position = [...current_map.position];
+            default_direction = current_map.direction;
+          }
         }
         let lockedtimeout;
         function nextmap() {//MAP CHANGER BETWEEN LEVELS
@@ -1816,9 +1846,15 @@
         }
 
         setInterval(() => {
-          default_position = [...current_map.position];
-          default_direction = current_map.direction;
-          default_map = JSON.parse(JSON.stringify(current_map.map));
+          if (current_map == defaultmap["random"]) {
+            default_position = r.get("pos");
+            default_direction = r.get("dir");
+            default_map = r.get("map");
+          } else {
+            default_map = JSON.parse(JSON.stringify(current_map.map));
+            default_position = [...current_map.position];
+            default_direction = current_map.direction;
+          }
           
           const suffix = darkness ? '_dark' : '';
           const baseClass = flashlight.className.replace('_dark', '');
@@ -1861,7 +1897,7 @@
         var noclip = false;
         
         var keyarr = {};
-        let promptUsed = false;
+        let input = false;
         document.onkeydown = function(e){
           e = e || event;
           keyarr[e.keyCode] = true;
@@ -1888,18 +1924,20 @@
               render();
             }
           }
-          if (keyarr[18] && keyarr[16] && keyarr[77] && !promptUsed) {
-            promptUsed = true;
-            const value = prompt();
-            if(value in defaultmap) {
-              restart(defaultmap[value]);
+          if (keyarr[18] && keyarr[16] && keyarr[77]) {
+            if (input) {
+              const value = document.getElementById("inputmap").value;
+              if(value in defaultmap) {
+                restart(defaultmap[value]);
+              }
+              document.getElementById("inputmap").style.display = "none";
+              document.getElementById("inputmap").value = "";
+              input = false;
+            } else {
+              document.getElementById("inputmap").style.display = "block";
+              document.getElementById("inputmap").focus();
+              input = true;
             }
-            setTimeout(() => {
-              Fullscreen();
-              setTimeout(() => {
-                promptUsed = false;
-              }, 100);
-            }, 0);
           }
         }
         document.onkeyup = function (e) {
@@ -2549,7 +2587,7 @@
           }, 1);
           renderminimap(dirCmd);
         }
-        function up() {
+        function up() {//rare chance not move when flashlight off
           handleMove("buttonup", "up");
         }
         function down() {
