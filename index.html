@@ -2652,7 +2652,11 @@
 
                 position = default_position;
                 direction = default_direction;
-                key = 0;
+                if (current_map == defaultmap["random"]) {
+                  key = 1;
+                } else {
+                  key = 0;
+                }
                 map = default_map;
                 alive = true;
                 animation = false;
