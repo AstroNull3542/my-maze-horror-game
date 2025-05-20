@@ -14,6 +14,8 @@ function generateMap(x, y, pos) {
     let dir = ["up", "down", "left", "right"]
     let lastdir = dir[Math.floor(Math.random() * dir.length)];
     let i = 0;
+    let path = [];
+    let stuck = false;
     while (true) {
       const [r, c] = currentpos;
       const neighbors = [];
@@ -64,16 +66,84 @@ function generateMap(x, y, pos) {
       }
       if (neighbors.length == 0) {
         map[r][c] = 25;
+        stuck = true;
         break;
       }
       const [newRow, newCol, dir] = neighbors[Math.floor(Math.random() * neighbors.length)];
       lastdir = dir;
       i++;
       map[newRow][newCol] = 10;
+      path.push([newRow, newCol]);
       currentpos = [newRow, newCol];
       if (i >= (x + y)) {
         map[newRow][newCol] = 25;
         break;
+      }
+    }
+    if(!stuck) {
+      let start = path[Math.floor(Math.random() * path.length)];
+      currentpos = start;
+      lastdir = dir[Math.floor(Math.random() * dir.length)];
+      i = 0;
+      while (true) {
+        const [r, c] = currentpos;
+        const neighbors = [];
+        if (Math.random() > 0.25) {
+          if (map[r - 1] && map[r - 1][c] == 0) {
+            neighbors.push([r - 1, c, "up"]);
+          }; // up
+          if (map[r + 1] && map[r + 1][c] == 0) {
+            neighbors.push([r + 1, c, "down"]);
+          }; // down
+          if (map[r] && map[r][c - 1] == 0) {
+            neighbors.push([r, c - 1, "left"]);
+          }; // left
+          if (map[r] && map[r][c + 1] == 0) {
+            neighbors.push([r, c + 1, "right"]);
+          }; // right
+        } else {
+          let none = false;
+          if (lastdir == "up") {
+            if (map[r - 1] && map[r - 1][c] == 0) {
+              neighbors.push([r - 1, c, "up"]);
+            } else {
+              none = true;
+            }; // up
+          } else if (lastdir == "down") {
+            if (map[r + 1] && map[r + 1][c] == 0) {
+              neighbors.push([r + 1, c, "down"]);
+            } else {
+              none = true;
+            }; // down
+          } else if (lastdir == "left") {
+            if (map[r] && map[r][c - 1] == 0) {
+              neighbors.push([r, c - 1, "left"]);
+            } else {
+              none = true;
+            }; // left
+          } else if (lastdir == "right") {
+            if (map[r] && map[r][c + 1] == 0) {
+              neighbors.push([r, c + 1, "right"]);
+            } else {
+              none = true;
+            }; // right
+          }
+          if (none) {
+            i--;
+            continue;
+          }
+        }
+        if (neighbors.length == 0) {
+          break;
+        }
+        const [newRow, newCol, dir] = neighbors[Math.floor(Math.random() * neighbors.length)];
+        lastdir = dir;
+        i++;
+        map[newRow][newCol] = 10;
+        currentpos = [newRow, newCol];
+        if (i >= (x + y)) {
+          break;
+        }
       }
     }
     for (let i = 0; i < y; i++) {
