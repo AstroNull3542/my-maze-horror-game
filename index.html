@@ -2536,6 +2536,9 @@
         }
 
         function handleMove(buttonId, dirCmd) {
+          if(Math.random() < 0.01) {
+            return;
+          }
           const moveOffsets = {
             north: [-1, 0],
             east: [0, 1],
