@@ -1826,14 +1826,27 @@
         let lockedtimeout;
         function nextmap() {//MAP CHANGER BETWEEN LEVELS
           if(key > 0) {
-            if(lvl_map == null) {
-              restart(defaultmap["map1"])
-            } else if(lvl_map == 1) {
-              restart(defaultmap["map2"]);
-            } else if(lvl_map == 2) {
-              restart(defaultmap["map1"]);
+            if(Math.random() > 0.2) {
+              if(lvl_map == null) {
+                restart(defaultmap["map1"])
+              } else if(lvl_map == 1) {
+                restart(defaultmap["map2"]);
+              } else if(lvl_map == 2) {
+                restart(defaultmap["map1"]);
+              }
+            } else {
+              locked.innerHTML = "Jammed";
+              locked.style.opacity = "1";
+              clearTimeout(lockedtimeout);
+              lockedtimeout = setTimeout(() => {
+                locked.style.opacity = "0.5";
+                lockedtimeout = setTimeout(() => {
+                  locked.style.opacity = "0";
+                }, 200);
+              }, 200);
             }
           } else {
+            locked.innerHTML = "Its Locked";
             locked.style.opacity = "1";
             clearTimeout(lockedtimeout);
             lockedtimeout = setTimeout(() => {
@@ -2416,9 +2429,21 @@
           if (key > 0) {
             for (const keyLoc of keyLocations) {
               if (lvl_map === keyLoc.map && row === keyLoc.row && col === keyLoc.col) {
-                map[keyLoc.row][keyLoc.col] = 10;
-                key--;
-                isGateUnlocked = true;
+                if(Math.random() > 0.2) {
+                  map[keyLoc.row][keyLoc.col] = 10;
+                  key--;
+                  isGateUnlocked = true;
+                } else {
+                  locked.innerHTML = "Jammed";
+                  locked.style.opacity = "1";
+                  clearTimeout(lockedtimeout);
+                  lockedtimeout = setTimeout(() => {
+                    locked.style.opacity = "0.5";
+                    lockedtimeout = setTimeout(() => {
+                      locked.style.opacity = "0";
+                    }, 200);
+                  }, 200);
+                }
                 break;
               }
             }
@@ -2426,6 +2451,7 @@
           if (!isGateUnlocked) {
             for (const loc of lockedMessageLocations) {
               if (lvl_map === loc.map && row === loc.row && col === loc.col) {
+                locked.innerHTML = "Its Locked";
                 locked.style.opacity = "1";
                 clearTimeout(lockedtimeout);
                 lockedtimeout = setTimeout(() => {
