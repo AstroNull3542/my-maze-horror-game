@@ -1330,6 +1330,15 @@
         .margintop {
           display: none;
         }
+        .keycount {
+          font-family: "Pixelify Sans", sans-serif;
+          text-align: center;
+          opacity: 0;
+          margin: 0;
+          position: absolute;
+          top: 1cm;
+          right: 1cm;
+        }
         .text {
           font-family: "Pixelify Sans", sans-serif;
           text-align: center;
@@ -1364,6 +1373,15 @@
       @media screen and (orientation: portrait) and (max-width: 767px) {
         .margintop {
           height: 1cm;
+        }
+        .keycount {
+          font-family: "Pixelify Sans", sans-serif;
+          text-align: center;
+          opacity: 0;
+          margin: 0;
+          position: absolute;
+          top: 0;
+          right: 5%;
         }
         .text {
           font-family: "Pixelify Sans", sans-serif;
@@ -1474,6 +1492,15 @@
       @media screen and (orientation: landscape) and (max-width: 1024px) {
         .margintop {
           height: 1cm;
+        }
+        .keycount {
+          font-family: "Pixelify Sans", sans-serif;
+          text-align: center;
+          opacity: 0;
+          margin: 0;
+          position: absolute;
+          top: 0;
+          right: 5%;
         }
         .text {
           font-family: "Pixelify Sans", sans-serif;
@@ -1704,6 +1731,7 @@
                                                                                                               <div class="" id="died">
                                                                                                                 
                                                                                                                 <p class="text" id="locked" style="color: black; font-size: x-large; opacity: 0; text-shadow: 0px 0px 2px #fff;">Its locked</p>
+                                                                                                                <p class="keycount" id="keycount" style="color: black; font-size: x-large; opacity: 1; text-shadow: 0px 0px 2px #fff;">0 KEY</p>
 
                                                                                                                 <div class="blackout" id="blackout2"></div>
 
@@ -2026,10 +2054,6 @@
           }
         }
 
-        if(firsttime) {
-          document.body.addEventListener("click", play);
-        }
-
         function continued() {
           animation = false;
           blackout2.classList.remove("blackout");
@@ -2160,6 +2184,7 @@
           alive = false;
           animation = true;
 
+          document.getElementById('keycount').style.opacity = "0";
           blackout.classList.add("blackout");
           minimap.style.display = "none";
           dirindicator.style.display = "none";
@@ -2340,6 +2365,7 @@
                 if (cell === 21) {
                   map[r][c] = 22;
                   key++;
+                  document.getElementById("keycount").innerHTML = key + " KEY";
                 }
                 else if (cell === 23) {
                   map[r][c] = 24;
@@ -2432,6 +2458,7 @@
                 if(Math.random() > 0.2) {
                   map[keyLoc.row][keyLoc.col] = 10;
                   key--;
+                  document.getElementById("keycount").innerHTML = key + " KEY";
                   isGateUnlocked = true;
                 } else {
                   locked.innerHTML = "Jammed";
@@ -2686,6 +2713,8 @@
                 } else {
                   key = 0;
                 }
+                document.getElementById('keycount').style.opacity = "1";
+                document.getElementById("keycount").innerHTML = key + " KEY";
                 map = default_map;
                 alive = true;
                 animation = false;
@@ -2797,7 +2826,7 @@
                   west: [0, -1]
                 };
                 const cellHandlers = {
-                  21: (r, c) => { map[r][c] = 22; key++; },
+                  21: (r, c) => { map[r][c] = 22; key++; document.getElementById("keycount").innerHTML = key + " KEY"; },
                   23: (r, c) => { map[r][c] = 24; switchtrigger = true; activate = true; },
                   24: (r, c) => { map[r][c] = 23; switchtrigger = true; activate = false; },
                   30: (r, c) => { keytrigger = true; },
@@ -3025,6 +3054,9 @@
               died.className = '';
               clear();
               render();
+              if (firsttime) {
+                document.body.addEventListener("click", play);
+              }
             }
           }
         ];
