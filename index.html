@@ -1731,7 +1731,7 @@
                                                                                                               <div class="" id="died">
                                                                                                                 
                                                                                                                 <p class="text" id="locked" style="color: black; font-size: x-large; opacity: 0; text-shadow: 0px 0px 2px #fff;">Its locked</p>
-                                                                                                                <p class="keycount" id="keycount" style="color: black; font-size: x-large; opacity: 1; text-shadow: 0px 0px 2px #fff;">0 KEY</p>
+                                                                                                                <div id="keycountopacity" class="keycount" style="color: white; font-size: x-large; opacity: 1; text-shadow: 0px 0px 2px #000; display: flex; align-items: center; gap: 5px;"><p id="keycount" style="margin: 0;">0</p><img src="./sprite/key/keycount.png" width="30"></div>
 
                                                                                                                 <div class="blackout" id="blackout2"></div>
 
@@ -2184,7 +2184,7 @@
           alive = false;
           animation = true;
 
-          document.getElementById('keycount').style.opacity = "0";
+          document.getElementById('keycountopacity').style.opacity = "0";
           blackout.classList.add("blackout");
           minimap.style.display = "none";
           dirindicator.style.display = "none";
@@ -2365,7 +2365,7 @@
                 if (cell === 21) {
                   map[r][c] = 22;
                   key++;
-                  document.getElementById("keycount").innerHTML = key + " KEY";
+                  document.getElementById("keycount").innerHTML = key;
                 }
                 else if (cell === 23) {
                   map[r][c] = 24;
@@ -2458,7 +2458,7 @@
                 if(Math.random() > 0.2) {
                   map[keyLoc.row][keyLoc.col] = 10;
                   key--;
-                  document.getElementById("keycount").innerHTML = key + " KEY";
+                  document.getElementById("keycount").innerHTML = key;
                   isGateUnlocked = true;
                 } else {
                   locked.innerHTML = "Jammed";
@@ -2713,8 +2713,8 @@
                 } else {
                   key = 0;
                 }
-                document.getElementById('keycount').style.opacity = "1";
-                document.getElementById("keycount").innerHTML = key + " KEY";
+                document.getElementById('keycountopacity').style.opacity = "1";
+                document.getElementById("keycount").innerHTML = key;
                 map = default_map;
                 alive = true;
                 animation = false;
@@ -2826,7 +2826,7 @@
                   west: [0, -1]
                 };
                 const cellHandlers = {
-                  21: (r, c) => { map[r][c] = 22; key++; document.getElementById("keycount").innerHTML = key + " KEY"; },
+                  21: (r, c) => { map[r][c] = 22; key++; document.getElementById("keycount").innerHTML = key; },
                   23: (r, c) => { map[r][c] = 24; switchtrigger = true; activate = true; },
                   24: (r, c) => { map[r][c] = 23; switchtrigger = true; activate = false; },
                   30: (r, c) => { keytrigger = true; },
