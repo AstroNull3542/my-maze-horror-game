@@ -1863,7 +1863,7 @@
                 restart(defaultmap["map1"]);
               }
             } else {
-              locked.innerHTML = "Jammed";
+              locked.textContent = "Jammed";
               locked.style.opacity = "1";
               clearTimeout(lockedtimeout);
               lockedtimeout = setTimeout(() => {
@@ -1874,7 +1874,7 @@
               }, 200);
             }
           } else {
-            locked.innerHTML = "Its Locked";
+            locked.textContent = "Its Locked";
             locked.style.opacity = "1";
             clearTimeout(lockedtimeout);
             lockedtimeout = setTimeout(() => {
@@ -2459,9 +2459,8 @@
                   map[keyLoc.row][keyLoc.col] = 10;
                   key--;
                   document.getElementById("keycount").innerHTML = key;
-                  isGateUnlocked = true;
                 } else {
-                  locked.innerHTML = "Jammed";
+                  locked.textContent = "Jammed";
                   locked.style.opacity = "1";
                   clearTimeout(lockedtimeout);
                   lockedtimeout = setTimeout(() => {
@@ -2471,6 +2470,7 @@
                     }, 200);
                   }, 200);
                 }
+                isGateUnlocked = true;
                 break;
               }
             }
@@ -2478,7 +2478,7 @@
           if (!isGateUnlocked) {
             for (const loc of lockedMessageLocations) {
               if (lvl_map === loc.map && row === loc.row && col === loc.col) {
-                locked.innerHTML = "Its Locked";
+                locked.textContent = "Its Locked";
                 locked.style.opacity = "1";
                 clearTimeout(lockedtimeout);
                 lockedtimeout = setTimeout(() => {
