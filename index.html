@@ -1325,6 +1325,9 @@
         height: 0.5cm;
         display: block;
       }
+      .opacity50 {
+        opacity: 0.5;
+      }
 
       @media screen and (min-width: 768px) {
         .margintop {
@@ -1903,6 +1906,23 @@
             flashlight1: () => {
               default_flashlight = 1;
               if(Math.random() < 0.2) {
+                if (darkness) {
+                  if (flashlight_off.className != 'flashlight_off') {
+                    clearTimeout(minimaptimeout)
+                    let count = 0;
+                    const toggle = () => {
+                      const isOn = count % 2 == 0;
+                      flashlight_off.className = isOn ? 'flashlight_off opacity50' : '';
+                      minimap.style.opacity = isOn ? "0.05" : "1";
+                      count++;
+                      if (count < 5 * 2) {
+                        setTimeout(toggle, 50);
+                      }
+                    };
+                    toggle();
+                  }
+                }
+              } else if (Math.random() < 0.2) {
                 document.body.classList.add('shake');
                 setTimeout(() => {
                   document.body.classList.remove('shake');
@@ -2643,7 +2663,7 @@
           }, 1);
           renderminimap(dirCmd);
         }
-        function up() {//rare chance not move when flashlight off
+        function up() {
           handleMove("buttonup", "up");
         }
         function down() {
