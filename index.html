@@ -1907,28 +1907,45 @@
           const transitions = {
             flashlight1: () => {
               default_flashlight = 1;
-              if(Math.random() < 0.2) {
-                if (darkness) {
-                  if (flashlight_off.className != 'flashlight_off') {
-                    clearTimeout(minimaptimeout)
-                    let count = 0;
-                    const toggle = () => {
-                      const isOn = count % 2 == 0;
-                      flashlight_off.className = isOn ? 'flashlight_off opacity50' : '';
-                      minimap.style.opacity = isOn ? "0.05" : "1";
-                      count++;
-                      if (count < 5 * 2) {
-                        setTimeout(toggle, 50);
-                      }
-                    };
-                    toggle();
-                  }
+              if(darkness && Math.random() < 0.2) {
+                if (flashlight_off.className != 'flashlight_off') {
+                  clearTimeout(minimaptimeout)
+                  let count = 0;
+                  const toggle = () => {
+                    const isOn = count % 2 == 0;
+                    flashlight_off.className = isOn ? 'flashlight_off opacity50' : '';
+                    minimap.style.opacity = isOn ? "0.5" : "1";
+                    count++;
+                    if (count < 5 * 2) {
+                      setTimeout(toggle, 50);
+                    }
+                  };
+                  toggle();
                 }
               } else if (Math.random() < 0.2) {
                 document.body.classList.add('shake');
                 setTimeout(() => {
                   document.body.classList.remove('shake');
                 }, 500);
+              }
+              if(darkness && Math.random() < 0.2) {
+                if (flashlight_off.className == 'flashlight_off') {
+                  let creepy = [
+                    "whisper1",
+                    "whisper2",
+                    "whisper3",
+                    "whisper4",
+                    "whisper5"
+                  ];
+                  creepy = creepy[Math.floor(Math.random() * 5)];
+                  playSound(`whisper/${creepy}`, 0.1);
+                  setInterval(() => {
+                    if (flashlight_off.className != 'flashlight_off') {
+                      stopSound();
+                      clearInterval(this);
+                    }
+                  }, 100);
+                }
               }
               return 'flashlight2';
             },
@@ -1959,6 +1976,17 @@
         var darkness = true;
         var noclip = false;
         
+        let sound;
+        function playSound(soundpath, volume = 1) {
+          sound = new Audio(`./sound/${soundpath}.mp3`);
+          sound.volume = volume;
+          sound.play();
+        }
+        function stopSound() {
+          sound.pause();
+          sound.currentTime = 0;
+        }
+
         var keyarr = {};
         let input = false;
         document.onkeydown = function(e){
