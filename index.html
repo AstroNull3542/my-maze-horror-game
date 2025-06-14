@@ -201,6 +201,97 @@
         height: 100cm;
       }
 
+      .glitch1 {
+        background-image: url("./sprite/wall/glitch/glitch1.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch2 {
+        background-image: url("./sprite/wall/glitch/glitch2.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch3 {
+        background-image: url("./sprite/wall/glitch/glitch3.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch4 {
+        background-image: url("./sprite/wall/glitch/glitch4.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch5 {
+        background-image: url("./sprite/wall/glitch/glitch5.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch6 {
+        background-image: url("./sprite/wall/glitch/glitch6.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch7 {
+        background-image: url("./sprite/wall/glitch/glitch7.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch8 {
+        background-image: url("./sprite/wall/glitch/glitch8.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch9 {
+        background-image: url("./sprite/wall/glitch/glitch9.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch10 {
+        background-image: url("./sprite/wall/glitch/glitch10.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch11 {
+        background-image: url("./sprite/wall/glitch/glitch11.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch12 {
+        background-image: url("./sprite/wall/glitch/glitch12.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch13 {
+        background-image: url("./sprite/wall/glitch/glitch13.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch14 {
+        background-image: url("./sprite/wall/glitch/glitch14.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+      .glitch15 {
+        background-image: url("./sprite/wall/glitch/glitch15.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100cm;
+      }
+
       .gate1 {
         background-image: url("./sprite/gate/gate1.png");
         background-repeat: no-repeat;
@@ -1677,7 +1768,7 @@
       </div>
 
       <input type="text" id="inputmap" style="z-index: 10; color:black; display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-      <img src="./sprite/hm.png" id="hm" style="z-index: 10; position: absolute; top: 38%; left: 50%; transform: translate(-50%, -50%); display: none; opacity: 10%;" width="100" height="100">
+      <img src="./sprite/hm.png" id="hm" style="z-index: 10; position: absolute; top: 38%; left: 50%; transform: translate(-50%, -50%); display: none; opacity: 5%;" width="100" height="100">
 
       <div class="dirindicator" id="dirindicator"></div>
       <div class="" id="pos15_object">
@@ -2355,7 +2446,13 @@
             const code = dirposArr ? dirposArr[i] : [dirpos1, dirpos2, dirpos3, dirpos4, dirpos5, dirpos6, dirpos7, dirpos8, dirpos9, dirpos10, dirpos11, dirpos12, dirpos13, dirpos14, dirpos15][i];
             const cfg = typeMap[code];
             if (!cfg) continue;
-            posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
+            if (Math.random() < 0.01 && code == 20) {
+              cfg.obj = 'glitch';
+              posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
+              cfg.obj = 'wall';
+            } else {
+              posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
+            }
             if (cfg.propBase) {
               posProperties[i].classList.add(
                 `${cfg.propBase}${i + 1}${cfg.propSuffix}`
