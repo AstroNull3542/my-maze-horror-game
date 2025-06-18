@@ -2032,14 +2032,27 @@
               } else if (Math.random() < 0.2) {
                 document.getElementById("load").classList.add('shake');
                 document.getElementById("dust").style.display = "block";
+                document.getElementById("dust").style.opacity = "0.05";
                 document.getElementById("dust").classList.add('fall');
                 setTimeout(() => {
                   document.getElementById("load").classList.remove('shake');
                   setTimeout(() => {
-                    document.getElementById("dust").style.display = "none";
-                    document.getElementById("dust").classList.remove('fall');
-                    void document.getElementById("dust").offsetWidth;
-                  }, 990);
+                    document.getElementById("dust").style.opacity = "0.04";
+                    setTimeout(() => {
+                      document.getElementById("dust").style.opacity = "0.03";
+                      setTimeout(() => {
+                        document.getElementById("dust").style.opacity = "0.02";
+                        setTimeout(() => {
+                          document.getElementById("dust").style.opacity = "0.01";
+                          setTimeout(() => {
+                            document.getElementById("dust").style.display = "none";
+                            document.getElementById("dust").classList.remove('fall');
+                            void document.getElementById("dust").offsetWidth;
+                          }, 190);
+                        }, 200);
+                      }, 200);
+                    }, 200);
+                  }, 200);
                 }, 500);
               }
               if(darkness && Math.random() < 0.2) {
