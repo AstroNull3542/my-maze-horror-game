@@ -2478,12 +2478,14 @@
             25: { obj: 'wall', propBase: 'door', propSuffix: '' },
             30: { obj: 'gate', propBase: null, propSuffix: '' }
           };
+          let gl = false;
           for (let i = 0; i < 15; i++) {
             const code = dirposArr ? dirposArr[i] : [dirpos1, dirpos2, dirpos3, dirpos4, dirpos5, dirpos6, dirpos7, dirpos8, dirpos9, dirpos10, dirpos11, dirpos12, dirpos13, dirpos14, dirpos15][i];
             const cfg = typeMap[code];
             if (!cfg) continue;
             if (Math.random() < 0.01 && code == 20) {
               cfg.obj = 'glitch';
+              gl = true;
               posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
               cfg.obj = 'wall';
             } else {
@@ -2497,6 +2499,11 @@
             if (darkness) {
               posDarks[i].classList.add(`${cfg.obj}${i + 1}_dark`);
             }
+          }
+          if(gl) {
+            setTimeout(() => {
+              render();
+            }, 1000)
           }
         }
         
