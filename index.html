@@ -1710,6 +1710,13 @@
         background-color: black;
       }
 
+      .offset {
+        transform: translateX(5px)
+      }
+      .offset > * {
+        transform: translateX(-5px)
+      }
+
       @keyframes shake {
         0%, 100% { transform: translate(0, 0); }
         9% { transform: translate(-5px, -1px); }
@@ -1784,7 +1791,7 @@
 
       <input type="text" id="inputmap" style="z-index: 10; color:black; display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
       <img src="./sprite/hm.png" id="hm" style="z-index: 10; position: absolute; top: 38%; left: 50%; transform: translate(-50%, -50%); display: none; opacity: 7%;" width="100" height="100">
-      <img src="./sprite/dust.png" id="dust" style="position: absolute; top: 38%; left: 50%; transform: translate(-50%, -50%); width: 500px; opacity: 5%; display: none;">
+      <img src="./sprite/dust.png" id="dust" style="position: absolute; top: 38%; left: 50%; transform: translate(-50%, -50%); width: 500px; opacity: 10%; display: none;">
 
       <div class="dirindicator" id="dirindicator"></div>
       <div class="" id="pos15_object">
@@ -2032,18 +2039,18 @@
               } else if (Math.random() < 0.2) {
                 document.getElementById("load").classList.add('shake');
                 document.getElementById("dust").style.display = "block";
-                document.getElementById("dust").style.opacity = "0.05";
+                document.getElementById("dust").style.opacity = "10%";
                 document.getElementById("dust").classList.add('fall');
                 setTimeout(() => {
                   document.getElementById("load").classList.remove('shake');
                   setTimeout(() => {
-                    document.getElementById("dust").style.opacity = "0.04";
+                    document.getElementById("dust").style.opacity = "8%";
                     setTimeout(() => {
-                      document.getElementById("dust").style.opacity = "0.03";
+                      document.getElementById("dust").style.opacity = "6%";
                       setTimeout(() => {
-                        document.getElementById("dust").style.opacity = "0.02";
+                        document.getElementById("dust").style.opacity = "4%";
                         setTimeout(() => {
-                          document.getElementById("dust").style.opacity = "0.01";
+                          document.getElementById("dust").style.opacity = "2%";
                           setTimeout(() => {
                             document.getElementById("dust").style.display = "none";
                             document.getElementById("dust").classList.remove('fall');
@@ -2480,10 +2487,16 @@
           };
           let gl = false;
           for (let i = 0; i < 15; i++) {
+            let off = false;
             const code = dirposArr ? dirposArr[i] : [dirpos1, dirpos2, dirpos3, dirpos4, dirpos5, dirpos6, dirpos7, dirpos8, dirpos9, dirpos10, dirpos11, dirpos12, dirpos13, dirpos14, dirpos15][i];
             const cfg = typeMap[code];
             if (!cfg) continue;
             if (Math.random() < 0.01 && code == 20) {
+              gl = true;
+              posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
+              posObjects[i].classList.add(`offset`);
+              off = true;
+            } else if (Math.random() < 0.01 && code == 20) {
               cfg.obj = 'glitch';
               gl = true;
               posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
@@ -2498,6 +2511,9 @@
             }
             if (darkness) {
               posDarks[i].classList.add(`${cfg.obj}${i + 1}_dark`);
+              if (off) {
+                posDarks[i].classList.add(`offset`);
+              }
             }
           }
           if(gl) {
