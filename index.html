@@ -2017,111 +2017,113 @@
             default_direction = current_map.direction;
           }
           
-          const suffix = darkness ? '_dark' : '';
-          const baseClass = flashlight.className.replace('_dark', '');
-          const transitions = {
-            flashlight1: () => {
-              default_flashlight = 1;
-              if(darkness && Math.random() < 0.2 && flashlight_off.className != 'flashlight_off') {
-                clearTimeout(minimaptimeout)
-                let count = 0;
-                const toggle = () => {
-                  const isOn = count % 2 == 0;
-                  flashlight_off.className = isOn ? 'flashlight_off opacity50' : '';
-                  minimap.style.opacity = isOn ? "0.5" : "1";
-                  count++;
-                  if (count < 5 * 2) {
-                    setTimeout(toggle, 50);
-                  }
-                };
-                toggle();
-              } else if (darkness && Math.random() < 0.2 && flashlight_off.className != 'flashlight_off') {
-                let loopCount = 0;
-                function runSparkEffect() {
-                  if (loopCount >= 5) return;
-                  const spark = document.getElementById("spark");
-                  spark.style.display = "block";
-                  spark.style.top = `${Math.random() * 12 + 53}%`;
-                  spark.style.left = `${Math.random() * 30 + 35}%`;
-                  spark.style.opacity = "25%";
-                  setTimeout(() => {
-                    spark.style.opacity = "20%";
+          if (alive) {
+            const suffix = darkness ? '_dark' : '';
+            const baseClass = flashlight.className.replace('_dark', '');
+            const transitions = {
+              flashlight1: () => {
+                default_flashlight = 1;
+                if(darkness && Math.random() < 0.2 && flashlight_off.className != 'flashlight_off') {
+                  clearTimeout(minimaptimeout)
+                  let count = 0;
+                  const toggle = () => {
+                    const isOn = count % 2 == 0;
+                    flashlight_off.className = isOn ? 'flashlight_off opacity50' : '';
+                    minimap.style.opacity = isOn ? "0.5" : "1";
+                    count++;
+                    if (count < 5 * 2) {
+                      setTimeout(toggle, 50);
+                    }
+                  };
+                  toggle();
+                } else if (darkness && Math.random() < 0.2 && flashlight_off.className != 'flashlight_off') {
+                  let loopCount = 0;
+                  function runSparkEffect() {
+                    if (loopCount >= 5) return;
+                    const spark = document.getElementById("spark");
+                    spark.style.display = "block";
+                    spark.style.top = `${Math.random() * 12 + 50}%`;
+                    spark.style.left = `${Math.random() * 30 + 35}%`;
+                    spark.style.opacity = "25%";
                     setTimeout(() => {
-                      spark.style.opacity = "15%";
+                      spark.style.opacity = "20%";
                       setTimeout(() => {
-                        spark.style.opacity = "10%";
+                        spark.style.opacity = "15%";
                         setTimeout(() => {
-                          spark.style.opacity = "5%";
+                          spark.style.opacity = "10%";
                           setTimeout(() => {
-                            spark.style.display = "none";
-                            loopCount++;
-                            setTimeout(runSparkEffect, 34);
+                            spark.style.opacity = "5%";
+                            setTimeout(() => {
+                              spark.style.display = "none";
+                              loopCount++;
+                              setTimeout(runSparkEffect, 34);
+                            }, 33);
                           }, 33);
-                        }, 33);
-                      }, 34);
+                        }, 34);
+                      }, 33);
                     }, 33);
-                  }, 33);
-                }
-                runSparkEffect();
-              } else if (Math.random() < 0.2) {
-                document.getElementById("load").classList.add('shake');
-                document.getElementById("dust").style.display = "block";
-                document.getElementById("dust").style.opacity = "10%";
-                document.getElementById("dust").classList.add('fall');
-                setTimeout(() => {
-                  document.getElementById("load").classList.remove('shake');
+                  }
+                  runSparkEffect();
+                } else if (Math.random() < 0.2) {
+                  document.getElementById("load").classList.add('shake');
+                  document.getElementById("dust").style.display = "block";
+                  document.getElementById("dust").style.opacity = "10%";
+                  document.getElementById("dust").classList.add('fall');
                   setTimeout(() => {
-                    document.getElementById("dust").style.opacity = "8%";
+                    document.getElementById("load").classList.remove('shake');
                     setTimeout(() => {
-                      document.getElementById("dust").style.opacity = "6%";
+                      document.getElementById("dust").style.opacity = "8%";
                       setTimeout(() => {
-                        document.getElementById("dust").style.opacity = "4%";
+                        document.getElementById("dust").style.opacity = "6%";
                         setTimeout(() => {
-                          document.getElementById("dust").style.opacity = "2%";
+                          document.getElementById("dust").style.opacity = "4%";
                           setTimeout(() => {
-                            document.getElementById("dust").style.display = "none";
-                            document.getElementById("dust").classList.remove('fall');
-                            void document.getElementById("dust").offsetWidth;
-                          }, 190);
+                            document.getElementById("dust").style.opacity = "2%";
+                            setTimeout(() => {
+                              document.getElementById("dust").style.display = "none";
+                              document.getElementById("dust").classList.remove('fall');
+                              void document.getElementById("dust").offsetWidth;
+                            }, 190);
+                          }, 200);
                         }, 200);
                       }, 200);
                     }, 200);
-                  }, 200);
-                }, 500);
-              }
-              if(darkness && Math.random() < 0.2 && flashlight_off.className == 'flashlight_off') {
-                let creepy = [
-                  "whisper1",
-                  "whisper2",
-                  "whisper3",
-                  "whisper4",
-                  "whisper5"
-                ];
-                creepy = creepy[Math.floor(Math.random() * 5)];
-                playSound(`whisper/${creepy}`, 0.1);
-                setInterval(() => {
-                  if (flashlight_off.className != 'flashlight_off') {
-                    stopSound();
-                    clearInterval(this);
-                  }
-                }, 100);
-              }
-              return 'flashlight2';
-            },
-            flashlight2: () => 'flashlight5',
-            flashlight3: () => {
-              default_flashlight = 2;
-              return 'flashlight2';
-            },
-            flashlight4: () => 'flashlight1',
-            flashlight5: () => 'flashlight8',
-            flashlight6: () => 'flashlight3',
-            flashlight7: () => 'flashlight4',
-            flashlight8: () => default_flashlight == 1 ? 'flashlight9' : 'flashlight7',
-            flashlight9: () => 'flashlight6',
-          };
-          const nextClass = transitions[baseClass]?.() ?? 'flashlight5';
-          flashlight.className = nextClass + suffix;
+                  }, 500);
+                }
+                if(darkness && Math.random() < 0.2 && flashlight_off.className == 'flashlight_off') {
+                  let creepy = [
+                    "whisper1",
+                    "whisper2",
+                    "whisper3",
+                    "whisper4",
+                    "whisper5"
+                  ];
+                  creepy = creepy[Math.floor(Math.random() * 5)];
+                  playSound(`whisper/${creepy}`, 0.1);
+                  setInterval(() => {
+                    if (flashlight_off.className != 'flashlight_off') {
+                      stopSound();
+                      clearInterval(this);
+                    }
+                  }, 100);
+                }
+                return 'flashlight2';
+              },
+              flashlight2: () => 'flashlight5',
+              flashlight3: () => {
+                default_flashlight = 2;
+                return 'flashlight2';
+              },
+              flashlight4: () => 'flashlight1',
+              flashlight5: () => 'flashlight8',
+              flashlight6: () => 'flashlight3',
+              flashlight7: () => 'flashlight4',
+              flashlight8: () => default_flashlight == 1 ? 'flashlight9' : 'flashlight7',
+              flashlight9: () => 'flashlight6',
+            };
+            const nextClass = transitions[baseClass]?.() ?? 'flashlight5';
+            flashlight.className = nextClass + suffix;
+          }
         }, 1000);
 
         var position = default_position;
