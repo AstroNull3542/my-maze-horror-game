@@ -2823,10 +2823,23 @@
           }, 200);
         }
 
+        let speed = false;
+        let lastCall = 0;
         function handleMove(buttonId, dirCmd) {
+          const now = performance.now();
           if(Math.random() < 0.01) {
             return;
+          } else if (Math.random() < 0.1 && !speed && (now-lastCall) < 1000) {
+            setTimeout(() => {
+              speed = true;
+              handleMove(buttonId, dirCmd);
+              render();
+              setTimeout(() => {
+                speed = false;
+              }, 1000);
+            }, 10);
           }
+          lastCall = now;
           if(Math.random() < 0.1) {
             document.getElementById("hm").style.display = "block";
             document.getElementById("hm").style.top = `${Math.random() * 30 + 23}%`;
