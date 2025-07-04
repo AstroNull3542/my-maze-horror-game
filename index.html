@@ -1716,6 +1716,12 @@
       .offset > * {
         transform: translateX(-5px)
       }
+      .offset2 {
+        transform: translateX(-5px)
+      }
+      .offset2 > * {
+        transform: translateX(5px)
+      }
 
       @keyframes shake {
         0%, 100% { transform: translate(0, 0); }
@@ -2036,6 +2042,31 @@
                     }
                   };
                   toggle();
+                } else if (Math.random() < 0.2) {
+                  document.getElementById("load").classList.add('shake');
+                  document.getElementById("dust").style.display = "block";
+                  document.getElementById("dust").style.opacity = "10%";
+                  document.getElementById("dust").classList.add('fall');
+                  setTimeout(() => {
+                    document.getElementById("load").classList.remove('shake');
+                    setTimeout(() => {
+                      document.getElementById("dust").style.opacity = "8%";
+                      setTimeout(() => {
+                        document.getElementById("dust").style.opacity = "6%";
+                        setTimeout(() => {
+                          document.getElementById("dust").style.opacity = "4%";
+                          setTimeout(() => {
+                            document.getElementById("dust").style.opacity = "2%";
+                            setTimeout(() => {
+                              document.getElementById("dust").style.display = "none";
+                              document.getElementById("dust").classList.remove('fall');
+                              void document.getElementById("dust").offsetWidth;
+                            }, 190);
+                          }, 200);
+                        }, 200);
+                      }, 200);
+                    }, 200);
+                  }, 500);
                 } else if (darkness && Math.random() < 0.2 && flashlight_off.className != 'flashlight_off') {
                   let loopCount = 0;
                   function runSparkEffect() {
@@ -2064,31 +2095,6 @@
                     }, 33);
                   }
                   runSparkEffect();
-                } else if (Math.random() < 0.2) {
-                  document.getElementById("load").classList.add('shake');
-                  document.getElementById("dust").style.display = "block";
-                  document.getElementById("dust").style.opacity = "10%";
-                  document.getElementById("dust").classList.add('fall');
-                  setTimeout(() => {
-                    document.getElementById("load").classList.remove('shake');
-                    setTimeout(() => {
-                      document.getElementById("dust").style.opacity = "8%";
-                      setTimeout(() => {
-                        document.getElementById("dust").style.opacity = "6%";
-                        setTimeout(() => {
-                          document.getElementById("dust").style.opacity = "4%";
-                          setTimeout(() => {
-                            document.getElementById("dust").style.opacity = "2%";
-                            setTimeout(() => {
-                              document.getElementById("dust").style.display = "none";
-                              document.getElementById("dust").classList.remove('fall');
-                              void document.getElementById("dust").offsetWidth;
-                            }, 190);
-                          }, 200);
-                        }, 200);
-                      }, 200);
-                    }, 200);
-                  }, 500);
                 }
                 if(darkness && Math.random() < 0.2 && flashlight_off.className == 'flashlight_off') {
                   let creepy = [
@@ -2522,7 +2528,13 @@
             if (Math.random() < 0.01 && code == 20) {
               smth = true;
               posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
-              posObjects[i].classList.add(`offset`);
+              const rand = Math.random();
+              const pos1 = i + 1;
+              if (rand < 0.5 && ![3, 8, 15].includes(pos1)) {
+                posObjects[i].classList.add(`offset`);
+              } else if (rand >= 0.5 && ![1, 4, 9].includes(pos1)) {
+                posObjects[i].classList.add(`offset2`);
+              }
               off = true;
             } else if (Math.random() < 0.01 && code == 20) {
               cfg.obj = 'glitch';
