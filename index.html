@@ -2530,9 +2530,9 @@
               posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
               const rand = Math.random();
               const pos1 = i + 1;
-              if (rand < 0.5 && ![3, 8, 15].includes(pos1)) {
+              if (rand < 0.5 && ![2, 3, 7, 8, 14, 15].includes(pos1)) {
                 posObjects[i].classList.add(`offset`);
-              } else if (rand >= 0.5 && ![1, 4, 9].includes(pos1)) {
+              } else if (rand >= 0.5 && ![1, 2, 4, 5, 9, 10].includes(pos1)) {
                 posObjects[i].classList.add(`offset2`);
               }
               off = true;
