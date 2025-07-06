@@ -2521,7 +2521,7 @@
           let smth = false;
           let glc = false;
           for (let i = 0; i < 15; i++) {
-            let off = false;
+            let off = [false, "offset"];
             const code = dirposArr ? dirposArr[i] : [dirpos1, dirpos2, dirpos3, dirpos4, dirpos5, dirpos6, dirpos7, dirpos8, dirpos9, dirpos10, dirpos11, dirpos12, dirpos13, dirpos14, dirpos15][i];
             const cfg = typeMap[code];
             if (!cfg) continue;
@@ -2532,10 +2532,11 @@
               const pos1 = i + 1;
               if (rand < 0.5 && ![2, 3, 7, 8, 14, 15].includes(pos1)) {
                 posObjects[i].classList.add(`offset`);
+                off = [true, "offset"];
               } else if (rand >= 0.5 && ![1, 2, 4, 5, 9, 10].includes(pos1)) {
                 posObjects[i].classList.add(`offset2`);
+                off = [true, "offset2"];
               }
-              off = true;
             } else if (Math.random() < 0.01 && code == 20) {
               cfg.obj = 'glitch';
               smth = true;
@@ -2552,8 +2553,8 @@
             }
             if (darkness) {
               posDarks[i].classList.add(`${cfg.obj}${i + 1}_dark`);
-              if (off) {
-                posDarks[i].classList.add(`offset`);
+              if (off[0]) {
+                posDarks[i].classList.add(off[1]);
               }
             }
           }
