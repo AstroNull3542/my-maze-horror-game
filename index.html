@@ -2385,18 +2385,25 @@
           }
         }
 
+        let deathcounter = 0;
         function death(deathmsg) {
-          if(Math.random() > 0.2) {
-            document.getElementById("deathmsg").innerHTML = deathmsg;
+          deathcounter++;
+          if(deathcounter < 10) {
+            if(Math.random() > 0.2) {
+              document.getElementById("deathmsg").innerHTML = deathmsg;
+            } else {
+              let funtips = [
+                "Tips: Keep moving",
+                "Tips: Watch your surroundings",
+                "Tips: Dont rush in",
+                "Tips: Learn patterns",
+                "Tips: Stay alert",
+              ];
+              document.getElementById("deathmsg").innerHTML = funtips[Math.floor(Math.random() * 5)];
+            }
           } else {
-            let funtips = [
-              "Tips: Keep moving",
-              "Tips: Watch your surroundings",
-              "Tips: Dont rush in",
-              "Tips: Learn patterns",
-              "Tips: Stay alert",
-            ];
-            document.getElementById("deathmsg").innerHTML = funtips[Math.floor(Math.random() * 5)];
+            document.getElementById("deathmsg").innerHTML = "Tips: Skill issue";
+            deathcounter = 0;
           }
           alive = false;
           animation = true;
