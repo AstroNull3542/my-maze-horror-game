@@ -2992,8 +2992,6 @@
                 document.getElementById('keycountopacity').style.opacity = "1";
                 document.getElementById("keycount").innerHTML = key;
                 map = default_map;
-                alive = true;
-                animation = false;
                 
                 tips.style.opacity = "0";
                 blackout.classList.remove("blackout");
@@ -3036,6 +3034,8 @@
                         blackout2.style.opacity = "0";
                         blackout2.classList.remove("blackout");
                         blackout2.style.opacity = "1";
+                        alive = true;
+                        animation = false;
                       }, 200);
                     }, 175);
                   }, 150);
