@@ -150,11 +150,13 @@ function generateMap(x, y, pos) {
       for (let j = 0; j < x; j++) {
         if (map[i][j] == 0) {
           let chance = Math.random();
-          if (chance < 0.333) {
+          if (chance < 0.286) {// 2/7
             map[i][j] = 10;
-          } else if (chance < 0.667) {
+          } else if (chance < 0.571) {// 2/7
             map[i][j] = 20;
-          } else {
+          } else if (chance < 0.714) {// 1/7
+            map[i][j] = 30;
+          } else {// 2/7
             map[i][j] = 0;
           }
         }

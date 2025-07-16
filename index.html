@@ -1963,9 +1963,6 @@
         function changemap(map) {
           current_map = map;
           lvl_map = current_map.lvl_map;
-          if (lvl_map === null) {
-            lvl_map = 1;
-          }
           if(map == defaultmap["random"]) {
             r.set();
             default_position = r.get("pos");
