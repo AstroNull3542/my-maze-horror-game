@@ -146,18 +146,47 @@ function generateMap(x, y, pos) {
         }
       }
     }
+    let majority = Math.random();
     for (let i = 0; i < y; i++) {
       for (let j = 0; j < x; j++) {
         if (map[i][j] == 0) {
-          let chance = Math.random();
-          if (chance < 0.286) {// 2/7
-            map[i][j] = 10;
-          } else if (chance < 0.571) {// 2/7
+          if (majority < 0.1) {
             map[i][j] = 20;
-          } else if (chance < 0.714) {// 1/7
-            map[i][j] = 30;
-          } else {// 2/7
+          } else if (majority < 0.2) {
             map[i][j] = 0;
+          } else if (majority < 0.3) {
+            let chance = Math.random();
+            if (chance < 0.143) {// 1/7
+              map[i][j] = 10;
+            } else if (chance < 0.714) {// 4/7
+              map[i][j] = 20;
+            } else if (chance < 0.857) {// 1/7
+              map[i][j] = 30;
+            } else {// 1/7
+              map[i][j] = 0;
+            }
+          } else if (majority < 0.4) {
+            let chance = Math.random();
+            if (chance < 0.143) {// 1/7
+              map[i][j] = 10;
+            } else if (chance < 0.286) {// 1/7
+              map[i][j] = 20;
+            } else if (chance < 0.429) {// 1/7
+              map[i][j] = 30;
+            } else {// 4/7
+              map[i][j] = 0;
+            }
+          } else {
+            let chance = Math.random();
+            if (chance < 0.286) {// 2/7
+              map[i][j] = 10;
+            } else if (chance < 0.571) {// 2/7
+              map[i][j] = 20;
+            } else if (chance < 0.714) {// 1/7
+              map[i][j] = 30;
+            } else {// 2/7
+              map[i][j] = 0;
+            }
           }
         }
       }
