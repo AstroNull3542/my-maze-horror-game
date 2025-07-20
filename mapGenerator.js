@@ -77,6 +77,18 @@ function generateMap(x, y, pos) {
       currentpos = [newRow, newCol];
       if (i >= (x + y)) {
         map[newRow][newCol] = 25;
+        if (map[newRow - 1] && map[newRow - 1][newCol] == 0) {
+          map[newRow - 1][newCol] = 20;
+        }; // up
+        if (map[newRow + 1] && map[newRow + 1][newCol] == 0) {
+          map[newRow + 1][newCol] = 20;
+        }; // down
+        if (map[newRow] && map[newRow][newCol - 1] == 0) {
+          map[newRow][newCol - 1] = 20;
+        }; // left
+        if (map[newRow] && map[newRow][newCol + 1] == 0) {
+          map[newRow][newCol + 1] = 20;
+        }; // right
         break;
       }
     }
