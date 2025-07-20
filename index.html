@@ -2846,7 +2846,7 @@
           const now = performance.now();
           if(Math.random() < 0.01) {
             return;
-          } else if (Math.random() < 0.1 && !speed && (now-lastCall) < 1000) {
+          } else if (Math.random() < 0.1 && !speed && (now-lastCall) < 500) {
             setTimeout(() => {
               speed = true;
               handleMove(buttonId, dirCmd);
@@ -2857,7 +2857,7 @@
             }, 10);
           }
           lastCall = now;
-          if(Math.random() < 0.1) {
+          if(Math.random() < 0.01) {
             document.getElementById("hm").style.display = "block";
             document.getElementById("hm").style.top = `${Math.random() * 30 + 23}%`;
             document.getElementById("hm").style.left = `${Math.random() * 30 + 35}%`;
