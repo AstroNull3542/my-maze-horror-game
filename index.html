@@ -1949,6 +1949,8 @@
                 return this.randomdirection;
               case "map":
                 return this.randommap.map(row => [...row]);
+              case "key":
+                return this.randomkey;
             }
           }
           set() {
@@ -1956,7 +1958,7 @@
             this.randomposition = [Math.floor(Math.random() * size), Math.floor(Math.random() * size)];
             let dirrandom = ["north", "east", "south", "west"];
             this.randomdirection = dirrandom[Math.floor(Math.random() * dirrandom.length)];
-            this.randommap = generateMap(size, size, this.randomposition);
+            [this.randommap, this.randomkey] = generateMap(size, size, this.randomposition);
           }
         }
         const r = new randoms();
@@ -2981,7 +2983,7 @@
 
                 position = default_position;
                 direction = default_direction;
-                if (current_map == defaultmap["random"]) {
+                if (current_map == defaultmap["random"] && r.get("key") == false) {
                   key = 1;
                 } else {
                   key = 0;

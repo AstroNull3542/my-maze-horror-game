@@ -1,5 +1,6 @@
 function generateMap(x, y, pos) {
   let map = [];
+  let stuck = false;
   while (true) {
     map = [];
     for (let i = 0; i < y; i++) {
@@ -15,7 +16,7 @@ function generateMap(x, y, pos) {
     let lastdir = dir[Math.floor(Math.random() * dir.length)];
     let i = 0;
     let path = [];
-    let stuck = false;
+    stuck = false;
     while (true) {
       const [r, c] = currentpos;
       const neighbors = [];
@@ -146,6 +147,7 @@ function generateMap(x, y, pos) {
           }
         }
         if (neighbors.length == 0) {
+          map[r][c] = 21;
           break;
         }
         const [newRow, newCol, dir] = neighbors[Math.floor(Math.random() * neighbors.length)];
@@ -154,6 +156,19 @@ function generateMap(x, y, pos) {
         map[newRow][newCol] = 10;
         currentpos = [newRow, newCol];
         if (i >= (x + y)) {
+          map[newRow][newCol] = 21;
+          if (map[newRow - 1] && map[newRow - 1][newCol] == 0) {
+            map[newRow - 1][newCol] = 20;
+          }; // up
+          if (map[newRow + 1] && map[newRow + 1][newCol] == 0) {
+            map[newRow + 1][newCol] = 20;
+          }; // down
+          if (map[newRow] && map[newRow][newCol - 1] == 0) {
+            map[newRow][newCol - 1] = 20;
+          }; // left
+          if (map[newRow] && map[newRow][newCol + 1] == 0) {
+            map[newRow][newCol + 1] = 20;
+          }; // right
           break;
         }
       }
@@ -221,9 +236,10 @@ function generateMap(x, y, pos) {
         }
       }
     }
-    if (validexit) {
+    const hasExit = map.some(row => row.includes(25));
+    if (validexit && hasExit) {
       break;
     }
   }
-  return map;
+  return [map, !stuck];
 }
