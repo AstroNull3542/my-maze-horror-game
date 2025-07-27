@@ -2459,7 +2459,7 @@
 
           clear();
 
-          if (map[position[0]][position[1]] == 0 && noclip == false) {
+          if ((map[position[0]][position[1]] == 0 || map[position[0]][position[1]] == null) && noclip == false) {
             death("Tips: Dont fall!");
             return;
           }
@@ -2594,7 +2594,7 @@
         let minimaptimeout;
         if(window.screen.width < 768) {
           pos15_object.addEventListener("click", () => {
-            if (animation == false) {
+            if (animation == false && !input) {
               if (alive) {
                 let turnflashlight = false;
                 let switchtrigger = false;
@@ -3047,7 +3047,7 @@
         body.addEventListener("keydown", function(e) {
           if (e.repeat) return;
 
-          if (animation == false) {
+          if (animation == false && !input) {
 
             if (e.code == "KeyR") {
               restart();
