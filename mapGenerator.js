@@ -177,11 +177,11 @@ function generateMap(x, y, pos) {
     for (let i = 0; i < y; i++) {
       for (let j = 0; j < x; j++) {
         if (map[i][j] == 0) {
-          if (majority < 0.1) {
+          if (majority < 0.091) {//all wall
             map[i][j] = 20;
-          } else if (majority < 0.2) {
+          } else if (majority < 0.182) {//all void
             map[i][j] = 0;
-          } else if (majority < 0.3) {
+          } else if (majority < 0.273) {//majority wall
             let chance = Math.random();
             if (chance < 0.182) {// 2/11
               map[i][j] = 10;
@@ -192,7 +192,7 @@ function generateMap(x, y, pos) {
             } else {// 2/11
               map[i][j] = 0;
             }
-          } else if (majority < 0.4) {
+          } else if (majority < 0.364) {//majority void
             let chance = Math.random();
             if (chance < 0.182) {// 2/11
               map[i][j] = 10;
@@ -201,6 +201,17 @@ function generateMap(x, y, pos) {
             } else if (chance < 0.455) {// 1/11
               map[i][j] = 30;
             } else {// 6/11
+              map[i][j] = 0;
+            }
+          } else if (majority < 0.455) {//majority floor
+            let chance = Math.random();
+            if (chance < 0.545) {// 6/11
+              map[i][j] = 10;
+            } else if (chance < 0.727) {// 2/11
+              map[i][j] = 20;
+            } else if (chance < 0.818) {// 1/11
+              map[i][j] = 30;
+            } else {// 2/11
               map[i][j] = 0;
             }
           } else {
