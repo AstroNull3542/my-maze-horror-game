@@ -1983,10 +1983,11 @@
               if(lvl_map == null) {
                 restart(defaultmap["random"])
               } else if(lvl_map == 1) {
-                restart(defaultmap["map2"]);
-              } else if(lvl_map == 2) {
                 restart(defaultmap["random"]);
               }
+              // } else if(lvl_map == 2) {
+              //   restart(defaultmap["random"]);
+              // }
             } else {
               locked.textContent = "Jammed";
               locked.style.opacity = "1";
@@ -2848,7 +2849,7 @@
           const now = performance.now();
           if(Math.random() < 0.01) {
             return;
-          } else if (Math.random() < 0.1 && !speed && (now-lastCall) < 500) {
+          } else if (Math.random() < 0.01 && !speed && (now-lastCall) < 200) {
             setTimeout(() => {
               speed = true;
               handleMove(buttonId, dirCmd);
