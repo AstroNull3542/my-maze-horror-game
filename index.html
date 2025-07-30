@@ -2174,27 +2174,17 @@
             }
           }
           if (keyarr[18] && keyarr[16] && keyarr[78]) {
-            if(noclip == true) {
-              noclip = false;
-              render();
-            } else {
-              noclip = true;
-              render();
-            }
+            noclip = !noclip;
+            render();
           }
           if (keyarr[18] && keyarr[16] && keyarr[77]) {
             if (input) {
-              const value = document.getElementById("inputmap").value;
-              if(value in defaultmap) {
-                restart(defaultmap[value]);
-              }
-              document.getElementById("inputmap").style.display = "none";
-              document.getElementById("inputmap").value = "";
-              input = false;
+              shiftaltm();
             } else {
               document.getElementById("inputmap").style.display = "block";
               document.getElementById("inputmap").focus();
               input = true;
+              document.getElementById("inputmap").addEventListener("keydown", handleEnter);
             }
           }
         }
@@ -2206,6 +2196,22 @@
             promptUsed = false;
           }
         };
+
+        function handleEnter(event) {
+          if (event.key === "Enter") {
+            shiftaltm();
+          }
+        }
+        function shiftaltm() {
+          const value = document.getElementById("inputmap").value;
+          if (value in defaultmap) {
+            restart(defaultmap[value]);
+          }
+          document.getElementById("inputmap").style.display = "none";
+          document.getElementById("inputmap").value = "";
+          input = false;
+          document.getElementById("inputmap").removeEventListener("keydown", handleEnter);
+        }
 
         var body = document.getElementById("body");
 
