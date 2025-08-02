@@ -1754,6 +1754,15 @@
       .fall {
         animation: fall 1.5s ease-in;
       }
+
+      .neon {
+        filter: brightness(1.2) contrast(1.5) saturate(2);
+        box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+      }
+      .neon-far {
+        filter: brightness(2.2) contrast(1.5) saturate(2);
+        box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+      }
     </style>
   </head>
   <body id="body" style="overflow-y: hidden;">
@@ -2173,7 +2182,7 @@
               render();
             }
           }
-          if (keyarr[18] && keyarr[16] && keyarr[78]) {
+          if (keyarr[18] && keyarr[16] && keyarr[78]) {//also check konami code combination
             noclip = !noclip;
             render();
           }
@@ -2462,6 +2471,7 @@
           }, 200);
         }
 
+        let neon = false;
         function render() {
 
           clear();
@@ -2558,11 +2568,27 @@
               cfg.obj = 'wall';
             } else {
               posObjects[i].classList.add(`${cfg.obj}${i + 1}`);
+              if (neon) {
+                const pos1 = i + 1;
+                if (![9, 10, 11, 12, 13, 14, 15].includes(pos1)) {
+                  posObjects[i].classList.add(`neon`);
+                } else {
+                  posObjects[i].classList.add(`neon-far`);
+                }
+              }
             }
             if (cfg.propBase) {
               posProperties[i].classList.add(
                 `${cfg.propBase}${i + 1}${cfg.propSuffix}`
               );
+              if (neon) {
+                const pos1 = i + 1;
+                if (![9, 10, 11, 12, 13, 14, 15].includes(pos1)) {
+                  posProperties[i].classList.add(`neon`);
+                } else {
+                  posProperties[i].classList.add(`neon-far`);
+                }
+              }
             }
             if (darkness) {
               posDarks[i].classList.add(`${cfg.obj}${i + 1}_dark`);
@@ -3012,6 +3038,12 @@
                 minimap.style.opacity = "1";
                 dirindicator.style.display = "block";
                 clearTimeout(minimaptimeout);
+
+                if (Math.random() < 0.01) {
+                  neon = true;
+                } else {
+                  neon = false;
+                }
 
                 render();
                 renderminimap();
