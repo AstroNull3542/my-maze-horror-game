@@ -2274,6 +2274,8 @@
                 restart(defaultmap["random"]);
               } else if (lvl_map == 1) {
                 restart(defaultmap["random"]);
+              } else {
+                restart(defaultmap["random"]);
               }
               // } else if(lvl_map == 2) {
               //   restart(defaultmap["random"]);
@@ -2858,7 +2860,7 @@
           clear();
 
           if (
-            (map[position[0]][position[1]] == 0 ||
+            (map[position[0]][position[1]] != 10 ||
               map[position[0]][position[1]] == null) &&
             noclip == false
           ) {
